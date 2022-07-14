@@ -7,10 +7,11 @@ namespace DefaultNamespace
     {
         private readonly List<int> _wrongLevelsIndexes;
         private readonly List<int> _passedLevelsIndexes;
-        private int _score;
+        private int score;
 
         private static GameContext _instance;
-
+        private GameState _gameState;
+        
         private static GameContext Instance
         {
             get
@@ -22,19 +23,45 @@ namespace DefaultNamespace
             }
         }
 
+        public static bool HasWrongLevels => Instance._wrongLevelsIndexes.Any();
+
+        public static bool HasPassedLevels => Instance._passedLevelsIndexes.Any();
+
+
         private GameContext()
         {
             _wrongLevelsIndexes = new List<int>();
             _passedLevelsIndexes = new List<int>();
-            _score = 0;
+            score = 0;
         }
 
         public static void Reset()
         {
             _instance = new GameContext();
         }
+
+
+        #region Game state methods
+
+        public static void AddGameState(GameState state)
+        {
+            _instance._gameState |= state;
+        }  
+        public static  bool HasGameState(GameState state)
+        {
+            return _instance._gameState.HasFlag(state);
+        } 
         
-        public static bool HasWrongLevels => Instance._wrongLevelsIndexes.Any();
-        public static bool HasPassedLevels => Instance._passedLevelsIndexes.Any();
+        public static void RemoveGameState(GameState state)
+        {
+            _instance._gameState &= ~state;
+        }
+        
+        public void ResetGameState()
+        {
+            _gameState = GameState.None;
+        }
+
+        #endregion
     }
 }

@@ -53,6 +53,7 @@ namespace DefaultNamespace
 
         private async UniTask StartNextLevel()
         {
+            GameContext.AddGameState(GameState.CutScene);
             var nextLevel = GetNextLevel();
             await _windowSwitcher.SwitchWindow(() =>
             {
@@ -64,8 +65,10 @@ namespace DefaultNamespace
                 _currentLevel = Instantiate(nextLevel, _levelParent);
                 _currentLevel.Init(() => StartNextLevel().Forget());
 
-                _character.transform.SetParent(_currentLevel.CharacterParent);
+                _character.transform.SetParent(_currentLevel.CharacterParent, true);
+                _character.SetLocalPosition(Vector3.zero);
             });
+            GameContext.RemoveGameState(GameState.CutScene);
         }
         
         private async UniTask ResetAnPlayAgain()
