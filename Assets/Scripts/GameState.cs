@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DefaultNamespace
+namespace MoroshkovieKochki
 {
     [Flags]
     public enum GameState

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace DefaultNamespace
+namespace MoroshkovieKochki
 {
     public class GameContext
     {

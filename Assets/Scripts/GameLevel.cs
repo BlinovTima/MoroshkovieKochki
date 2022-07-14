@@ -1,17 +1,57 @@
 using System;
+using Cysharp.Threading.Tasks;
+using NaughtyAttributes;
 using UnityEngine;
 
-namespace DefaultNamespace
+namespace MoroshkovieKochki
 {
-    public abstract class GameLevel : MonoBehaviour
+    public abstract class GameLevel : MonoBehaviour, IDisposable
     {
         [SerializeField] private int _id;
         [SerializeField] private RectTransform _characterParent;
+        [SerializeField] private Transform _initialPosition;
+        protected Character _character;
+        private Action _onLevelComplete;
 
-        public RectTransform CharacterParent => _characterParent;
+        [Button("Complete Level")]
+        public void CompleteLevel()
+        {
+            _onLevelComplete.Invoke();
+        }
+        
+        public virtual void Init(Action onLevelComplete, Character character)
+        {
+#if UNITY_EDITOR
+            _onLevelComplete = onLevelComplete;
+#endif
+            SetupCharacter(character);
+        }
 
+        public virtual async UniTask PlayIntro()
+        {
+            await UniTask.Yield();
+        }
 
-        public abstract void Init(Action onLevelComplete);
+        public virtual async UniTask PlayOutro()
+        {
+            await UniTask.Yield();
+        }
 
+        private void SetupCharacter(Character character)
+        {
+            _character = character;
+            _character.transform.SetParent(_characterParent, true);
+            _character.SetPosition(_initialPosition.position);
+        }
+
+        private void OnDestroy()
+        {
+            Dispose();
+        }
+
+        public void Dispose()
+        {
+            _character = null;
+        }
     }
 }

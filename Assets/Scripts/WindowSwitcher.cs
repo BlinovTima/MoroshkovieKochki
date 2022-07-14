@@ -4,7 +4,7 @@ using DG.Tweening;
 using UnityEngine;
 
 
-namespace DefaultNamespace
+namespace MoroshkovieKochki
 {
     public class WindowSwitcher : MonoBehaviour
     {

@@ -1,12 +1,8 @@
 using System;
 
-namespace DefaultNamespace
+namespace MoroshkovieKochki
 {
     public sealed class FinalScreenGameLevel : GameLevel
     {
-        public override void Init(Action onLevelComplete)
-        {
-
-        }
     }
 }

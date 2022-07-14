@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-namespace DefaultNamespace
+namespace MoroshkovieKochki
 {
     public class GameMenu : MonoBehaviour
     {

@@ -3,7 +3,7 @@ using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 
-namespace DefaultNamespace
+namespace MoroshkovieKochki
 {
     public class GameController : MonoBehaviour
     {
@@ -44,7 +44,7 @@ namespace DefaultNamespace
         {
               _gameMenuPresenter = new GameMenuPresenter(_gameMenu, 
                   () => StartNextLevel().Forget(), 
-                  () => ResetAnPlayAgain().Forget());
+                  () => ResetAndPlayAgain().Forget());
 
               _inputListener.OnEscKeyGet += _gameMenuPresenter.SwitchMenu;
               
@@ -54,26 +54,32 @@ namespace DefaultNamespace
         private async UniTask StartNextLevel()
         {
             GameContext.AddGameState(GameState.CutScene);
-            var nextLevel = GetNextLevel();
+
+            var hasCurrentLevel = _currentLevel != null;
+            
+            if (hasCurrentLevel)
+                await _currentLevel.PlayOutro();
+            
             await _windowSwitcher.SwitchWindow(() =>
             {
                 _gameMenuPresenter.HideMenu();
 
-                if (_currentLevel != null)
+                if (hasCurrentLevel)
                     Destroy(_currentLevel.gameObject);
 
+                var nextLevel = GetNextLevel();
                 _currentLevel = Instantiate(nextLevel, _levelParent);
-                _currentLevel.Init(() => StartNextLevel().Forget());
-
-                _character.transform.SetParent(_currentLevel.CharacterParent, true);
-                _character.SetLocalPosition(Vector3.zero);
+                _currentLevel.Init(() => StartNextLevel().Forget(), _character);
             });
+
+            await _currentLevel.PlayIntro();
+            
             GameContext.RemoveGameState(GameState.CutScene);
         }
         
-        private async UniTask ResetAnPlayAgain()
+        private async UniTask ResetAndPlayAgain()
         {
-         
+            GameContext.Reset();
         }
     }
     
