@@ -85,7 +85,7 @@ GameObject:
   - component: {fileID: 7518925339815817712}
   - component: {fileID: 3458799992285014435}
   m_Layer: 8
-  m_Name: TMP SubMeshUI [LiberationSans SDF Material + LiberationSans SDF Atlas]
+  m_Name: TMP SubMeshUI [Coiny 2 outline + LiberationSans SDF Atlas]
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -141,7 +141,7 @@ MonoBehaviour:
   m_material: {fileID: 0}
   m_sharedMaterial: {fileID: 0}
   m_isDefaultMaterial: 0
-  m_padding: 1.25
+  m_padding: 2.42
   m_canvasRenderer: {fileID: 7518925339815817712}
   m_TextComponent: {fileID: 6468155283660796063}
   m_materialReferenceIndex: 1
@@ -303,15 +303,15 @@ MonoBehaviour:
     \u0442\u0435\u043F\u043B\u043E \u0438 \u0441\u043E\u043B\u043D\u0446\u0435, \u043F\u043E\u044D\u0442\u043E\u043C\u0443
     \u043D\u0430 \u0441\u0435\u0432\u0435\u0440\u0435 \u043D\u0435 \u0440\u0430\u0441\u0442\u0435\u0442"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: fac3c235f9d774345b1cbda6699848be, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 033f2ea557af8c945b85a7240103bad9, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -375,7 +375,7 @@ MonoBehaviour:
     spaceCount: 16
     wordCount: 16
     linkCount: 0
-    lineCount: 3
+    lineCount: 4
     pageCount: 1
     materialCount: 2
   m_isUsingLegacyAnimationComponent: 0
@@ -661,8 +661,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u0414\u0430"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: fac3c235f9d774345b1cbda6699848be, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 033f2ea557af8c945b85a7240103bad9, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -982,7 +982,7 @@ GameObject:
   - component: {fileID: 6073383644078467792}
   - component: {fileID: 6628218134398489671}
   m_Layer: 8
-  m_Name: TMP SubMeshUI [LiberationSans SDF - Outline + LiberationSans SDF Atlas]
+  m_Name: TMP SubMeshUI [Coiny 2 outline + LiberationSans SDF Atlas]
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1038,7 +1038,7 @@ MonoBehaviour:
   m_material: {fileID: 0}
   m_sharedMaterial: {fileID: 0}
   m_isDefaultMaterial: 0
-  m_padding: 3.05
+  m_padding: 2.42
   m_canvasRenderer: {fileID: 6073383644078467792}
   m_TextComponent: {fileID: 5917486225585941715}
   m_materialReferenceIndex: 1
@@ -1227,8 +1227,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u041D\u0435\u0442\n"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: fac3c235f9d774345b1cbda6699848be, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 033f2ea557af8c945b85a7240103bad9, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1253,8 +1253,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 26
-  m_fontSizeBase: 26
+  m_fontSize: 18.81
+  m_fontSizeBase: 18.81
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1301,7 +1301,7 @@ MonoBehaviour:
     linkCount: 0
     lineCount: 1
     pageCount: 1
-    materialCount: 2
+    materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
