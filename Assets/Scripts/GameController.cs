@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
@@ -9,7 +10,6 @@ namespace MoroshkovieKochki
     {
         [SerializeField] private GameMenu _gameMenu;
         [SerializeField] private Character _character;
-        [SerializeField] private InputListener _inputListener;
         [SerializeField] private WindowSwitcher _windowSwitcher;
         
         [Header("Levels settings")]
@@ -42,13 +42,18 @@ namespace MoroshkovieKochki
         
         private void Awake()
         {
-              _gameMenuPresenter = new GameMenuPresenter(_gameMenu, 
-                  () => StartNextLevel().Forget(), 
-                  () => ResetAndPlayAgain().Forget());
+            RegisterAllSystems();
+        }
 
-              _inputListener.OnEscKeyGet += _gameMenuPresenter.SwitchMenu;
-              
-              _gameMenuPresenter.ShowMenu();
+        private void RegisterAllSystems()
+        {
+            _gameMenuPresenter = new GameMenuPresenter(_gameMenu,
+                () => StartNextLevel().Forget(),
+                () => ResetAndPlayAgain().Forget());
+
+            InputListener.OnEscKeyGet += _gameMenuPresenter.SwitchMenu;
+
+            _gameMenuPresenter.ShowMenu();
         }
 
         private async UniTask StartNextLevel()
@@ -80,6 +85,11 @@ namespace MoroshkovieKochki
         private async UniTask ResetAndPlayAgain()
         {
             GameContext.Reset();
+        }
+
+        private void OnApplicationQuit()
+        {
+            InputListener.OnEscKeyGet -= _gameMenuPresenter.SwitchMenu;
         }
     }
     

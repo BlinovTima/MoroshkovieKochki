@@ -13,20 +13,20 @@ namespace MoroshkovieKochki
         protected Character _character;
         private Action _onLevelComplete;
 
-        [Button("Complete Level")]
-        public void CompleteLevel()
-        {
-            _onLevelComplete.Invoke();
-        }
-        
         public virtual void Init(Action onLevelComplete, Character character)
         {
 #if UNITY_EDITOR
             _onLevelComplete = onLevelComplete;
 #endif
             SetupCharacter(character);
+            InputListener.OnLeftMouseButtonClick += OnLeftMouseButtonClick;
         }
 
+        private void OnLeftMouseButtonClick(RaycastHit2D raycastHit2D)
+        {
+            Debug.Log(raycastHit2D.collider.gameObject.name);
+        }
+        
         public virtual async UniTask PlayIntro()
         {
             await UniTask.Yield();
@@ -52,6 +52,13 @@ namespace MoroshkovieKochki
         public void Dispose()
         {
             _character = null;
+            InputListener.OnLeftMouseButtonClick -= OnLeftMouseButtonClick;
+        }
+
+        [Button("Complete Level")]
+        public void CompleteLevel()
+        {
+            _onLevelComplete.Invoke();
         }
     }
 }
