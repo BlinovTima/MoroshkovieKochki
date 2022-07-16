@@ -9,7 +9,7 @@ namespace MoroshkovieKochki
     public class GameController : MonoBehaviour
     {
         [SerializeField] private GameMenu _gameMenu;
-        [SerializeField] private Character _character;
+        [SerializeField] private Character _characterPrefab;
         [SerializeField] private WindowSwitcher _windowSwitcher;
         
         [Header("Levels settings")]
@@ -47,6 +47,8 @@ namespace MoroshkovieKochki
 
         private void RegisterAllSystems()
         {
+            InstantiateCharacter();
+
             _gameMenuPresenter = new GameMenuPresenter(_gameMenu,
                 () => StartNextLevel().Forget(),
                 () => ResetAndPlayAgain().Forget());
@@ -54,6 +56,12 @@ namespace MoroshkovieKochki
             InputListener.OnEscKeyGet += _gameMenuPresenter.SwitchMenu;
 
             _gameMenuPresenter.ShowMenu();
+        }
+
+        private void InstantiateCharacter()
+        {
+            var characterInstance = Instantiate(_characterPrefab, transform.root);
+            _characterPrefab = characterInstance;
         }
 
         private async UniTask StartNextLevel()
@@ -74,7 +82,7 @@ namespace MoroshkovieKochki
 
                 var nextLevel = GetNextLevel();
                 _currentLevel = Instantiate(nextLevel, _levelParent);
-                _currentLevel.Init(() => StartNextLevel().Forget(), _character);
+                _currentLevel.Init(() => StartNextLevel().Forget(), _characterPrefab);
             });
 
             await _currentLevel.PlayIntro();

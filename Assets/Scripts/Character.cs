@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using UnityEngine;
@@ -7,7 +8,9 @@ namespace MoroshkovieKochki
     public sealed class Character : MonoBehaviour
     {
         [SerializeField] private float _speed = 0.7f;
-        
+        private Sequence _sequnce;
+        private bool _isGoingLeftCahce;
+
         public void SetPosition(Vector3 position)
         {
             transform.position = position;
@@ -15,8 +18,30 @@ namespace MoroshkovieKochki
 
         public async UniTask GoTo(Vector3 newPosition)
         {
+            SetSideOrientation(newPosition);
+            
+            _sequnce?.Kill();
+            _sequnce = DOTween.Sequence();
             var duration = CalculateMoveTime(newPosition);
-           await transform.DOMove(newPosition, duration).SetEase(Ease.Linear).AsyncWaitForCompletion();
+            
+            _sequnce.Append(transform.DOMove(newPosition, duration).SetEase(Ease.Linear));
+            _sequnce.SetAutoKill(true);
+            
+            await _sequnce.AsyncWaitForKill();
+        }
+
+        private void SetSideOrientation(Vector3 newPosition)
+        {
+            var isGoingLeft = transform.position.x > newPosition.x;
+            
+            if(isGoingLeft == _isGoingLeftCahce)
+                return;
+            
+            _isGoingLeftCahce = isGoingLeft;
+            
+            var localScale = transform.localScale;
+            localScale.x *= -1;
+            transform.localScale = localScale;
         }
 
         private float CalculateMoveTime(Vector3 newPosition)

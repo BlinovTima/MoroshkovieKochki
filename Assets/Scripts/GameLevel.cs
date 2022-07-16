@@ -8,7 +8,7 @@ namespace MoroshkovieKochki
     public abstract class GameLevel : MonoBehaviour, IDisposable
     {
         [SerializeField] private int _id;
-        [SerializeField] private RectTransform _characterParent;
+        [SerializeField] private Transform _characterParent;
         [SerializeField] private Transform _initialPosition;
         protected Character _character;
         private Action _onLevelComplete;
@@ -22,7 +22,7 @@ namespace MoroshkovieKochki
             InputListener.OnLeftMouseButtonClick += OnLeftMouseButtonClick;
         }
 
-        private void OnLeftMouseButtonClick(RaycastHit2D raycastHit2D)
+        protected virtual void OnLeftMouseButtonClick(RaycastHit2D raycastHit2D)
         {
             Debug.Log(raycastHit2D.collider.gameObject.name);
         }

@@ -8,7 +8,6 @@ namespace MoroshkovieKochki
     {
         private const float _rayDistance = 100f;
         private Camera _camera;
-        private Vector3 _ray;
 
         public static event Action OnEscKeyGet = () => { };
         public static event Action<RaycastHit2D> OnLeftMouseButtonClick = x => { };
@@ -28,18 +27,12 @@ namespace MoroshkovieKochki
 
             if (Input.GetMouseButtonDown(0))
             {
-                _ray = _camera.ScreenToWorldPoint(Input.mousePosition); 
-                var raycast = Physics2D.Raycast(_ray, Vector3.zero, _rayDistance);
+                var ray = _camera.ScreenToWorldPoint(Input.mousePosition); 
+                var raycast = Physics2D.Raycast(ray, Vector3.zero, _rayDistance);
                 
                 if(raycast.collider)
                     OnLeftMouseButtonClick.Invoke(raycast);
             }
-        }
-
-        private void OnDrawGizmos()
-        {
-            Gizmos.color = Color.red;
-            Gizmos.DrawRay(_ray, Vector3.forward * 200f);
         }
     }
 }

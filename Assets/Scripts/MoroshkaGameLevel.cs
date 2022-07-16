@@ -18,5 +18,13 @@ namespace MoroshkovieKochki
         {
             await _character.GoTo(_outroPosition.position);
         }
+
+        protected override void OnLeftMouseButtonClick(RaycastHit2D raycastHit2D)
+        {
+            _character.GoTo(raycastHit2D.point).Forget();
+            
+           //Camera.main.ScreenToWorldPoint(raycastHit2D.po);
+          
+        }
     }
 }
