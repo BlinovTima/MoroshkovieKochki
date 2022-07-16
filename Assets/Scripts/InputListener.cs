@@ -20,12 +20,15 @@ namespace MoroshkovieKochki
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Escape) && !GameContext.HasGameState(GameState.CutScene))
+            if (Input.GetKeyDown(KeyCode.Escape) 
+                && !GameContext.HasGameState(GameState.CutScene))
             {
                 OnEscKeyGet.Invoke();
             }
 
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0) 
+                && !GameContext.HasGameState(GameState.CutScene)
+                && !GameContext.HasGameState(GameState.Menu))
             {
                 var ray = _camera.ScreenToWorldPoint(Input.mousePosition); 
                 var raycast = Physics2D.Raycast(ray, Vector3.zero, _rayDistance);

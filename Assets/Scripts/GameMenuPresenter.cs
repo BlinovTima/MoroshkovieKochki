@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine;
 
 namespace MoroshkovieKochki
 {
@@ -24,7 +25,22 @@ namespace MoroshkovieKochki
         
         public void SwitchMenu()
         {
-            _gameMenu.SetActive(!_gameMenu.gameObject.activeInHierarchy);
+            var isMenuActive = _gameMenu.gameObject.activeInHierarchy;
+            
+            if(isMenuActive)
+            {
+                Time.timeScale = 1f;
+                GameContext.RemoveGameState(GameState.Menu);
+            }
+            else
+            {
+                Time.timeScale = 0f;
+                GameContext.AddGameState(GameState.Menu);
+            }
+            
+            _gameMenu.SetActive(!isMenuActive);
+            
+            
         }
     }
 }
