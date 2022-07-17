@@ -177,9 +177,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e45c04560fbc49f690ef35188c145970, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gameMenu: {fileID: 165482111501247843}
   _characterPrefab: {fileID: 7757793107914099153, guid: 2f43be1fd0e608345be6e062b483be23,
     type: 3}
+  _gameMenu: {fileID: 165482111501247843}
+  _popupsParent: {fileID: 2119653845}
   _windowSwitcher: {fileID: 2019991964}
   _levelParent: {fileID: 1760534055}
   _startScreen: {fileID: 3594383662428885341, guid: 0812b78760f584044905b4546ce0c9f6,
@@ -610,7 +611,7 @@ PrefabInstance:
     - target: {fileID: 8045937135595296033, guid: fec0bc32247d016408991535e0637751,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8045937135595296033, guid: fec0bc32247d016408991535e0637751,
         type: 3}
@@ -820,7 +821,7 @@ PrefabInstance:
     - target: {fileID: 2669514223945234022, guid: 11741ef4ed8f5424b8addb8c7308de8e,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2669514223945234022, guid: 11741ef4ed8f5424b8addb8c7308de8e,
         type: 3}

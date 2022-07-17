@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
@@ -8,8 +7,12 @@ namespace MoroshkovieKochki
 {
     public class GameController : MonoBehaviour
     {
-        [SerializeField] private GameMenu _gameMenu;
+        [Header("Character settings")]
         [SerializeField] private Character _characterPrefab;
+
+        [Header("Menu settings")]
+        [SerializeField] private GameMenu _gameMenu;
+        [SerializeField] private RectTransform _popupsParent;
         [SerializeField] private WindowSwitcher _windowSwitcher;
         
         [Header("Levels settings")]
@@ -21,6 +24,7 @@ namespace MoroshkovieKochki
         private GameMenuPresenter _gameMenuPresenter;
         private int? _levelIndex;
         private GameLevel _currentLevel;
+        private PopupPresenter _popupPresenter;
 
         private GameLevel GetNextLevel()
         {
@@ -52,9 +56,13 @@ namespace MoroshkovieKochki
             _gameMenuPresenter = new GameMenuPresenter(_gameMenu,
                 () => StartNextLevel().Forget(),
                 () => ResetAndPlayAgain().Forget());
-
             InputListener.OnEscKeyGet += _gameMenuPresenter.SwitchMenu;
 
+            
+            _popupPresenter = new PopupPresenter(_popupsParent);
+            InputListener.OnLeftMouseButtonClick += _popupPresenter.OnItemClick;
+            
+            
             _gameMenuPresenter.ShowMenu();
         }
 
@@ -73,23 +81,24 @@ namespace MoroshkovieKochki
             if (hasCurrentLevel)
                 await _currentLevel.PlayOutro();
             
-            await _windowSwitcher.SwitchWindow(() =>
-            {
-                _gameMenuPresenter.HideMenu();
-
-                if (hasCurrentLevel)
-                    Destroy(_currentLevel.gameObject);
-
-                var nextLevel = GetNextLevel();
-                _currentLevel = Instantiate(nextLevel, _levelParent);
-                _currentLevel.Init(() => StartNextLevel().Forget(), _characterPrefab);
-            });
-
+            await _windowSwitcher.SwitchWindow(() => LoadLevel(hasCurrentLevel));
             await _currentLevel.PlayIntro();
             
             GameContext.RemoveGameState(GameState.CutScene);
         }
-        
+
+        private void LoadLevel(bool hasCurrentLevel)
+        {
+            _gameMenuPresenter.HideMenu();
+
+            if (hasCurrentLevel)
+                Destroy(_currentLevel.gameObject);
+
+            var nextLevel = GetNextLevel();
+            _currentLevel = Instantiate(nextLevel, _levelParent);
+            _currentLevel.Init(() => StartNextLevel().Forget(), _characterPrefab);
+        }
+
         private async UniTask ResetAndPlayAgain()
         {
             GameContext.Reset();
@@ -98,6 +107,7 @@ namespace MoroshkovieKochki
         private void OnApplicationQuit()
         {
             InputListener.OnEscKeyGet -= _gameMenuPresenter.SwitchMenu;
+            InputListener.OnLeftMouseButtonClick -= _popupPresenter.OnItemClick;
         }
     }
     
