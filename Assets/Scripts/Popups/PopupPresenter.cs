@@ -11,27 +11,31 @@ namespace MoroshkovieKochki
         private ItemPopup _currentPopup;
         private string _currentPopupDataName;
 
-        public void OnItemClick(RaycastHit2D hit2D)
-        {
-            var popupData = hit2D.collider.GetComponent<PopupData>();
-            
-            if(popupData)
-            {
-                ShowPopUp(popupData).Forget();
-            }
-            else if(_currentPopup)
-            {
-                _currentPopupDataName = null;
-                _currentPopup.Hide().Forget();
-            }
-        }
 
-        private async UniTask ShowPopUp(PopupData popupData)
+        public bool NeedCloseCurrentPopup(PopupData popupData)
         {
-            if (!string.IsNullOrEmpty(_currentPopupDataName) 
-                && popupData.gameObject.name == _currentPopupDataName)
+           return !string.IsNullOrEmpty(_currentPopupDataName) && popupData.gameObject.name != _currentPopupDataName;
+        } 
+        
+        private bool IsCachedPopup(PopupData popupData)
+        {
+           return !string.IsNullOrEmpty(_currentPopupDataName) && popupData.gameObject.name == _currentPopupDataName;
+        }
+        
+        public void CloseCurrentPopup()
+        {
+            if (!_currentPopup)
                 return;
 
+            _currentPopupDataName = null;
+            _currentPopup.Hide().Forget();
+        }
+
+        public async UniTask ShowPopUp(PopupData popupData)
+        {
+            if(IsCachedPopup(popupData))
+                return;
+            
             _currentPopupDataName = popupData.gameObject.name;
             
             if (_currentPopup && _currentPopup.ActiveInHierarchy)

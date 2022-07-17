@@ -158,7 +158,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _canvasGroup: {fileID: 5389927495984439232}
-  _switchTime: 0.4
+  _switchTime: 0.15
   _image: {fileID: 5389927497212159401}
   _desription: {fileID: 5389927496256160080}
   _customQuestion: {fileID: 5389927496985744179}

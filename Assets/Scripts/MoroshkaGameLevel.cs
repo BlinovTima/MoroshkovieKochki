@@ -1,6 +1,8 @@
 using System;
+using System.Threading;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
+
 
 namespace MoroshkovieKochki
 {
@@ -9,6 +11,8 @@ namespace MoroshkovieKochki
         [SerializeField] private Transform _introPosition;
         [SerializeField] private Transform _outroPosition;
         
+        private CancellationTokenSource _cancellationToken = new CancellationTokenSource();
+
         public override async UniTask PlayIntro()
         {
            await _character.GoTo(_introPosition.position);
@@ -21,8 +25,25 @@ namespace MoroshkovieKochki
 
         protected override void OnLeftMouseButtonClick(RaycastHit2D raycastHit2D)
         {
-            if(raycastHit2D.collider.GetComponent<Road>())
-                _character.GoTo(raycastHit2D.point).Forget();
+            MoveCharacter(raycastHit2D).Forget();
+        }
+        
+        private async UniTask MoveCharacter(RaycastHit2D raycastHit2D)
+        {
+            _cancellationToken?.Cancel();
+            _cancellationToken = new CancellationTokenSource(); 
+            
+            var popupData = raycastHit2D.collider.GetComponent<PopupData>();
+            var road = raycastHit2D.collider.GetComponent<Road>();
+
+            if (!popupData || _popupPresenter.NeedCloseCurrentPopup(popupData))
+               _popupPresenter.CloseCurrentPopup();
+
+            if (road || popupData)
+                await _character.GoTo(raycastHit2D.point).AttachExternalCancellation(_cancellationToken.Token);
+
+            if (popupData)
+                await _popupPresenter.ShowPopUp(popupData).AttachExternalCancellation(_cancellationToken.Token);
         }
     }
 }

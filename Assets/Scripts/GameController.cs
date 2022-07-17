@@ -60,9 +60,7 @@ namespace MoroshkovieKochki
 
             
             _popupPresenter = new PopupPresenter(_popupsParent);
-            InputListener.OnLeftMouseButtonClick += _popupPresenter.OnItemClick;
-            
-            
+
             _gameMenuPresenter.ShowMenu();
         }
 
@@ -99,7 +97,7 @@ namespace MoroshkovieKochki
 
             var nextLevel = GetNextLevel();
             _currentLevel = Instantiate(nextLevel, _levelParent);
-            _currentLevel.Init(() => StartNextLevel().Forget(), _characterPrefab);
+            _currentLevel.Init(() => StartNextLevel().Forget(), _characterPrefab, _popupPresenter);
         }
 
         private async UniTask ResetAndPlayAgain()
@@ -110,7 +108,6 @@ namespace MoroshkovieKochki
         private void OnApplicationQuit()
         {
             InputListener.OnEscKeyGet -= _gameMenuPresenter.SwitchMenu;
-            InputListener.OnLeftMouseButtonClick -= _popupPresenter.OnItemClick;
         }
     }
     

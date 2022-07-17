@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 using Cysharp.Threading.Tasks;
 using NaughtyAttributes;
 using UnityEngine;
@@ -12,14 +13,18 @@ namespace MoroshkovieKochki
         [SerializeField] private Transform _initialPosition;
         protected Character _character;
         private Action _onLevelComplete;
+        protected PopupPresenter _popupPresenter;
 
-        public virtual void Init(Action onLevelComplete, Character character)
+        public virtual void Init(Action onLevelComplete, 
+            Character character,
+            PopupPresenter popupPresenter)
         {
-#if UNITY_EDITOR
+            _popupPresenter = popupPresenter;
             _onLevelComplete = onLevelComplete;
-#endif
+            
             SetupCharacter(character);
             InputListener.OnLeftMouseButtonClick += OnLeftMouseButtonClick;
+            
         }
 
         protected virtual void OnLeftMouseButtonClick(RaycastHit2D raycastHit2D)

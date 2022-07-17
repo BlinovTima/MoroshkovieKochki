@@ -8,9 +8,11 @@ namespace MoroshkovieKochki
     public sealed class StartGameLevel : GameLevel
     {
         [SerializeField] private Button _startGameButton;
-        public override void Init(Action onLevelComplete, Character character)
+        public override void Init(Action onLevelComplete, 
+            Character character,
+            PopupPresenter popupPresenter)
         {
-            base.Init(onLevelComplete, character);
+            base.Init(onLevelComplete, character, popupPresenter);
             _startGameButton.onClick.AddListener(onLevelComplete.Invoke);
         }
 
