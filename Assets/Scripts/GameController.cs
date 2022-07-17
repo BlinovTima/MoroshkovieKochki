@@ -92,7 +92,10 @@ namespace MoroshkovieKochki
             _gameMenuPresenter.HideMenu();
 
             if (hasCurrentLevel)
+            {
+                _popupPresenter.Dispose();
                 Destroy(_currentLevel.gameObject);
+            }
 
             var nextLevel = GetNextLevel();
             _currentLevel = Instantiate(nextLevel, _levelParent);

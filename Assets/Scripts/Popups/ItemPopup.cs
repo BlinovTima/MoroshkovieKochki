@@ -12,6 +12,8 @@ namespace MoroshkovieKochki
           
         private Sequence _sequence;
 
+        public bool ActiveInHierarchy => gameObject.activeInHierarchy;
+        
         public async UniTask Show()
         {
             _sequence?.Kill();

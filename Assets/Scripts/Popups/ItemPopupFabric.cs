@@ -1,12 +1,13 @@
 ﻿using System;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace MoroshkovieKochki
 {
-    public class ItemPopupFabric
+    public class ItemPopupFabric : IDisposable
     {
         private readonly RectTransform _popupsParent;
-        private GatherPopup popupCache;
+        private GatherPopup _gatherPopupCache;
 
         public ItemPopupFabric(RectTransform popupsParent)
         {
@@ -17,11 +18,11 @@ namespace MoroshkovieKochki
         {
             if (popupData is GatherPopupData data)
             {
-                if(!popupCache)
-                    popupCache = CreatePopup<GatherPopup>();
+                if(!_gatherPopupCache)
+                    _gatherPopupCache = CreatePopup<GatherPopup>();
                 
-                popupCache.Init(data);
-                return popupCache;
+                _gatherPopupCache.Init(data);
+                return _gatherPopupCache;
             }
 
             throw new NotImplementedException();
@@ -33,6 +34,11 @@ namespace MoroshkovieKochki
             var popup = UnityEngine.Object.Instantiate(popupPrefab, _popupsParent);
             return popup;
         }
-        
+
+        public void Dispose()
+        {
+            if(_gatherPopupCache)
+                Object.Destroy(_gatherPopupCache);
+        }
     }
 }

@@ -21,10 +21,8 @@ namespace MoroshkovieKochki
 
         protected override void OnLeftMouseButtonClick(RaycastHit2D raycastHit2D)
         {
-            _character.GoTo(raycastHit2D.point).Forget();
-            
-           //Camera.main.ScreenToWorldPoint(raycastHit2D.po);
-          
+            if(raycastHit2D.collider.GetComponent<Road>())
+                _character.GoTo(raycastHit2D.point).Forget();
         }
     }
 }
