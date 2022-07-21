@@ -1,0 +1,118 @@
+
+Bear.png
+size: 2039,1969
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+basket
+  rotate: true
+  xy: 1274, 692
+  size: 595, 567
+  orig: 595, 567
+  offset: 0, 0
+  index: -1
+basket_back
+  rotate: true
+  xy: 1811, 222
+  size: 466, 137
+  orig: 466, 137
+  offset: 0, 0
+  index: -1
+body
+  rotate: false
+  xy: 4, 356
+  size: 805, 904
+  orig: 805, 904
+  offset: 0, 0
+  index: -1
+box
+  rotate: false
+  xy: 813, 24
+  size: 498, 602
+  orig: 498, 602
+  offset: 0, 0
+  index: -1
+box_back
+  rotate: true
+  xy: 1845, 904
+  size: 383, 131
+  orig: 383, 131
+  offset: 0, 0
+  index: -1
+eye
+  rotate: false
+  xy: 1315, 4
+  size: 309, 111
+  orig: 309, 111
+  offset: 0, 0
+  index: -1
+head
+  rotate: false
+  xy: 1049, 1291
+  size: 816, 674
+  orig: 816, 674
+  offset: 0, 0
+  index: -1
+l_arm
+  rotate: false
+  xy: 1315, 119
+  size: 492, 569
+  orig: 492, 569
+  offset: 0, 0
+  index: -1
+l_eyebrow
+  rotate: false
+  xy: 1869, 1322
+  size: 89, 72
+  orig: 89, 72
+  offset: 0, 0
+  index: -1
+l_hand
+  rotate: false
+  xy: 1811, 38
+  size: 215, 180
+  orig: 215, 180
+  offset: 0, 0
+  index: -1
+l_leg
+  rotate: true
+  xy: 4, 54
+  size: 298, 714
+  orig: 298, 714
+  offset: 0, 0
+  index: -1
+mouth
+  rotate: true
+  xy: 722, 158
+  size: 194, 76
+  orig: 194, 76
+  offset: 0, 0
+  index: -1
+newspaper
+  rotate: true
+  xy: 1869, 1398
+  size: 567, 166
+  orig: 567, 166
+  offset: 0, 0
+  index: -1
+r_arm
+  rotate: false
+  xy: 813, 630
+  size: 457, 630
+  orig: 457, 630
+  offset: 0, 0
+  index: -1
+r_eyebrow
+  rotate: false
+  xy: 1845, 823
+  size: 85, 77
+  orig: 85, 77
+  offset: 0, 0
+  index: -1
+r_leg
+  rotate: false
+  xy: 4, 1264
+  size: 1041, 701
+  orig: 1041, 701
+  offset: 0, 0
+  index: -1

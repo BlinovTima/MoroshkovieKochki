@@ -1,10 +1,22 @@
 fileFormatVersion: 2
-guid: e7620794423c37d4ebfa6d5b52de054b
+guid: 6f8c9cba0dac97943a06b451f9c21e90
 TextureImporter:
   internalIDToNameTable:
   - first:
+      213: 630218212154795010
+    second: basket
+  - first:
+      213: -7966036739701610751
+    second: basket_back
+  - first:
       213: 233227185538982242
     second: body
+  - first:
+      213: -3741573112334478744
+    second: box
+  - first:
+      213: -2294890817872944558
+    second: box_back
   - first:
       213: 9037331016498906902
     second: eye
@@ -26,6 +38,9 @@ TextureImporter:
   - first:
       213: 5497857753363024451
     second: mouth
+  - first:
+      213: -5390596636173870920
+    second: newspaper
   - first:
       213: -1496158596981203475
     second: r_arm
@@ -108,13 +123,55 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
+      name: basket
+      rect:
+        serializedVersion: 2
+        x: 1274
+        y: 682
+        width: 567
+        height: 595
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 204e77aff1cfeb800800000000000000
+      internalID: 630218212154795010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: basket_back
+      rect:
+        serializedVersion: 2
+        x: 1811
+        y: 1281
+        width: 137
+        height: 466
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 107ef568ac3f27190800000000000000
+      internalID: -7966036739701610751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
       name: body
       rect:
         serializedVersion: 2
-        x: 2
-        y: 2
-        width: 904
-        height: 805
+        x: 4
+        y: 709
+        width: 805
+        height: 904
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -129,13 +186,55 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
+      name: box
+      rect:
+        serializedVersion: 2
+        x: 813
+        y: 1343
+        width: 498
+        height: 602
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 862962af313431cc0800000000000000
+      internalID: -3741573112334478744
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: box_back
+      rect:
+        serializedVersion: 2
+        x: 1845
+        y: 682
+        width: 131
+        height: 383
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 252a062c5f8e620e0800000000000000
+      internalID: -2294890817872944558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
       name: eye
       rect:
         serializedVersion: 2
-        x: 1548
-        y: 705
-        width: 308
-        height: 110
+        x: 1315
+        y: 1854
+        width: 309
+        height: 111
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,10 +252,10 @@ TextureImporter:
       name: head
       rect:
         serializedVersion: 2
-        x: 908
-        y: 2
-        width: 638
-        height: 816
+        x: 1049
+        y: 4
+        width: 816
+        height: 674
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -174,10 +273,10 @@ TextureImporter:
       name: l_arm
       rect:
         serializedVersion: 2
-        x: 2
-        y: 809
-        width: 569
-        height: 492
+        x: 1315
+        y: 1281
+        width: 492
+        height: 569
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -195,10 +294,10 @@ TextureImporter:
       name: l_eyebrow
       rect:
         serializedVersion: 2
-        x: 1702
-        y: 1120
-        width: 87
-        height: 69
+        x: 1869
+        y: 575
+        width: 89
+        height: 72
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -216,10 +315,10 @@ TextureImporter:
       name: l_hand
       rect:
         serializedVersion: 2
-        x: 1205
-        y: 1120
+        x: 1811
+        y: 1751
         width: 215
-        height: 179
+        height: 180
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -237,8 +336,8 @@ TextureImporter:
       name: l_leg
       rect:
         serializedVersion: 2
-        x: 1205
-        y: 820
+        x: 4
+        y: 1617
         width: 714
         height: 298
       alignment: 0
@@ -258,10 +357,10 @@ TextureImporter:
       name: mouth
       rect:
         serializedVersion: 2
-        x: 1422
-        y: 1120
-        width: 194
-        height: 76
+        x: 722
+        y: 1617
+        width: 76
+        height: 194
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -276,13 +375,34 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
+      name: newspaper
+      rect:
+        serializedVersion: 2
+        x: 1869
+        y: 4
+        width: 166
+        height: 567
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b8d0758be0c035b0800000000000000
+      internalID: -5390596636173870920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
       name: r_arm
       rect:
         serializedVersion: 2
-        x: 573
-        y: 820
-        width: 630
-        height: 457
+        x: 813
+        y: 709
+        width: 457
+        height: 630
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -300,10 +420,10 @@ TextureImporter:
       name: r_eyebrow
       rect:
         serializedVersion: 2
-        x: 1618
-        y: 1120
-        width: 82
-        height: 74
+        x: 1845
+        y: 1069
+        width: 85
+        height: 77
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -321,9 +441,9 @@ TextureImporter:
       name: r_leg
       rect:
         serializedVersion: 2
-        x: 1548
-        y: 2
-        width: 352
+        x: 4
+        y: 4
+        width: 1041
         height: 701
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
