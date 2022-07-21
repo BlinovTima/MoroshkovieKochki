@@ -10,7 +10,7 @@ namespace MoroshkovieKochki
         private Camera _camera;
 
         public static event Action OnEscKeyGet = () => { };
-        public static event Action<RaycastHit2D> OnLeftMouseButtonClick = x => { };
+        public static event Action<RaycastHit2D, Vector3> OnLeftMouseButtonClick = (x, y) => { };
         
 
         private void Awake()
@@ -30,11 +30,12 @@ namespace MoroshkovieKochki
                 && !GameContext.HasGameState(GameState.CutScene)
                 && !GameContext.HasGameState(GameState.Menu))
             {
-                var ray = _camera.ScreenToWorldPoint(Input.mousePosition); 
+                var mousePosition = Input.mousePosition;
+                var ray = _camera.ScreenToWorldPoint(mousePosition); 
                 var raycast = Physics2D.Raycast(ray, Vector3.zero, _rayDistance);
                 
                 if(raycast.collider)
-                    OnLeftMouseButtonClick.Invoke(raycast);
+                    OnLeftMouseButtonClick.Invoke(raycast, mousePosition);
             }
         }
     }

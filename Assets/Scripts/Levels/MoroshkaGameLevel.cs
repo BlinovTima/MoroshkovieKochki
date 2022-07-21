@@ -23,15 +23,19 @@ namespace MoroshkovieKochki
             await _character.GoTo(_outroPosition.position);
         }
 
-        protected override void OnLeftMouseButtonClick(RaycastHit2D raycastHit2D)
+        protected override void OnLeftMouseButtonClick(RaycastHit2D raycastHit2D, Vector3 mousePosition)
         {
-            MoveCharacter(raycastHit2D).Forget();
+            ProduceClickAction(raycastHit2D, mousePosition).Forget();
         }
         
-        private async UniTask MoveCharacter(RaycastHit2D raycastHit2D)
+        private async UniTask ProduceClickAction(RaycastHit2D raycastHit2D, Vector3 mousePosition)
         {
             _cancellationToken?.Cancel();
-            _cancellationToken = new CancellationTokenSource(); 
+            _cancellationToken = new CancellationTokenSource();
+
+            var isMouseInsidePopup = _popupPresenter.IsPointInPopup(mousePosition);
+            if (isMouseInsidePopup)
+                return;
             
             var popupData = raycastHit2D.collider.GetComponent<PopupData>();
             var road = raycastHit2D.collider.GetComponent<Road>();
@@ -39,11 +43,14 @@ namespace MoroshkovieKochki
             if (!popupData || _popupPresenter.NeedCloseCurrentPopup(popupData))
                _popupPresenter.CloseCurrentPopup();
 
-            if (road || popupData)
+            if (road)
                 await _character.GoTo(raycastHit2D.point).AttachExternalCancellation(_cancellationToken.Token);
 
             if (popupData)
+            {
+                await _character.GoTo(popupData.CharacterInteractionPoint.position).AttachExternalCancellation(_cancellationToken.Token);
                 await _popupPresenter.ShowPopUp(popupData).AttachExternalCancellation(_cancellationToken.Token);
+            }
         }
     }
 }

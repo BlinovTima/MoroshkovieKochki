@@ -27,9 +27,9 @@ namespace MoroshkovieKochki
             
         }
 
-        protected virtual void OnLeftMouseButtonClick(RaycastHit2D raycastHit2D)
+        protected virtual void OnLeftMouseButtonClick(RaycastHit2D raycastHit2D, Vector3 mousePosition)
         {
-            Debug.Log(raycastHit2D.collider.gameObject.name);
+            Debug.Log($"Collider name = {raycastHit2D.collider.gameObject.name} Mouse pos = {mousePosition}");
         }
         
         public virtual async UniTask PlayIntro()

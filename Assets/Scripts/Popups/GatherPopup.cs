@@ -1,4 +1,6 @@
-﻿using TMPro;
+﻿using System;
+using Cysharp.Threading.Tasks;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -20,6 +22,18 @@ namespace MoroshkovieKochki
             _desription.text = popupData.Desription;
             _customQuestion.text = popupData.CustomQuestion;
             _shouldGather = popupData.ShouldGather;
+            
+            _yesButton.onClick.AddListener(() => popupData.OnClick(true));
+            _yesButton.onClick.AddListener(() => Hide().Forget());
+            
+            _noButton.onClick.AddListener(() => popupData.OnClick(false));
+            _noButton.onClick.AddListener(() => Hide().Forget());
+        }
+
+        private void OnDestroy()
+        {
+            _yesButton.onClick.RemoveAllListeners();
+            _noButton.onClick.RemoveAllListeners();
         }
     }
 }

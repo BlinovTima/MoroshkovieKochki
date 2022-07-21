@@ -12,6 +12,14 @@ namespace MoroshkovieKochki
         private string _currentPopupDataName;
 
 
+        public bool IsPointInPopup(Vector2 mousePoint)
+        {
+            if (!_currentPopup || !_currentPopup.gameObject.activeInHierarchy)
+                return false;
+
+            return _currentPopup.BoundsRect.IsPointInRect(mousePoint);
+        }
+        
         public bool NeedCloseCurrentPopup(PopupData popupData)
         {
            return !string.IsNullOrEmpty(_currentPopupDataName) && popupData.gameObject.name != _currentPopupDataName;

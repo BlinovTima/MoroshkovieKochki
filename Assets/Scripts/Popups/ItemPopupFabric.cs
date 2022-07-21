@@ -31,7 +31,9 @@ namespace MoroshkovieKochki
         private T CreatePopup<T>() where T : ItemPopup
         {
             var popupPrefab = Resources.Load<T>($"Popups/{typeof(T).Name}");
-            var popup = UnityEngine.Object.Instantiate(popupPrefab, _popupsParent);
+            var popup = Object.Instantiate(popupPrefab, _popupsParent);
+            popup.gameObject.SetActive(false);
+            
             return popup;
         }
 
