@@ -43,7 +43,8 @@ namespace MoroshkovieKochki
 
             _currentPopup = _itemPopupFabric.GetPopup(popupData);
 
-            await _currentPopup.Show();
+            var screenPoint = Camera.main.WorldToScreenPoint(popupData.PopupPivotPoint.position);
+            await _currentPopup.Show(screenPoint);
         }
 
         public PopupPresenter(RectTransform popupsParent)

@@ -14,13 +14,14 @@ namespace MoroshkovieKochki
 
         public bool ActiveInHierarchy => gameObject.activeInHierarchy;
         
-        public async UniTask Show()
+        public async UniTask Show(Vector3 screenPivotPoint)
         {
             _sequence?.Kill();
             _sequence = DOTween.Sequence();
             
             _sequence.AppendCallback(() =>
             {
+                transform.position = screenPivotPoint;
                 _canvasGroup.alpha = 0;
                 _canvasGroup.gameObject.SetActive(true);
             });
