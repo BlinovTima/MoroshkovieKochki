@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace MoroshkovieKochki
 {
-    public sealed class GatherPopup : ItemPopup
+    public sealed class GatherPopup : ItemPopup, IDisposable
     {
         [SerializeField] private Image _image;
         [SerializeField] private TMP_Text _desription;
@@ -18,6 +18,8 @@ namespace MoroshkovieKochki
         
         public  void Init(GatherItem item)
         {
+            Dispose();
+            
             _image.sprite = item.Sprite;
             _desription.text = item.Desription;
             _customQuestion.text = item.CustomQuestion;
@@ -31,6 +33,11 @@ namespace MoroshkovieKochki
         }
 
         private void OnDestroy()
+        {
+            Dispose();
+        }
+
+        public void Dispose()
         {
             _yesButton.onClick.RemoveAllListeners();
             _noButton.onClick.RemoveAllListeners();
