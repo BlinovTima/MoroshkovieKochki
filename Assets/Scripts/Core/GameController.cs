@@ -68,6 +68,11 @@ namespace MoroshkovieKochki
             _gameMenuPresenter.ShowMenu();
         }
 
+        private void SwitchGameMenu()
+        {
+            _gameMenuPresenter.SwitchMenu();
+        }
+        
         private void InstantiateCharacter()
         {
             var characterInstance = Instantiate(_characterPrefab, transform.root);

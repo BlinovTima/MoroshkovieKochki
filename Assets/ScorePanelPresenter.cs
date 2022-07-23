@@ -16,10 +16,20 @@ public class ScorePanelPresenter : IDisposable
 
     private void UpdateVisuals(GameState state)
     {
+        if (state.HasFlag(GameState.Menu))
+        {
+            _scorePanel.SetActive(false);
+            return;
+        }
+            
         if (state.HasFlag(GameState.Play))
+        {
             Show().Forget();
+        }
         else
+        {
             Hide().Forget();
+        }
     }
 
     private void UpdateScore(int value)
