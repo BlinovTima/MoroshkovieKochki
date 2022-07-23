@@ -8,32 +8,35 @@ namespace MoroshkovieKochki
 {
     public sealed class Character : MonoBehaviour
     {
+        [SerializeField] private float _minAnimationDistance = 0.1f;
         [SerializeField] private float _speed = 0.7f;
         [SerializeField] private SkeletonAnimation _skeletonAnimation;
-        
-        
+
+
         private Sequence _sequnce;
         private bool _isGoingLeftCahce;
 
         public void SetPosition(Vector3 position)
         {
-            transform.position = position;
+            transform.localPosition = position;
         }
 
         public async UniTask GoTo(Vector3 newPosition)
         {
+            if (Vector3.Distance(transform.localPosition, newPosition) < _minAnimationDistance)
+                return;
+
             SetSideOrientation(newPosition);
             SetAnimation("walk");
-            
+
             _sequnce?.Kill();
             _sequnce = DOTween.Sequence();
             var duration = CalculateMoveTime(newPosition);
-            
-            _sequnce.Append(transform.DOMove(newPosition, duration).SetEase(Ease.Linear));
+
+            _sequnce.Append(transform.DOLocalMove(newPosition, duration).SetEase(Ease.Linear));
             _sequnce.AppendCallback(() => SetAnimation("idle"));
-            
             _sequnce.SetAutoKill(true);
-            
+
             await _sequnce.AsyncWaitForKill();
         }
 
@@ -41,16 +44,16 @@ namespace MoroshkovieKochki
         {
             _skeletonAnimation.AnimationName = animationName;
         }
-        
+
         private void SetSideOrientation(Vector3 newPosition)
         {
             var isGoingLeft = transform.position.x > newPosition.x;
-            
-            if(isGoingLeft == _isGoingLeftCahce)
+
+            if (isGoingLeft == _isGoingLeftCahce)
                 return;
-            
+
             _isGoingLeftCahce = isGoingLeft;
-            
+
             var localScale = transform.localScale;
             localScale.x *= -1;
             transform.localScale = localScale;

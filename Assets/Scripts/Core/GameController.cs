@@ -24,7 +24,7 @@ namespace MoroshkovieKochki
 
         private GameMenuPresenter _gameMenuPresenter;
         private int? _levelIndex;
-        private GameLevel _currentLevel;
+        private GameLevelPresenter _gameLevelPresenter;
         private PopupPresenter _popupPresenter;
         private ScorePanelPresenter _scorePanelPresenter;
 
@@ -65,6 +65,10 @@ namespace MoroshkovieKochki
             
             _popupPresenter = new PopupPresenter(_popupsParent);
 
+            _gameLevelPresenter = new GameLevelPresenter(() => StartNextLevel().Forget(),
+                _characterPrefab,
+                _popupPresenter);
+            
             _gameMenuPresenter.ShowMenu();
         }
 
@@ -84,13 +88,13 @@ namespace MoroshkovieKochki
             GameContext.RemoveGameState(GameState.Play);
             GameContext.AddGameState(GameState.CutScene);
 
-            var hasCurrentLevel = _currentLevel != null;
+            var hasCurrentLevel = _gameLevelPresenter.HasInitedLevel;
             
             if (hasCurrentLevel)
-                await _currentLevel.PlayOutro();
+                await _gameLevelPresenter.PlayOutro();
             
             await _windowSwitcher.SwitchWindow(() => LoadLevel(hasCurrentLevel));
-            await _currentLevel.PlayIntro();
+            await _gameLevelPresenter.PlayIntro();
 
             GameContext.RemoveGameState(GameState.CutScene);
             GameContext.AddGameState(GameState.Play);
@@ -101,14 +105,11 @@ namespace MoroshkovieKochki
             _gameMenuPresenter.HideMenu();
 
             if (hasCurrentLevel)
-            {
-                _popupPresenter.Dispose();
-                Destroy(_currentLevel.gameObject);
-            }
-
-            var nextLevel = GetNextLevel();
-            _currentLevel = Instantiate(nextLevel, _levelParent);
-            _currentLevel.Init(() => StartNextLevel().Forget(), _characterPrefab, _popupPresenter);
+                _gameLevelPresenter.Dispose();
+            
+            var nextLevelPrefab = GetNextLevel();
+            var nextLevelInstance =  Instantiate(nextLevelPrefab, _levelParent);
+            _gameLevelPresenter.InitLevel(nextLevelInstance);
         }
 
         private async UniTask ResetAndPlayAgain()
@@ -119,6 +120,7 @@ namespace MoroshkovieKochki
         private void OnApplicationQuit()
         {
             _scorePanelPresenter.Dispose();
+            _gameLevelPresenter.Dispose();
             InputListener.OnEscKeyGet -= _gameMenuPresenter.SwitchMenu;
         }
     }
