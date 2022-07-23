@@ -16,17 +16,17 @@ namespace MoroshkovieKochki
         
         private bool _shouldGather;
         
-        public  void Init(GatherPopupData popupData)
+        public  void Init(GatherItem item)
         {
-            _image.sprite = popupData.Sprite;
-            _desription.text = popupData.Desription;
-            _customQuestion.text = popupData.CustomQuestion;
-            _shouldGather = popupData.ShouldGather;
+            _image.sprite = item.Sprite;
+            _desription.text = item.Desription;
+            _customQuestion.text = item.CustomQuestion;
+            _shouldGather = item.ShouldSayYes;
             
-            _yesButton.onClick.AddListener(() => popupData.OnClick(true));
+            _yesButton.onClick.AddListener(() => item.OnClick(true));
             _yesButton.onClick.AddListener(() => Hide().Forget());
             
-            _noButton.onClick.AddListener(() => popupData.OnClick(false));
+            _noButton.onClick.AddListener(() => item.OnClick(false));
             _noButton.onClick.AddListener(() => Hide().Forget());
         }
 

@@ -20,14 +20,14 @@ namespace MoroshkovieKochki
             return _currentPopup.BoundsRect.IsPointInRect(mousePoint);
         }
         
-        public bool NeedCloseCurrentPopup(PopupData popupData)
+        public bool NeedCloseCurrentPopup(InteractionItem interactionItem)
         {
-           return !string.IsNullOrEmpty(_currentPopupDataName) && popupData.gameObject.name != _currentPopupDataName;
+           return !string.IsNullOrEmpty(_currentPopupDataName) && interactionItem.gameObject.name != _currentPopupDataName;
         } 
         
-        private bool IsCachedPopup(PopupData popupData)
+        private bool IsCachedPopup(InteractionItem interactionItem)
         {
-           return !string.IsNullOrEmpty(_currentPopupDataName) && popupData.gameObject.name == _currentPopupDataName;
+           return !string.IsNullOrEmpty(_currentPopupDataName) && interactionItem.gameObject.name == _currentPopupDataName;
         }
         
         public void CloseCurrentPopup()
@@ -39,19 +39,19 @@ namespace MoroshkovieKochki
             _currentPopup.Hide().Forget();
         }
 
-        public async UniTask ShowPopUp(PopupData popupData)
+        public async UniTask ShowPopUp(InteractionItem interactionItem)
         {
-            if(IsCachedPopup(popupData))
+            if(IsCachedPopup(interactionItem))
                 return;
             
-            _currentPopupDataName = popupData.gameObject.name;
+            _currentPopupDataName = interactionItem.gameObject.name;
             
             if (_currentPopup && _currentPopup.ActiveInHierarchy)
                 await _currentPopup.Hide();
 
-            _currentPopup = _itemPopupFabric.GetPopup(popupData);
+            _currentPopup = _itemPopupFabric.GetPopup(interactionItem);
 
-            var screenPoint = Camera.main.WorldToScreenPoint(popupData.PopupPivotPoint.position);
+            var screenPoint = Camera.main.WorldToScreenPoint(interactionItem.PopupPivotPoint.position);
             await _currentPopup.Show(screenPoint);
         }
 

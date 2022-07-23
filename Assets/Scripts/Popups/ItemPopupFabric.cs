@@ -14,9 +14,9 @@ namespace MoroshkovieKochki
             _popupsParent = popupsParent;
         }
         
-        public ItemPopup GetPopup(PopupData popupData)
+        public ItemPopup GetPopup(InteractionItem interactionItem)
         {
-            if (popupData is GatherPopupData data)
+            if (interactionItem is GatherItem data)
             {
                 if(!_gatherPopupCache)
                     _gatherPopupCache = CreatePopup<GatherPopup>();

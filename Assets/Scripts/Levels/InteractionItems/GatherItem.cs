@@ -5,10 +5,9 @@ using UnityEngine;
 
 namespace MoroshkovieKochki
 {
-    public sealed class GatherPopupData : PopupData
+    public sealed class GatherItem : InteractionItem
     {
         [Header("OnClick settings")]
-        [SerializeField] public bool ShouldGather;
         [SerializeField] private OutlineAnimation _outlineAnimation;
 
         [Header("Gather elements settings")]
@@ -33,11 +32,11 @@ namespace MoroshkovieKochki
             
             IsCompleted = true;
             
-            var isRightAdvice = value == ShouldGather;
+            var isRightAdvice = value == ShouldSayYes;
 
             await _outlineAnimation.ShowOutline(isRightAdvice);
             
-            if (isRightAdvice && ShouldGather)
+            if (isRightAdvice && ShouldSayYes)
             {
                 foreach (var spriteRenderer in _berries)
                 {

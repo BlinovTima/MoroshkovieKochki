@@ -37,7 +37,7 @@ namespace MoroshkovieKochki
             if (isMouseInsidePopup)
                 return;
             
-            var popupData = raycastHit2D.collider.GetComponent<PopupData>();
+            var popupData = raycastHit2D.collider.GetComponent<InteractionItem>();
             var road = raycastHit2D.collider.GetComponent<Road>();
 
             if (!popupData || _popupPresenter.NeedCloseCurrentPopup(popupData))
