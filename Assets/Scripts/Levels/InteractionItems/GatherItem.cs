@@ -17,7 +17,7 @@ namespace MoroshkovieKochki
 
 
         private int _delayBetweenSwitchOffMilliseconds;
-        
+
 
         private void Awake()
         {
@@ -32,11 +32,14 @@ namespace MoroshkovieKochki
             
             IsCompleted = true;
             
-            var isRightAdvice = value == ShouldSayYes;
+            IsRightAdvice = value == ShouldSayYes;
 
-            await _outlineAnimation.ShowOutline(isRightAdvice);
+            await _outlineAnimation.ShowOutline(IsRightAdvice);
             
-            if (isRightAdvice && ShouldSayYes)
+            if(IsRightAdvice)
+                GameContext.AddScoreValue(1);
+            
+            if (IsRightAdvice && ShouldSayYes)
             {
                 foreach (var spriteRenderer in _berries)
                 {

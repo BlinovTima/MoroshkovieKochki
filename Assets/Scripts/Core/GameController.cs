@@ -12,6 +12,7 @@ namespace MoroshkovieKochki
 
         [Header("Menu settings")]
         [SerializeField] private GameMenu _gameMenu;
+        [SerializeField] private ScorePanel _scorePanel;
         [SerializeField] private RectTransform _popupsParent;
         [SerializeField] private WindowSwitcher _windowSwitcher;
         
@@ -25,6 +26,7 @@ namespace MoroshkovieKochki
         private int? _levelIndex;
         private GameLevel _currentLevel;
         private PopupPresenter _popupPresenter;
+        private ScorePanelPresenter _scorePanelPresenter;
 
         private GameLevel GetNextLevel()
         {
@@ -51,6 +53,8 @@ namespace MoroshkovieKochki
 
         private void RegisterAllSystems()
         {
+            _scorePanelPresenter = new ScorePanelPresenter(_scorePanel);
+            
             InstantiateCharacter();
 
             _gameMenuPresenter = new GameMenuPresenter(_gameMenu,
@@ -72,6 +76,7 @@ namespace MoroshkovieKochki
 
         private async UniTask StartNextLevel()
         {
+            GameContext.RemoveGameState(GameState.Play);
             GameContext.AddGameState(GameState.CutScene);
 
             var hasCurrentLevel = _currentLevel != null;
@@ -81,8 +86,9 @@ namespace MoroshkovieKochki
             
             await _windowSwitcher.SwitchWindow(() => LoadLevel(hasCurrentLevel));
             await _currentLevel.PlayIntro();
-            
+
             GameContext.RemoveGameState(GameState.CutScene);
+            GameContext.AddGameState(GameState.Play);
         }
 
         private void LoadLevel(bool hasCurrentLevel)
@@ -107,6 +113,7 @@ namespace MoroshkovieKochki
 
         private void OnApplicationQuit()
         {
+            _scorePanelPresenter.Dispose();
             InputListener.OnEscKeyGet -= _gameMenuPresenter.SwitchMenu;
         }
     }

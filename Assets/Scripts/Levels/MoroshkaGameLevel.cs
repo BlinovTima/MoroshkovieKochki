@@ -37,25 +37,25 @@ namespace MoroshkovieKochki
             if (isMouseInsidePopup)
                 return;
             
-            var popupData = raycastHit2D.collider.GetComponent<InteractionItem>();
+            var item = raycastHit2D.collider.GetComponent<InteractionItem>();
             var road = raycastHit2D.collider.GetComponent<Road>();
 
-            if (!popupData || _popupPresenter.NeedCloseCurrentPopup(popupData))
+            if (!item || _popupPresenter.NeedCloseCurrentPopup(item))
                _popupPresenter.CloseCurrentPopup();
 
             if (road)
                 await _character.GoTo(raycastHit2D.point).AttachExternalCancellation(_cancellationToken.Token);
 
-            if (popupData)
+            if (item)
             {
-                if (popupData.IsCompleted)
+                if (item.IsCompleted)
                 {
                     Debug.LogError("Уже нельзя");
                 }
                 else
                 {
-                    await _character.GoTo(popupData.CharacterInteractionPoint.position).AttachExternalCancellation(_cancellationToken.Token);
-                    await _popupPresenter.ShowPopUp(popupData).AttachExternalCancellation(_cancellationToken.Token);
+                    await _character.GoTo(item.CharacterInteractionPoint.position).AttachExternalCancellation(_cancellationToken.Token);
+                    await _popupPresenter.ShowPopUp(item).AttachExternalCancellation(_cancellationToken.Token);
                 }
             }
         }
