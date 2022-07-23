@@ -48,8 +48,15 @@ namespace MoroshkovieKochki
 
             if (popupData)
             {
-                await _character.GoTo(popupData.CharacterInteractionPoint.position).AttachExternalCancellation(_cancellationToken.Token);
-                await _popupPresenter.ShowPopUp(popupData).AttachExternalCancellation(_cancellationToken.Token);
+                if (popupData.IsCompleted)
+                {
+                    Debug.LogError("Уже нельзя");
+                }
+                else
+                {
+                    await _character.GoTo(popupData.CharacterInteractionPoint.position).AttachExternalCancellation(_cancellationToken.Token);
+                    await _popupPresenter.ShowPopUp(popupData).AttachExternalCancellation(_cancellationToken.Token);
+                }
             }
         }
     }

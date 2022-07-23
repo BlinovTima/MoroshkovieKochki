@@ -9,11 +9,16 @@ namespace MoroshkovieKochki
     {
         [Header("OnClick settings")]
         [SerializeField] public bool ShouldGather;
-        [SerializeField] public List<SpriteRenderer> _berries;
+        [SerializeField] private OutlineAnimation _outlineAnimation;
+
+        [Header("Gather elements settings")]
         [SerializeField] private float _delayBetweenSwitchOff = 0.3f;
         [SerializeField] private float _switchOffTime = 1f;
+        [SerializeField] public List<SpriteRenderer> _berries;
+
+
         private int _delayBetweenSwitchOffMilliseconds;
-       // private Sequence _sequence;
+        
 
         private void Awake()
         {
@@ -23,7 +28,16 @@ namespace MoroshkovieKochki
 
         public override async void OnClick(bool value)
         {
-            if (ShouldGather && value == ShouldGather)
+            if(IsCompleted)
+                return;
+            
+            IsCompleted = true;
+            
+            var isRightAdvice = value == ShouldGather;
+
+            await _outlineAnimation.ShowOutline(isRightAdvice);
+            
+            if (isRightAdvice && ShouldGather)
             {
                 foreach (var spriteRenderer in _berries)
                 {

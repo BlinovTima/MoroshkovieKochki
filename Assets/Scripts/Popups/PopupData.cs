@@ -13,7 +13,8 @@ namespace MoroshkovieKochki
         
         public Transform PopupPivotPoint => _popupPivotPoint;
         public Transform CharacterInteractionPoint => _characterInteractionPoint;
-
+        public bool IsCompleted { get; protected set; }
+        
         public abstract void OnClick(bool value);
     }
 }
