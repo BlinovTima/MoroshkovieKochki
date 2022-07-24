@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using NaughtyAttributes;
+using UnityEngine;
 
 
 namespace MoroshkovieKochki
@@ -9,7 +10,9 @@ namespace MoroshkovieKochki
     {
         [Header("Data")]
         [SerializeField] public Sprite Sprite;
+        [ResizableTextArea]
         [SerializeField] public string Desription;
+        [ResizableTextArea]
         [SerializeField] public string CustomQuestion;
         [SerializeField] public bool ShouldSayYes;
         

@@ -23,6 +23,8 @@ namespace MoroshkovieKochki
 
         public async UniTask GoTo(Vector3 newPosition)
         {
+            newPosition.z = 0;
+            
             if (Vector3.Distance(transform.localPosition, newPosition) < _minAnimationDistance)
                 return;
 

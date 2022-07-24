@@ -1183,8 +1183,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Sprite: {fileID: 21300000, guid: f679697553c46ad488bdd4b732d552d7, type: 3}
-  Desription: Desription 1
-  CustomQuestion: Custom question 1
+  Desription: "\u041F\u043E\u0438\u0441\u0430\u043D\u0438\u0435 \u043F\u0440\u0435\u0434\u043C\u0435\u0442\u0430"
+  CustomQuestion: "\u0423\u043D\u0438\u043A\u0430\u043B\u044C\u043D\u044B\u0439 \u0432\u043E\u043F\u0440\u043E\u0441
+    \u043F\u0440\u0435\u0434\u043C\u0435\u0442\u0430"
   ShouldSayYes: 1
   _popupPivotPoint: {fileID: 4881176499512209083}
   _characterInteractionPoint: {fileID: 1940663910555541413}

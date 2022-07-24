@@ -8,12 +8,19 @@ namespace MoroshkovieKochki
 {
     public abstract class GameLevel : MonoBehaviour, IDisposable
     {
+        [Header("Data for task popup")]
+        [ResizableTextArea]
+        [SerializeField] private string _description;
+        [SerializeField] private string _buttonLabel;
+        
+        [Header("Character")]
         [SerializeField] private Transform _characterParent;
         [SerializeField] private Transform _initialPosition;
         
         private IGameLevelEventReceiver _gameLevelEventReceiver;
-
-
+        
+        public string Description => _description;
+        public string ButtonLabel => _buttonLabel;
         public Transform CharacterParent => _characterParent;
         public Transform InitialPosition => _initialPosition;
         
@@ -21,6 +28,7 @@ namespace MoroshkovieKochki
         public virtual void Init(IGameLevelEventReceiver eventReceiver)
         {
             _gameLevelEventReceiver = eventReceiver;
+            
         }
 
         public virtual async UniTask PlayIntro()

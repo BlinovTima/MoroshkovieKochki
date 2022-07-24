@@ -12,20 +12,23 @@ namespace MoroshkovieKochki
         private GameLevel _gameLevel;
         private readonly Action _onLevelComplete;
         private readonly PopupPresenter _popupPresenter;
+        private readonly LevelTaskPopupPresenter _levelTaskPopupPresenter;
         private CancellationTokenSource _cancellationToken = new CancellationTokenSource();
         private Character _character;
+        
 
         public bool HasInitedLevel => _gameLevel != null;
         
         public GameLevelPresenter(
             Action onLevelComplete, 
             Character character,
-            PopupPresenter popupPresenter)
+            PopupPresenter popupPresenter,
+            LevelTaskPopupPresenter levelTaskPopupPresenter)
         {
+            _levelTaskPopupPresenter = levelTaskPopupPresenter;
             _character = character;
             _popupPresenter = popupPresenter;
             _onLevelComplete = onLevelComplete;
-            
         }
 
         public void InitLevel(GameLevel gameLevel)
@@ -76,6 +79,11 @@ namespace MoroshkovieKochki
         public async UniTask PlayIntro()
         {
             await _gameLevel.PlayIntro();
+        }
+
+        public async UniTask ConfirmLevelTask()
+        {
+            await _levelTaskPopupPresenter.ConfirmLevelTask(_gameLevel);
         }
         
         public async UniTask GatherClickAction(RaycastHit2D raycastHit2D, Vector3 mousePosition)

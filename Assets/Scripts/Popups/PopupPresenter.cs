@@ -1,17 +1,21 @@
 ﻿using System;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
-using Object = UnityEngine.Object;
 
 
 namespace MoroshkovieKochki
 {
     public sealed class PopupPresenter : IDisposable
     {
-        private readonly ItemPopupFabric _itemPopupFabric;
+        private readonly PopupsFabric _popupsFabric;
         private ItemPopup _currentPopup;
         private string _currentPopupDataName;
 
+
+        public PopupPresenter(PopupsFabric popupsFabric)
+        {
+            _popupsFabric = popupsFabric;
+        }
 
         public bool IsPointInPopup(Vector2 mousePoint)
         {
@@ -20,17 +24,17 @@ namespace MoroshkovieKochki
 
             return _currentPopup.BoundsRect.IsPointInRect(mousePoint);
         }
-        
+
         public bool NeedCloseCurrentPopup(InteractionItem interactionItem)
         {
            return !string.IsNullOrEmpty(_currentPopupDataName) && interactionItem.gameObject.name != _currentPopupDataName;
-        } 
-        
+        }
+
         private bool IsCachedPopup(InteractionItem interactionItem)
         {
            return !string.IsNullOrEmpty(_currentPopupDataName) && interactionItem.gameObject.name == _currentPopupDataName;
         }
-        
+
         public void CloseCurrentPopup()
         {
             if (!_currentPopup)
@@ -50,20 +54,15 @@ namespace MoroshkovieKochki
             if (_currentPopup && _currentPopup.ActiveInHierarchy)
                 await _currentPopup.Hide();
 
-            _currentPopup = _itemPopupFabric.GetPopup(interactionItem);
+            _currentPopup = _popupsFabric.GetPopup(interactionItem);
 
             var screenPoint = Camera.main.WorldToScreenPoint(interactionItem.PopupPivotPoint.position);
             await _currentPopup.Show(screenPoint);
         }
 
-        public PopupPresenter(RectTransform popupsParent)
-        {
-            _itemPopupFabric = new ItemPopupFabric(popupsParent);
-        }
-
         public void Dispose()
         {
-            _itemPopupFabric.Dispose();
+            _popupsFabric.Dispose();
             _currentPopupDataName = null;
         }
     }

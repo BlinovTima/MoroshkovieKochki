@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace MoroshkovieKochki
 {
-    public sealed class MoroshkaGameLevel : GameLevel
+    public sealed class BerriesGameLevel : GameLevel
     {
         [SerializeField] private Transform _introPosition;
         [SerializeField] private Transform _outroPosition;
@@ -29,8 +29,9 @@ namespace MoroshkovieKochki
         }
         
         public override async UniTask PlayIntro()
-        {
-           await _eventReceiver.CharacterGoTo(_introPosition.position);
+        { 
+            await _eventReceiver.ConfirmLevelTask(); 
+            await _eventReceiver.CharacterGoTo(_introPosition.position);
         }
 
         public override async UniTask PlayOutro()

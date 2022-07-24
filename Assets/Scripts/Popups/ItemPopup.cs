@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace MoroshkovieKochki
 {
-    public abstract class ItemPopup : MonoBehaviour
+    public abstract class ItemPopup : PopupGeneric
     {
         [SerializeField] private RectTransform _boundsRect;
         [SerializeField] private CanvasGroup _canvasGroup;

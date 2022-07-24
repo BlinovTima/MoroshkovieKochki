@@ -27,6 +27,7 @@ namespace MoroshkovieKochki
         private GameLevelPresenter _gameLevelPresenter;
         private PopupPresenter _popupPresenter;
         private ScorePanelPresenter _scorePanelPresenter;
+        private LevelTaskPopupPresenter _levelTaskPopupPresenter;
 
         private GameLevel GetNextLevel()
         {
@@ -62,12 +63,14 @@ namespace MoroshkovieKochki
                 () => ResetAndPlayAgain().Forget());
             InputListener.OnEscKeyGet += _gameMenuPresenter.SwitchMenu;
 
+            var popupsFabric = new PopupsFabric(_popupsParent);
+            _popupPresenter = new PopupPresenter(popupsFabric);
+            _levelTaskPopupPresenter = new LevelTaskPopupPresenter(popupsFabric);
             
-            _popupPresenter = new PopupPresenter(_popupsParent);
-
             _gameLevelPresenter = new GameLevelPresenter(() => StartNextLevel().Forget(),
                 _characterPrefab,
-                _popupPresenter);
+                _popupPresenter,
+                _levelTaskPopupPresenter);
             
             _gameMenuPresenter.ShowMenu();
         }
