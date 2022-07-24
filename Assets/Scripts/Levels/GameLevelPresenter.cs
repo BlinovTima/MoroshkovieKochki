@@ -34,7 +34,7 @@ namespace MoroshkovieKochki
         public void InitLevel(GameLevel gameLevel)
         {
             _gameLevel = gameLevel;
-            _gameLevel.Init(this);
+            _gameLevel.Init(this, _character.BoundsXSize);
             SetupCharacter(_character);
             InputListener.OnLeftMouseButtonClick += OnLeftMouseButtonClick;
         }

@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
+using Utils;
 
 
 namespace MoroshkovieKochki
@@ -12,14 +13,17 @@ namespace MoroshkovieKochki
         [SerializeField] private Transform _outroPosition;
         
         private IGameLevelEventReceiver _eventReceiver;
-
-        public override void Init(IGameLevelEventReceiver eventReceiver)
+        
+        
+        public override void Init(IGameLevelEventReceiver eventReceiver, float characterXBound)
         {
             _eventReceiver = eventReceiver;
-            base.Init(eventReceiver);
+            base.Init(eventReceiver, characterXBound);
 
             var interactionItems = gameObject.GetComponentsInChildren<InteractionItem>();
             WaitResultsForCompleteLevel(interactionItems, eventReceiver.LevelComplete).Forget();
+            _initialPosition.MovePositionBehindFrustrum(_characterXBound);
+            _outroPosition.MovePositionBehindFrustrum(_characterXBound);
         }
 
         private async UniTask WaitResultsForCompleteLevel(InteractionItem[] interactionItems, Action onLevelComplete)

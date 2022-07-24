@@ -11,10 +11,11 @@ namespace MoroshkovieKochki
         [SerializeField] private float _minAnimationDistance = 0.1f;
         [SerializeField] private float _speed = 0.7f;
         [SerializeField] private SkeletonAnimation _skeletonAnimation;
-
-
+        [SerializeField] private MeshRenderer _meshRenderer;
         private Sequence _sequnce;
         private bool _isGoingLeftCahce;
+
+        public float BoundsXSize => _meshRenderer.bounds.size.x;
 
         public void SetPosition(Vector3 position)
         {

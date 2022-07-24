@@ -170,5 +170,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8a260aaa09545a886a0a3171f875a39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _minAnimationDistance: 0.1
   _speed: 8
   _skeletonAnimation: {fileID: 6545210225592834416}
+  _meshRenderer: {fileID: 6545210225592834417}

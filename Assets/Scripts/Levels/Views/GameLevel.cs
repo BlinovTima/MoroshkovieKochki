@@ -3,6 +3,7 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using NaughtyAttributes;
 using UnityEngine;
+using Utils;
 
 namespace MoroshkovieKochki
 {
@@ -15,20 +16,21 @@ namespace MoroshkovieKochki
         
         [Header("Character")]
         [SerializeField] private Transform _characterParent;
-        [SerializeField] private Transform _initialPosition;
+        [SerializeField] protected Transform _initialPosition;
         
         private IGameLevelEventReceiver _gameLevelEventReceiver;
-        
+        protected float _characterXBound;
+
         public string Description => _description;
         public string ButtonLabel => _buttonLabel;
         public Transform CharacterParent => _characterParent;
         public Transform InitialPosition => _initialPosition;
-        
 
-        public virtual void Init(IGameLevelEventReceiver eventReceiver)
+        public virtual void Init(IGameLevelEventReceiver eventReceiver, 
+            float characterXBound)
         {
+            _characterXBound = characterXBound;
             _gameLevelEventReceiver = eventReceiver;
-            
         }
 
         public virtual async UniTask PlayIntro()
