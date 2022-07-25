@@ -171,6 +171,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _minAnimationDistance: 0.1
-  _speed: 8
+  _speed: 4
   _skeletonAnimation: {fileID: 6545210225592834416}
   _meshRenderer: {fileID: 6545210225592834417}

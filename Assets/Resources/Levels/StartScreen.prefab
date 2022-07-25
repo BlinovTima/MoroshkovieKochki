@@ -28,7 +28,7 @@ RectTransform:
   m_GameObject: {fileID: 976498402236096045}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 7.5, y: 7.5, z: 1}
   m_Children:
   - {fileID: 7888990020486182741}
   m_Father: {fileID: 6785548557206343269}
@@ -531,6 +531,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6785548557206343269}
   - component: {fileID: 3594383662428885341}
+  - component: {fileID: 3452280802191501814}
+  - component: {fileID: 1105500849608598929}
   m_Layer: 5
   m_Name: StartScreen
   m_TagString: Untagged
@@ -547,7 +549,7 @@ RectTransform:
   m_GameObject: {fileID: 5764224375294991268}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.02, y: 0.02, z: 1}
   m_Children:
   - {fileID: 8774701645524925803}
   - {fileID: 8393246489069344929}
@@ -574,10 +576,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51f53334725c47e5a7d2e0fa08a2a4fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _id: 0
+  _description: 
+  _buttonLabel: 
   _characterParent: {fileID: 5305839202768736436}
   _initialPosition: {fileID: 8774701645524925803}
   _startGameButton: {fileID: 6272789226919618648}
+--- !u!223 &3452280802191501814
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5764224375294991268}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 25
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
+--- !u!114 &1105500849608598929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5764224375294991268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!1 &8289780703267991661
 GameObject:
   m_ObjectHideFlags: 0
