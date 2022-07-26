@@ -189,8 +189,9 @@ MonoBehaviour:
   _finalScreen: {fileID: 8632128095617596619, guid: 371f9489175126a498446fd064379878,
     type: 3}
   _gameLevels:
-  - {fileID: 3433604217220648441, guid: b7a3ed7c3a774f14f9b56103115d74c4, type: 3}
-  - {fileID: 3433604217220648441, guid: b7a3ed7c3a774f14f9b56103115d74c4, type: 3}
+  - {fileID: 8755604474773740707, guid: 50fb0c7183fdb7c438a60d2990cb5d8d, type: 3}
+  - {fileID: 2448480399309655241, guid: f4a7f146d92cf6944a3e3f208c4a0569, type: 3}
+  - {fileID: 3546096216026116709, guid: 3053922a994ae954ab58799768396e9d, type: 3}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -244,7 +245,7 @@ Camera:
   far clip plane: 100
   field of view: 60
   orthographic: 1
-  orthographic size: 10
+  orthographic size: 10.7
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2

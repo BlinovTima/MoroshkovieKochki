@@ -1093,8 +1093,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0.58000004}
-  m_AnchoredPosition: {x: 0.36999512, y: 41.492004}
-  m_SizeDelta: {x: -16.45, y: -161.1}
+  m_AnchoredPosition: {x: 0.36999512, y: 30.08}
+  m_SizeDelta: {x: -16.45, y: -150.01}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5389927496256160081
 CanvasRenderer:
@@ -1127,7 +1127,7 @@ MonoBehaviour:
     \u0441\u043E\u0441\u043D\u043E\u0432\u044B\u0435 \u0438 \u0441\u043C\u0435\u0448\u0430\u043D\u043D\u044B\u0435
     \u043B\u0435\u0441\u0430. \u0410\u0440\u043E\u043C\u0430\u0442\u043D\u044B\u0435
     \u0432\u043A\u0443\u0441\u043D\u044B\u0435 \u044F\u0433\u043E\u0434\u044B \u043F\u043E\u0441\u043F\u0435\u0432\u0430\u044E\u0442
-    \u0441 \u0441\u0435\u0440\u0435\u0434\u0438\u043D\u044B \u043B\u0435\u0442\u0430. "
+    \u0441 \u0441\u0435\u0440\u0435\u0434\u0438\u043D\u044B \u043B\u0435\u0442\u0430."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: fac3c235f9d774345b1cbda6699848be, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 033f2ea557af8c945b85a7240103bad9, type: 2}
@@ -1196,9 +1196,9 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 5389927496256160080}
-    characterCount: 111
+    characterCount: 110
     spriteCount: 0
-    spaceCount: 16
+    spaceCount: 15
     wordCount: 16
     linkCount: 0
     lineCount: 4
@@ -1254,8 +1254,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0.58000004}
-  m_AnchoredPosition: {x: 0, y: -88.14801}
-  m_SizeDelta: {x: -163.2, y: -212.2}
+  m_AnchoredPosition: {x: 1.3099976, y: -88.14801}
+  m_SizeDelta: {x: -263.63, y: -212.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5389927496985744180
 CanvasRenderer:
