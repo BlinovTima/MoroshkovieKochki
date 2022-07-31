@@ -184,10 +184,6 @@ MonoBehaviour:
   _popupsParent: {fileID: 2119653845}
   _windowSwitcher: {fileID: 2019991964}
   _levelParent: {fileID: 1760534055}
-  _startScreen: {fileID: 3594383662428885341, guid: 0812b78760f584044905b4546ce0c9f6,
-    type: 3}
-  _finalScreen: {fileID: 8632128095617596619, guid: 371f9489175126a498446fd064379878,
-    type: 3}
   _gameLevels:
   - {fileID: 8755604474773740707, guid: 50fb0c7183fdb7c438a60d2990cb5d8d, type: 3}
   - {fileID: 3712718506640131571, guid: f94e77f9ce2d7d241ab7cdccc0502552, type: 3}
@@ -774,30 +770,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &165482111501247838 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5679690502903695993, guid: fec0bc32247d016408991535e0637751,
-    type: 3}
-  m_PrefabInstance: {fileID: 165482111501247834}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &165482111501247839 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7990126269913641868, guid: fec0bc32247d016408991535e0637751,
-    type: 3}
-  m_PrefabInstance: {fileID: 165482111501247834}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &165482111501247840 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1599351158139814449, guid: fec0bc32247d016408991535e0637751,
@@ -841,14 +813,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playNewButtonText: {fileID: 165482111501247840}
-  _playAgainButtonText: {fileID: 165482111501247838}
   _exitButtonText: {fileID: 165482111501247836}
   _playNewButtonLabel: "\u041D\u043E\u0432\u0430\u044F \u0438\u0433\u0440\u0430"
-  _replayWrongButtonLabel: "\u0418\u0433\u0440\u0430\u0442\u044C \u043D\u0435\u0443\u0434\u0430\u0447\u043D\u044B\u0435"
-  _playAgainButtonLabel: "\u041D\u0430\u0447\u0430\u0442\u044C \u0441 \u043D\u0430\u0447\u0430\u043B\u0430"
+  _replayWrongButtonLabel: "\u0418\u0433\u0440\u0430\u0442\u044C \u0435\u0449\u0435
+    \u0440\u0430\u0437"
   _exitButtonLabel: "\u0412\u044B\u0445\u043E\u0434"
   _playButton: {fileID: 165482111501247841}
-  _playAgainButton: {fileID: 165482111501247839}
   _exitButton: {fileID: 165482111501247837}
 --- !u!1001 &2460882513549064722
 PrefabInstance:
