@@ -13,22 +13,19 @@ namespace MoroshkovieKochki
         [SerializeField] private TMP_Text _customQuestion;
         [SerializeField] private Button _yesButton;
         [SerializeField] private Button _noButton;
-        
-        private bool _shouldGather;
-        
-        public  void Init(GatherItem item)
+
+        public void Init(GatherItem item)
         {
             Dispose();
             
             _image.sprite = item.Sprite;
             _desription.text = item.Desription;
             _customQuestion.text = item.CustomQuestion;
-            _shouldGather = item.ShouldSayYes;
-            
-            _yesButton.onClick.AddListener(() => item.OnClick(true));
+
+            _yesButton.onClick.AddListener(() => item.OnClick(new GatherClickResult(){ButtonClickValue = true}));
             _yesButton.onClick.AddListener(() => Hide().Forget());
             
-            _noButton.onClick.AddListener(() => item.OnClick(false));
+            _noButton.onClick.AddListener(() => item.OnClick(new GatherClickResult(){ButtonClickValue = false}));
             _noButton.onClick.AddListener(() => Hide().Forget());
         }
 

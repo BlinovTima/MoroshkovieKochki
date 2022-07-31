@@ -1,12 +1,17 @@
 ﻿using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
+using NaughtyAttributes;
 using UnityEngine;
 
 namespace MoroshkovieKochki
 {
     public sealed class GatherItem : InteractionItem
     {
+        [ResizableTextArea]
+        [SerializeField] public string CustomQuestion;
+        [SerializeField] public bool ShouldSayYes;
+        
         [Header("OnClick settings")]
         [SerializeField] private OutlineAnimation _outlineAnimation;
 
@@ -14,7 +19,7 @@ namespace MoroshkovieKochki
         [SerializeField] private float _delayBetweenSwitchOff = 0.3f;
         [SerializeField] private float _switchOffTime = 1f;
         [SerializeField] public List<SpriteRenderer> _berries;
-
+      
 
         private int _delayBetweenSwitchOffMilliseconds;
 
@@ -25,14 +30,15 @@ namespace MoroshkovieKochki
             _delayBetweenSwitchOffMilliseconds = (int)(_delayBetweenSwitchOff * 1000);
         }
 
-        public override async void OnClick(bool value)
+        public override async void OnClick<TClickResult>(TClickResult value)
         {
             if(IsCompleted)
                 return;
             
             IsCompleted = true;
             
-            IsRightAdvice = value == ShouldSayYes;
+            if (value is GatherClickResult clickResult) 
+                IsRightAdvice = ShouldSayYes == clickResult.ButtonClickValue;
 
             await _outlineAnimation.ShowOutline(IsRightAdvice);
             

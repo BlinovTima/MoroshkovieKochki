@@ -7,19 +7,20 @@ namespace MoroshkovieKochki
 {
     public class GameController : MonoBehaviour
     {
-        [Header("Character settings")]
-        [SerializeField] private Character _characterPrefab;
+        [Header("Character settings")] [SerializeField]
+        private Character _characterPrefab;
 
-        [Header("Menu settings")]
-        [SerializeField] private GameMenu _gameMenu;
+        [Header("Menu settings")] [SerializeField]
+        private GameMenu _gameMenu;
+
         [SerializeField] private ScorePanel _scorePanel;
         [SerializeField] private RectTransform _popupsParent;
         [SerializeField] private WindowSwitcher _windowSwitcher;
-        
-        [Header("Levels settings")]
+
+        [Header("Levels settings")] 
         [SerializeField] private Transform _levelParent;
-        [SerializeField] private GameLevel _startScreen;
-        [SerializeField] private GameLevel _finalScreen;
+        
+        [Header("Levels Queue")] 
         [SerializeField] private List<GameLevel> _gameLevels;
 
         private GameMenuPresenter _gameMenuPresenter;
@@ -28,25 +29,12 @@ namespace MoroshkovieKochki
         private PopupPresenter _popupPresenter;
         private ScorePanelPresenter _scorePanelPresenter;
         private LevelTaskPopupPresenter _levelTaskPopupPresenter;
-
-        private GameLevel GetNextLevel()
-        {
-            if (!_levelIndex.HasValue)
-            {
-                _levelIndex = 0;
-                return _startScreen;
-            }
-            
-            if (_levelIndex.Value < _gameLevels.Count)
-            {
-                var levelIndex = _levelIndex.Value;
-                _levelIndex += 1;
-                return _gameLevels[levelIndex];
-            }
-
-            return _finalScreen;
-        }
+        private LevelsFabric _levelsFabric;
+        private Character _character;
+     
         
+        private bool HasCurrentLevel => _gameLevelPresenter != null && _gameLevelPresenter.HasLevelInited;
+
         private void Awake()
         {
             RegisterAllSystems();
@@ -54,24 +42,26 @@ namespace MoroshkovieKochki
 
         private void RegisterAllSystems()
         {
-            _scorePanelPresenter = new ScorePanelPresenter(_scorePanel);
-            
             InstantiateCharacter();
+            
+            _scorePanelPresenter = new ScorePanelPresenter(_scorePanel);
 
             _gameMenuPresenter = new GameMenuPresenter(_gameMenu,
-                () => StartNextLevel().Forget(),
-                () => ResetAndPlayAgain().Forget());
+                () =>
+                {
+                    if (GameContext.GameIsFinished)
+                        ResetGame();
+                    
+                    StartNextLevel().Forget();
+                });
             InputListener.OnEscKeyGet += _gameMenuPresenter.SwitchMenu;
+            
+            _levelsFabric = new LevelsFabric(_levelParent,
+                _popupsParent,
+                _character,
+                () => StartNextLevel().Forget());
 
-            var popupsFabric = new PopupsFabric(_popupsParent);
-            _popupPresenter = new PopupPresenter(popupsFabric);
-            _levelTaskPopupPresenter = new LevelTaskPopupPresenter(popupsFabric);
-            
-            _gameLevelPresenter = new GameLevelPresenter(() => StartNextLevel().Forget(),
-                _characterPrefab,
-                _popupPresenter,
-                _levelTaskPopupPresenter);
-            
+            _levelsFabric.InitLevels();
             _gameMenuPresenter.ShowMenu();
         }
 
@@ -79,54 +69,73 @@ namespace MoroshkovieKochki
         {
             _gameMenuPresenter.SwitchMenu();
         }
-        
-        private void InstantiateCharacter()
-        {
-            var characterInstance = Instantiate(_characterPrefab, transform.root);
-            _characterPrefab = characterInstance;
-        }
 
         private async UniTask StartNextLevel()
         {
             GameContext.RemoveGameState(GameState.Play);
             GameContext.AddGameState(GameState.CutScene);
 
-            var hasCurrentLevel = _gameLevelPresenter.HasInitedLevel;
-            
-            if (hasCurrentLevel)
+            if (HasCurrentLevel)
                 await _gameLevelPresenter.PlayOutro();
-            
-            await _windowSwitcher.SwitchWindow(() => LoadLevel(hasCurrentLevel));
-            await _gameLevelPresenter.PlayIntro();
 
-            GameContext.RemoveGameState(GameState.CutScene);
-            GameContext.AddGameState(GameState.Play);
+            await _windowSwitcher.SwitchWindow(() =>
+            {
+                if (!TryLoadLevel())
+                {
+                    GameContext.GameIsFinished = true;
+                    _gameMenuPresenter.ShowMenu();
+                    GameContext.RemoveGameState(GameState.CutScene);
+                }
+            });
+
+            if (!GameContext.GameIsFinished && HasCurrentLevel)
+            {
+                await _gameLevelPresenter.PlayIntro();
+                
+                GameContext.RemoveGameState(GameState.CutScene);
+                GameContext.AddGameState(GameState.Play);
+            }
         }
 
-        private void LoadLevel(bool hasCurrentLevel)
+        private bool TryLoadLevel()
         {
             _gameMenuPresenter.HideMenu();
 
-            if (hasCurrentLevel)
+            if (HasCurrentLevel)
+            {
+                _character.transform.SetParent(transform.root, false);
                 _gameLevelPresenter.Dispose();
+            }
+
+            if (_levelsFabric.GetNextLevel(out var gameLevelPresenter))
+            {
+                _gameLevelPresenter = gameLevelPresenter;
+                _gameLevelPresenter.PrepareLevelForStart();
+                return true;
+            }
             
-            var nextLevelPrefab = GetNextLevel();
-            var nextLevelInstance =  Instantiate(nextLevelPrefab, _levelParent);
-            _gameLevelPresenter.InitLevel(nextLevelInstance);
+            _gameLevelPresenter = null;
+            GameContext.GameIsFinished = true;
+            return false;
+            
         }
 
-        private async UniTask ResetAndPlayAgain()
+        private void ResetGame()
         {
             GameContext.Reset();
+            _levelsFabric.InitLevels();
         }
 
+        private void InstantiateCharacter()
+        {
+            var characterInstance = Instantiate(_characterPrefab);
+            _character = characterInstance;
+        }
+        
         private void OnApplicationQuit()
         {
             _scorePanelPresenter.Dispose();
-            _gameLevelPresenter.Dispose();
             InputListener.OnEscKeyGet -= _gameMenuPresenter.SwitchMenu;
         }
     }
-    
-    
 }

@@ -6,8 +6,6 @@ namespace MoroshkovieKochki
 {
     public class GameContext
     {
-        private readonly List<int> _wrongLevelsIndexes;
-        private readonly List<int> _passedLevelsIndexes;
         private int _score;
         private GameState _gameState;
 
@@ -25,21 +23,19 @@ namespace MoroshkovieKochki
             }
         }
 
-        public static bool HasWrongLevels => Instance._wrongLevelsIndexes.Any();
-        public static bool HasPassedLevels => Instance._passedLevelsIndexes.Any();
+        public static bool GameIsFinished { get; set; }
         public static event Action<int> OnScoreUpdated = x => { };
         public static event Action<GameState> OnGameStateUpdated = x => { };
 
         public static void AddScoreValue(int value)
         {
-            _instance._score += value;
-            OnScoreUpdated.Invoke(_instance._score);
+            Instance._score += value;
+            OnScoreUpdated.Invoke(Instance._score);
         }
         
         private GameContext()
         {
-            _wrongLevelsIndexes = new List<int>();
-            _passedLevelsIndexes = new List<int>();
+            GameIsFinished = false;
             _score = 0;
         }
 
@@ -53,18 +49,18 @@ namespace MoroshkovieKochki
 
         public static void AddGameState(GameState state)
         {
-            _instance._gameState |= state;
-            OnGameStateUpdated.Invoke(_instance._gameState);
+            Instance._gameState |= state;
+            OnGameStateUpdated.Invoke(Instance._gameState);
         }  
         public static  bool HasGameState(GameState state)
         {
-            return _instance._gameState.HasFlag(state);
+            return Instance._gameState.HasFlag(state);
         } 
         
         public static void RemoveGameState(GameState state)
         {
-            _instance._gameState &= ~state;
-            OnGameStateUpdated.Invoke(_instance._gameState);
+            Instance._gameState &= ~state;
+            OnGameStateUpdated.Invoke(Instance._gameState);
         }
         
         public void ResetGameState()

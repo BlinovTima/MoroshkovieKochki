@@ -20,5 +20,11 @@ namespace MoroshkovieKochki
 
             await UniTask.WaitUntil(() => _taskPopupPopupCache.IsTaskConfirmed);
         }
+
+        public async UniTask HidePopup()
+        {
+            if(_taskPopupPopupCache != null)
+                await _taskPopupPopupCache.Hide();
+        }
     }
 }

@@ -11,6 +11,7 @@ namespace MoroshkovieKochki
         private ItemPopup _currentPopup;
         private string _currentPopupDataName;
 
+        public ItemPopup CurrentPopup => _currentPopup;
 
         public PopupPresenter(PopupsFabric popupsFabric)
         {

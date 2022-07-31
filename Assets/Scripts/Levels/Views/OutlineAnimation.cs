@@ -31,18 +31,24 @@ namespace MoroshkovieKochki
             _initialOutlineScale = _transform.localScale;
         }
 
+        public async UniTask HideOutline()
+        {
+            if (!_isActivated)
+                return;
+            
+            await _transform.DOScale(_initialOutlineScale, _hideDuration)
+                .SetEase(Ease.Linear)
+                .OnComplete(()=> _isActivated = false)
+                .AsyncWaitForCompletion();
+        }
+        
         public async UniTask ShowOutline(bool isComplete)
         {
             var outlineColor = isComplete ? _completeColor : _wrongColor;
             _material.SetColor("_Color", outlineColor);
-
-            if (_isActivated)
-            {
-                await _transform.DOScale(_initialOutlineScale, _hideDuration)
-                    .SetEase(Ease.Linear)
-                    .AsyncWaitForCompletion();
-            }
-
+            
+            await HideOutline();
+            
             await _transform.DOScale(_outlineScale, _showDuration)
                 .SetEase(_ease)
                 .OnComplete(()=> _isActivated = true)

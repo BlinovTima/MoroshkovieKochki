@@ -1,9 +1,10 @@
 using System;
-using System.Threading;
+using System.Linq;
 using Cysharp.Threading.Tasks;
 using NaughtyAttributes;
 using UnityEngine;
 using Utils;
+
 
 namespace MoroshkovieKochki
 {
@@ -20,17 +21,31 @@ namespace MoroshkovieKochki
         
         private IGameLevelEventReceiver _gameLevelEventReceiver;
         protected float _characterXBound;
-
+        private InteractionItem[] _interactionItems = new FootprintsItem[] { };
+        
         public string Description => _description;
         public string ButtonLabel => _buttonLabel;
         public Transform CharacterParent => _characterParent;
         public Transform InitialPosition => _initialPosition;
 
+        public InteractionItem[] InteractionItems
+        {
+            get
+            {
+                if(!_interactionItems.Any())
+                    _interactionItems = gameObject.GetComponentsInChildren<InteractionItem>();
+
+                return _interactionItems;
+            }
+        }
+        
         public virtual void Init(IGameLevelEventReceiver eventReceiver, 
             float characterXBound)
         {
             _characterXBound = characterXBound;
             _gameLevelEventReceiver = eventReceiver;
+            
+            _initialPosition.MovePositionBehindFrustrum(_characterXBound);
         }
 
         public virtual async UniTask PlayIntro()
@@ -42,13 +57,7 @@ namespace MoroshkovieKochki
         {
             await UniTask.Yield();
         }
-        
-        public virtual void OnLeftMouseButtonClick(RaycastHit2D raycastHit2D, Vector3 mousePosition)
-        {
-            Debug.Log($"Collider name = {raycastHit2D.collider.gameObject.name} Mouse pos = {mousePosition}");
-        }
 
-        
         private void OnDestroy()
         {
             Dispose();
@@ -62,7 +71,7 @@ namespace MoroshkovieKochki
         [Button("Complete Level")]
         public void CompleteLevel()
         {
-            _gameLevelEventReceiver.LevelComplete();
+            _gameLevelEventReceiver.CompleteLevel();
         }
     }
 }

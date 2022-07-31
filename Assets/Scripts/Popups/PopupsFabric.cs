@@ -8,6 +8,7 @@ namespace MoroshkovieKochki
     {
         private readonly RectTransform _popupsParent;
         private GatherPopup _gatherPopupCache;
+        private FootprintsPopup _footprintsPopupCache;
         private LevelTaskPopup _levelTaskPopupPopupCache;
 
         public PopupsFabric(RectTransform popupsParent)
@@ -26,15 +27,24 @@ namespace MoroshkovieKochki
         
         public ItemPopup GetPopup(InteractionItem interactionItem)
         {
-            if (interactionItem is GatherItem data)
+            if (interactionItem is GatherItem gatherItemData)
             {
                 if(!_gatherPopupCache)
                     _gatherPopupCache = CreatePopup<GatherPopup>();
                 
-                _gatherPopupCache.Init(data);
+                _gatherPopupCache.Init(gatherItemData);
                 return _gatherPopupCache;
             }
 
+            if (interactionItem is FootprintsItem footprintsItemData)
+            {
+                if(!_footprintsPopupCache)
+                    _footprintsPopupCache = CreatePopup<FootprintsPopup>();
+                
+                _footprintsPopupCache.Init(footprintsItemData);
+                return _footprintsPopupCache;
+            }
+            
             throw new NotImplementedException();
         }
 

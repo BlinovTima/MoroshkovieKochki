@@ -50,7 +50,7 @@ namespace MoroshkovieKochki
             await _sequence.AsyncWaitForKill();
         }
 
-        private async UniTask Hide()
+        public async UniTask Hide()
         {
             _sequence?.Kill();
             _sequence = DOTween.Sequence();

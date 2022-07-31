@@ -7,10 +7,10 @@ namespace MoroshkovieKochki
     {
         private GameMenu _gameMenu;
 
-        public GameMenuPresenter(GameMenu gameMenu, Action onPlayButton, Action onPlayAgainButton)
+        public GameMenuPresenter(GameMenu gameMenu, Action onPlayButton)
         {
             _gameMenu = gameMenu;
-            gameMenu.Init(onPlayButton, onPlayAgainButton);
+            gameMenu.Init(onPlayButton);
         }
 
         public void ShowMenu()

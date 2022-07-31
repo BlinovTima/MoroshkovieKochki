@@ -1,28 +1,25 @@
+﻿using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
-using Utils;
-
 
 namespace MoroshkovieKochki
 {
-    public sealed class BerriesGameLevel : GameLevel
-    
+    public sealed class FootprintsGameLevel : GameLevel
     {
         [SerializeField] private Transform _introPosition;
         [SerializeField] private Transform _outroPosition;
-        
+        [SerializeField] private List<FootprintsItem> _footprintsItems;
         private IGameLevelEventReceiver _eventReceiver;
-        
-        
+
+        public List<FootprintsItem> FootprintsItems => _footprintsItems;
+     
         public override void Init(IGameLevelEventReceiver eventReceiver, 
             float characterXBound)
         {
             _eventReceiver = eventReceiver;
             base.Init(eventReceiver, characterXBound);
-
-            _outroPosition.MovePositionBehindFrustrum(_characterXBound);
         }
-
+        
         public override async UniTask PlayIntro()
         { 
             await _eventReceiver.ConfirmLevelTask(); 
@@ -33,7 +30,5 @@ namespace MoroshkovieKochki
         {
             await _eventReceiver.CharacterGoTo(_outroPosition.position);
         }
-        
-        
     }
 }

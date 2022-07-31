@@ -2,7 +2,7 @@ using System;
 
 namespace MoroshkovieKochki
 {
-    public sealed class FinalScreenGameLevel : GameLevel
+    public sealed class FinishGameLevel : GameLevel
     {
     }
 }
