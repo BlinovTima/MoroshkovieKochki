@@ -19,9 +19,6 @@ namespace MoroshkovieKochki
 
         [Header("Levels settings")] 
         [SerializeField] private Transform _levelParent;
-        
-        [Header("Levels Queue")] 
-        [SerializeField] private List<GameLevel> _gameLevels;
 
         private GameMenuPresenter _gameMenuPresenter;
         private int? _levelIndex;
