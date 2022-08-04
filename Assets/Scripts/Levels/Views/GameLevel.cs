@@ -19,7 +19,7 @@ namespace MoroshkovieKochki
         [SerializeField] private Transform _characterParent;
         [SerializeField] protected Transform _initialPosition;
         
-        private IGameLevelEventReceiver _gameLevelEventReceiver;
+        protected IGameLevelEventReceiver _eventReceiver;
         protected float _characterXBound;
         private InteractionItem[] _interactionItems = new FootprintsItem[] { };
         
@@ -43,7 +43,7 @@ namespace MoroshkovieKochki
             float characterXBound)
         {
             _characterXBound = characterXBound;
-            _gameLevelEventReceiver = eventReceiver;
+            _eventReceiver = eventReceiver;
             
             _initialPosition.MovePositionBehindFrustrum(_characterXBound);
         }
@@ -71,7 +71,7 @@ namespace MoroshkovieKochki
         [Button("Complete Level")]
         public void CompleteLevel()
         {
-            _gameLevelEventReceiver.CompleteLevel();
+            _eventReceiver.CompleteLevel();
         }
     }
 }

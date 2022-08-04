@@ -8,8 +8,6 @@ namespace MoroshkovieKochki
 {
     public sealed class GatherItem : InteractionItem
     {
-        [ResizableTextArea]
-        [SerializeField] public string CustomQuestion;
         [SerializeField] public bool ShouldSayYes;
         
         [Header("OnClick settings")]
@@ -57,11 +55,11 @@ namespace MoroshkovieKochki
 
         private async UniTask Animate(SpriteRenderer berrie)
         {
-            var _sequence = DOTween.Sequence();
-            _sequence.Append(DOTween.To(() => berrie.color.a, x => SetAlpha(berrie, x), 0f, _switchOffTime));
-            _sequence.AppendCallback(() => berrie.gameObject.SetActive(false));
+            var sequence = DOTween.Sequence();
+            sequence.Append(DOTween.To(() => berrie.color.a, x => SetAlpha(berrie, x), 0f, _switchOffTime));
+            sequence.AppendCallback(() => berrie.gameObject.SetActive(false));
 
-            await _sequence.AsyncWaitForCompletion();
+            await sequence.AsyncWaitForCompletion();
         }
         
         private void SetAlpha(SpriteRenderer berrie, float alpha)

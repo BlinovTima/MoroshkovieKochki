@@ -14,7 +14,7 @@ namespace MoroshkovieKochki
         [SerializeField] private Button _yesButton;
         [SerializeField] private Button _noButton;
 
-        public void Init(GatherItem item)
+        public void Init(InteractionItem item)
         {
             Dispose();
             

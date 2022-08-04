@@ -35,6 +35,7 @@ namespace MoroshkovieKochki
             _levelsQueue.Enqueue(InitLevel<StartGameLevel, StartLevelPresenter>);
             _levelsQueue.Enqueue(InitLevel<BerriesGameLevel, BerriesLevelPresenter>);
             _levelsQueue.Enqueue(InitLevel<FootprintsGameLevel, FootprintsLevelPresenter>);
+            _levelsQueue.Enqueue(InitLevel<MushroomsGameLevel, MushroomsLevelPresenter>);
             _levelsQueue.Enqueue(InitLevel<FinishGameLevel, FinishGameLevelPresenter>);
         }
 

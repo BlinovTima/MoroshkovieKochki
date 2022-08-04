@@ -27,15 +27,16 @@ namespace MoroshkovieKochki
         
         public ItemPopup GetPopup(InteractionItem interactionItem)
         {
-            if (interactionItem is GatherItem gatherItemData)
+            if (interactionItem is GatherItem 
+                || interactionItem is MushroomItem)
             {
                 if(!_gatherPopupCache)
                     _gatherPopupCache = CreatePopup<GatherPopup>();
                 
-                _gatherPopupCache.Init(gatherItemData);
+                _gatherPopupCache.Init(interactionItem);
                 return _gatherPopupCache;
             }
-
+            
             if (interactionItem is FootprintsItem footprintsItemData)
             {
                 if(!_footprintsPopupCache)
@@ -44,7 +45,7 @@ namespace MoroshkovieKochki
                 _footprintsPopupCache.Init(footprintsItemData);
                 return _footprintsPopupCache;
             }
-            
+
             throw new NotImplementedException();
         }
 

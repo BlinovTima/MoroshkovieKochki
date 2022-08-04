@@ -1,0 +1,58 @@
+﻿using Cysharp.Threading.Tasks;
+using DG.Tweening;
+using NaughtyAttributes;
+using UnityEngine;
+
+namespace MoroshkovieKochki
+{
+    public sealed class MushroomItem : InteractionItem
+    {
+        [SerializeField] public bool ShouldSayYes;
+        
+        [Header("OnClick settings")]
+        [SerializeField] private OutlineAnimation _outlineAnimation;
+        
+        [Header("Mashroom elements settings")]
+        [SerializeField] private float _switchOffTime = 1f;
+        [SerializeField] private SpriteRenderer _spriteRenderer;
+        
+        
+        public override async void OnClick<TClickResult>(TClickResult value)
+        {
+            if(IsCompleted)
+                return;
+            
+            IsCompleted = true;
+            
+            if (value is GatherClickResult clickResult) 
+                IsRightAdvice = ShouldSayYes == clickResult.ButtonClickValue;
+
+            await _outlineAnimation.ShowOutline(IsRightAdvice);
+
+            if(IsRightAdvice)
+                GameContext.AddScoreValue(1);
+            
+            if (IsRightAdvice && ShouldSayYes)
+            {
+                await _outlineAnimation.HideOutline();
+                Animate(_spriteRenderer).Forget();
+            }
+        }
+        
+        private async UniTask Animate(SpriteRenderer sr)
+        {
+            var sequence = DOTween.Sequence();
+            sequence.Append(DOTween.To(() => sr.color.a, x => SetAlpha(sr, x), 0f, _switchOffTime));
+            sequence.AppendCallback(() => sr.gameObject.SetActive(false));
+
+            await sequence.AsyncWaitForCompletion();
+        }
+        
+        private void SetAlpha(SpriteRenderer sr, float alpha)
+        {
+            var color = sr.color;
+            color.a = alpha;
+            sr.color = color;
+        }
+    }
+}

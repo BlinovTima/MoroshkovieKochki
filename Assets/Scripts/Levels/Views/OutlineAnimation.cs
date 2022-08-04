@@ -6,6 +6,7 @@ using UnityEngine;
 namespace MoroshkovieKochki
 {
     [RequireComponent(typeof(Transform))]
+    [RequireComponent(typeof(Renderer))]
     public class OutlineAnimation : MonoBehaviour
     {
         [Header("Colors")] [SerializeField] private Color _completeColor;
@@ -38,7 +39,11 @@ namespace MoroshkovieKochki
             
             await _transform.DOScale(_initialOutlineScale, _hideDuration)
                 .SetEase(Ease.Linear)
-                .OnComplete(()=> _isActivated = false)
+                .OnComplete(() =>
+                {
+                    _isActivated = false;
+                    gameObject.SetActive(false);
+                })
                 .AsyncWaitForCompletion();
         }
         
@@ -49,6 +54,7 @@ namespace MoroshkovieKochki
             
             await HideOutline();
             
+            gameObject.SetActive(true);
             await _transform.DOScale(_outlineScale, _showDuration)
                 .SetEase(_ease)
                 .OnComplete(()=> _isActivated = true)
