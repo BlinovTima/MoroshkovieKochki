@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace MoroshkovieKochki
 {
-    public class BerriesLevelPresenter : GameLevelPresenter
+    public class GatherLevelPresenter : GameLevelPresenter
     {
         public override void PrepareLevelForStart()
         {

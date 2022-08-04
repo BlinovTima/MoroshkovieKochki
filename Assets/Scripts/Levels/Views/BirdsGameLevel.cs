@@ -1,11 +1,10 @@
-using Cysharp.Threading.Tasks;
+﻿using Cysharp.Threading.Tasks;
 using UnityEngine;
 using Utils;
 
-
 namespace MoroshkovieKochki
 {
-    public sealed class BerriesGameLevel : GameLevel
+    public sealed class BirdsGameLevel : GameLevel
     {
         [SerializeField] private Transform _introPosition;
         [SerializeField] private Transform _outroPosition;
