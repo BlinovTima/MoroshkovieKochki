@@ -929,7 +929,7 @@ SpriteRenderer:
   m_Size: {x: 38.399998, y: 21.599998}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &3359984802030628823
@@ -2258,7 +2258,22 @@ PrefabInstance:
     - target: {fileID: 4803829518193319385, guid: 0f9fbd92785d65e45a8edad9554df71e,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.08
+      value: -0.242
+      objectReference: {fileID: 0}
+    - target: {fileID: 4803829518193319385, guid: 0f9fbd92785d65e45a8edad9554df71e,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.284
+      objectReference: {fileID: 0}
+    - target: {fileID: 4803829518193319385, guid: 0f9fbd92785d65e45a8edad9554df71e,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 15.699
+      objectReference: {fileID: 0}
+    - target: {fileID: 4803829518193319385, guid: 0f9fbd92785d65e45a8edad9554df71e,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 5.802
       objectReference: {fileID: 0}
     - target: {fileID: 4955971288949836693, guid: 0f9fbd92785d65e45a8edad9554df71e,
         type: 3}
@@ -2388,7 +2403,7 @@ PrefabInstance:
     - target: {fileID: 7440676981335723374, guid: 0f9fbd92785d65e45a8edad9554df71e,
         type: 3}
       propertyPath: m_textInfo.lineCount
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7440676981335723374, guid: 0f9fbd92785d65e45a8edad9554df71e,
         type: 3}
@@ -2415,12 +2430,17 @@ PrefabInstance:
     - target: {fileID: 7440676981335723374, guid: 0f9fbd92785d65e45a8edad9554df71e,
         type: 3}
       propertyPath: m_fontSize
-      value: 0.8
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 7440676981335723374, guid: 0f9fbd92785d65e45a8edad9554df71e,
         type: 3}
       propertyPath: m_firstOverflowCharacterIndex
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7440676981335723374, guid: 0f9fbd92785d65e45a8edad9554df71e,
+        type: 3}
+      propertyPath: m_fontSizeMax
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f9fbd92785d65e45a8edad9554df71e, type: 3}
