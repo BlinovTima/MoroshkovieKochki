@@ -1,118 +1,132 @@
 
 Bear.png
-size: 2039,1969
+size: 1912,1405
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
 basket
-  rotate: true
-  xy: 1274, 692
-  size: 595, 567
-  orig: 595, 567
+  rotate: false
+  xy: 894, 404
+  size: 476, 454
+  orig: 476, 454
   offset: 0, 0
   index: -1
 basket_back
   rotate: true
-  xy: 1811, 222
-  size: 466, 137
-  orig: 466, 137
+  xy: 1402, 27
+  size: 373, 110
+  orig: 373, 110
   offset: 0, 0
   index: -1
 body
   rotate: false
-  xy: 4, 356
-  size: 805, 904
-  orig: 805, 904
+  xy: 4, 113
+  size: 644, 723
+  orig: 644, 723
   offset: 0, 0
   index: -1
 box
   rotate: false
-  xy: 813, 24
-  size: 498, 602
-  orig: 498, 602
+  xy: 1498, 919
+  size: 398, 482
+  orig: 398, 482
   offset: 0, 0
   index: -1
 box_back
-  rotate: true
-  xy: 1845, 904
-  size: 383, 131
-  orig: 383, 131
+  rotate: false
+  xy: 4, 4
+  size: 306, 105
+  orig: 306, 105
   offset: 0, 0
   index: -1
 eye
   rotate: false
-  xy: 1315, 4
-  size: 309, 111
-  orig: 309, 111
+  xy: 314, 20
+  size: 247, 89
+  orig: 247, 89
   offset: 0, 0
   index: -1
 head
   rotate: false
-  xy: 1049, 1291
-  size: 816, 674
-  orig: 816, 674
+  xy: 841, 862
+  size: 653, 539
+  orig: 653, 539
   offset: 0, 0
   index: -1
 l_arm
   rotate: false
-  xy: 1315, 119
-  size: 492, 569
-  orig: 492, 569
+  xy: 1511, 460
+  size: 394, 455
+  orig: 394, 455
+  offset: 0, 0
+  index: -1
+l_arm_hello
+  rotate: false
+  xy: 1516, 28
+  size: 392, 428
+  orig: 392, 428
   offset: 0, 0
   index: -1
 l_eyebrow
   rotate: false
-  xy: 1869, 1322
-  size: 89, 72
-  orig: 89, 72
+  xy: 809, 44
+  size: 71, 58
+  orig: 71, 58
   offset: 0, 0
   index: -1
 l_hand
   rotate: false
-  xy: 1811, 38
-  size: 215, 180
-  orig: 215, 180
+  xy: 652, 117
+  size: 172, 144
+  orig: 172, 144
   offset: 0, 0
   index: -1
 l_leg
-  rotate: true
-  xy: 4, 54
-  size: 298, 714
-  orig: 298, 714
+  rotate: false
+  xy: 652, 265
+  size: 238, 571
+  orig: 238, 571
   offset: 0, 0
   index: -1
 mouth
   rotate: true
-  xy: 722, 158
-  size: 194, 76
-  orig: 194, 76
+  xy: 828, 106
+  size: 155, 61
+  orig: 155, 61
+  offset: 0, 0
+  index: -1
+mouth_open
+  rotate: false
+  xy: 652, 44
+  size: 153, 69
+  orig: 153, 69
   offset: 0, 0
   index: -1
 newspaper
   rotate: true
-  xy: 1869, 1398
-  size: 567, 166
-  orig: 567, 166
+  xy: 1374, 404
+  size: 454, 133
+  orig: 454, 133
   offset: 0, 0
   index: -1
 r_arm
-  rotate: false
-  xy: 813, 630
-  size: 457, 630
-  orig: 457, 630
+  rotate: true
+  xy: 894, 34
+  size: 366, 504
+  orig: 366, 504
   offset: 0, 0
   index: -1
 r_eyebrow
   rotate: false
-  xy: 1845, 823
-  size: 85, 77
-  orig: 85, 77
+  xy: 565, 47
+  size: 68, 62
+  orig: 68, 62
   offset: 0, 0
   index: -1
 r_leg
   rotate: false
-  xy: 4, 1264
-  size: 1041, 701
-  orig: 1041, 701
+  xy: 4, 840
+  size: 833, 561
+  orig: 833, 561
   offset: 0, 0
   index: -1
