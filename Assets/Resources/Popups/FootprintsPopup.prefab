@@ -209,14 +209,15 @@ MonoBehaviour:
     \u0438 \u0442\u0435\u0440\u0440\u0438\u0442\u043E\u0440\u0438\u0438."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: fac3c235f9d774345b1cbda6699848be, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 033f2ea557af8c945b85a7240103bad9, type: 2}
+  m_sharedMaterial: {fileID: -6189930837680712563, guid: fac3c235f9d774345b1cbda6699848be,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4279922610
+  m_fontColor: {r: 0.69803923, g: 0.43529412, b: 0.101960786, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -332,8 +333,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 410.3, y: 40.3}
-  m_SizeDelta: {x: 289.26, y: 298.95}
+  m_AnchoredPosition: {x: 415.22, y: 40.3}
+  m_SizeDelta: {x: 347.93, y: 359.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3612640126991169468
 CanvasRenderer:

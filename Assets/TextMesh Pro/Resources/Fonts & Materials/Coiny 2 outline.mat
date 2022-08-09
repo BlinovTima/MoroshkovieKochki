@@ -119,13 +119,13 @@ Material:
     - _OutlineSoftness: 0
     - _OutlineUVSpeedX: 0
     - _OutlineUVSpeedY: 0
-    - _OutlineWidth: 0.5
+    - _OutlineWidth: 0.4
     - _Parallax: 0.02
     - _PerspectiveFilter: 0.875
     - _Reflectivity: 10
-    - _ScaleRatioA: 0.6666667
-    - _ScaleRatioB: 0.5416667
-    - _ScaleRatioC: 0.5416667
+    - _ScaleRatioA: 0.5797102
+    - _ScaleRatioB: 0.16666667
+    - _ScaleRatioC: 0.16666667
     - _ScaleX: 1
     - _ScaleY: 1
     - _ShaderFlags: 0
@@ -151,7 +151,7 @@ Material:
     - _UseUIAlphaClip: 0
     - _VertexOffsetX: 0
     - _VertexOffsetY: 0
-    - _WeightBold: 0.75
+    - _WeightBold: 3
     - _WeightNormal: 0
     - _ZWrite: 1
     m_Colors:
