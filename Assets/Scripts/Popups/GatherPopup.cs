@@ -22,10 +22,10 @@ namespace MoroshkovieKochki
             _desription.text = item.Desription;
             _customQuestion.text = item.CustomQuestion;
 
-            _yesButton.onClick.AddListener(() => item.OnClick(new GatherClickResult(){ButtonClickValue = true}));
+            _yesButton.onClick.AddListener(() => item.OnClick(new BooleanClickResult(){ButtonClickValue = true}));
             _yesButton.onClick.AddListener(() => Hide().Forget());
             
-            _noButton.onClick.AddListener(() => item.OnClick(new GatherClickResult(){ButtonClickValue = false}));
+            _noButton.onClick.AddListener(() => item.OnClick(new BooleanClickResult(){ButtonClickValue = false}));
             _noButton.onClick.AddListener(() => Hide().Forget());
         }
 

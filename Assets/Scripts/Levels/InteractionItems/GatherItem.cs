@@ -23,7 +23,7 @@ namespace MoroshkovieKochki
             
             IsCompleted = true;
             
-            if (value is GatherClickResult clickResult) 
+            if (value is BooleanClickResult clickResult) 
                 IsRightAdvice = ShouldSayYes == clickResult.ButtonClickValue;
 
             await _outlineAnimation.ShowOutline(IsRightAdvice);

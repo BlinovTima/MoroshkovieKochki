@@ -16,7 +16,9 @@ namespace MoroshkovieKochki
         private bool _isGoingLeftCahce;
 
         public float BoundsXSize => _meshRenderer.bounds.size.x;
-
+        public int SortingOrder => _meshRenderer.sortingOrder;
+        public Vector3 Position => transform.position;
+        
         public void SetPosition(Vector3 position)
         {
             transform.localPosition = position;

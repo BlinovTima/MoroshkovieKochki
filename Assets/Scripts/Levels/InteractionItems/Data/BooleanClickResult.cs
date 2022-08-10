@@ -1,6 +1,6 @@
 ﻿namespace MoroshkovieKochki
 {
-    public sealed class GatherClickResult : OnClickResult
+    public sealed class BooleanClickResult : OnClickResult
     {
         public bool ButtonClickValue;
     }

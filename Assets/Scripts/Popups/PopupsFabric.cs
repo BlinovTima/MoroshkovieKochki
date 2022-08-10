@@ -28,7 +28,8 @@ namespace MoroshkovieKochki
         public ItemPopup GetPopup(InteractionItem interactionItem)
         {
             if (interactionItem is BushItem 
-                || interactionItem is GatherItem)
+                || interactionItem is GatherItem
+                || interactionItem is MosquitoItem)
             {
                 if(!_gatherPopupCache)
                     _gatherPopupCache = CreatePopup<GatherPopup>();
