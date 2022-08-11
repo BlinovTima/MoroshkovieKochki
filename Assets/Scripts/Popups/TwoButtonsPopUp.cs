@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace MoroshkovieKochki
 {
-    public sealed class GatherPopup : ItemPopup, IDisposable
+    public sealed class TwoButtonsPopUp : ItemPopup, IDisposable
     {
         [SerializeField] private Image _image;
         [SerializeField] private TMP_Text _desription;
@@ -14,7 +14,7 @@ namespace MoroshkovieKochki
         [SerializeField] private Button _yesButton;
         [SerializeField] private Button _noButton;
 
-        public void Init(InteractionItem item)
+        public void Init(InteractionItem item, bool subscribeResult)
         {
             Dispose();
             
@@ -22,10 +22,20 @@ namespace MoroshkovieKochki
             _desription.text = item.Desription;
             _customQuestion.text = item.CustomQuestion;
 
-            _yesButton.onClick.AddListener(() => item.OnClick(new BooleanClickResult(){ButtonClickValue = true}));
+            if(subscribeResult)
+            {
+                _noButton.onClick.AddListener(() =>
+                    item.OnClick(new BooleanClickResult() { ButtonClickValue = false }));
+                _yesButton.onClick.AddListener(() =>
+                    item.OnClick(new BooleanClickResult() { ButtonClickValue = true }));
+            }
+            else
+            {
+                _noButton.onClick.RemoveAllListeners();
+                _yesButton.onClick.RemoveAllListeners();
+            }
+
             _yesButton.onClick.AddListener(() => Hide().Forget());
-            
-            _noButton.onClick.AddListener(() => item.OnClick(new BooleanClickResult(){ButtonClickValue = false}));
             _noButton.onClick.AddListener(() => Hide().Forget());
         }
 

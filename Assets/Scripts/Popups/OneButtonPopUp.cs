@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace MoroshkovieKochki
 {
-    public class LevelTaskPopup : PopupGeneric
+    public sealed class OneButtonPopUp : PopupGeneric
     {
         [SerializeField] private TMP_Text _desription;
         [SerializeField] private TMP_Text _buttonLabel;

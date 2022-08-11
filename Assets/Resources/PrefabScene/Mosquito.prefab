@@ -154,6 +154,7 @@ MonoBehaviour:
   _mosquitoContainer: {fileID: 1234811213155580155}
   _outlineAnimation: {fileID: 3289875458685526398}
   _mosquitoSpriteRenderer: {fileID: 4473723319941644412}
+  _mosquitoAnimator: {fileID: 7549060402089062937}
   _flySpeed: 5
 --- !u!1 &2001639088877466975
 GameObject:

@@ -5,7 +5,7 @@ namespace MoroshkovieKochki
     public sealed class LevelTaskPopupPresenter
     {
         private readonly PopupsFabric _popupsFabric;
-        private LevelTaskPopup _taskPopupPopupCache;
+        private OneButtonPopUp _taskPopupPopupCache;
        
         
         public LevelTaskPopupPresenter(PopupsFabric popupsFabric)

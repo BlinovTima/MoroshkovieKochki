@@ -7,35 +7,43 @@ namespace MoroshkovieKochki
     public class PopupsFabric : IDisposable
     {
         private readonly RectTransform _popupsParent;
-        private GatherPopup _gatherPopupCache;
+        private TwoButtonsPopUp _twoButtonsPopUpCache;
         private FootprintsPopup _footprintsPopupCache;
-        private LevelTaskPopup _levelTaskPopupPopupCache;
+        private OneButtonPopUp _oneButtonPopUpPopupCache;
 
         public PopupsFabric(RectTransform popupsParent)
         {
             _popupsParent = popupsParent;
         }
 
-        public LevelTaskPopup GetPopup(GameLevel gameLevel)
+        public OneButtonPopUp GetPopup(GameLevel gameLevel)
         {
-            if(!_levelTaskPopupPopupCache)
-                _levelTaskPopupPopupCache = CreatePopup<LevelTaskPopup>();
+            if(!_oneButtonPopUpPopupCache)
+                _oneButtonPopUpPopupCache = CreatePopup<OneButtonPopUp>();
                 
-            _levelTaskPopupPopupCache.Init(gameLevel.Description, gameLevel.ButtonLabel);
-            return _levelTaskPopupPopupCache;
+            _oneButtonPopUpPopupCache.Init(gameLevel.Description, gameLevel.ButtonLabel);
+            return _oneButtonPopUpPopupCache;
         }
         
         public ItemPopup GetPopup(InteractionItem interactionItem)
         {
-            if (interactionItem is BushItem 
-                || interactionItem is GatherItem
-                || interactionItem is MosquitoItem)
+            if (interactionItem is MosquitoItem)
             {
-                if(!_gatherPopupCache)
-                    _gatherPopupCache = CreatePopup<GatherPopup>();
+                if(!_twoButtonsPopUpCache)
+                    _twoButtonsPopUpCache = CreatePopup<TwoButtonsPopUp>();
                 
-                _gatherPopupCache.Init(interactionItem);
-                return _gatherPopupCache;
+                _twoButtonsPopUpCache.Init(interactionItem, false);
+                return _twoButtonsPopUpCache;
+            }
+            
+            if (interactionItem is BushItem 
+                || interactionItem is GatherItem)
+            {
+                if(!_twoButtonsPopUpCache)
+                    _twoButtonsPopUpCache = CreatePopup<TwoButtonsPopUp>();
+                
+                _twoButtonsPopUpCache.Init(interactionItem, true);
+                return _twoButtonsPopUpCache;
             }
             
             if (interactionItem is FootprintsItem footprintsItemData)
@@ -61,8 +69,8 @@ namespace MoroshkovieKochki
 
         public void Dispose()
         {
-            if(_gatherPopupCache)
-                Object.Destroy(_gatherPopupCache);
+            if(_twoButtonsPopUpCache)
+                Object.Destroy(_twoButtonsPopUpCache);
         }
     }
 }

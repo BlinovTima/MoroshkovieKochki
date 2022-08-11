@@ -19,10 +19,12 @@ namespace MoroshkovieKochki
         [SerializeField] private Transform _mosquitoContainer;
         [SerializeField] private OutlineAnimation _outlineAnimation;
         [SerializeField] private SpriteRenderer _mosquitoSpriteRenderer;
+        [SerializeField] private Animator _mosquitoAnimator;
         [SerializeField] private float _flySpeed;
-        
+
         private bool _isGoingLeftCahce;
         private Character _character;
+        private static readonly int IsIdle = Animator.StringToHash("IsIdle");
 
         public MosquitoHouse MosquitoHouse => _mosquitoHouse;
 
@@ -58,6 +60,7 @@ namespace MoroshkovieKochki
             var path = new VertexPath(bezierPath, _outroPathTransform);
             
             await FlyToPoint(path);
+            _mosquitoAnimator.SetBool(IsIdle, true);
         }
 
         public async UniTask FlyIntro()
