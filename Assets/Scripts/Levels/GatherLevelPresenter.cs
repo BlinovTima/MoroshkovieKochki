@@ -23,13 +23,9 @@ namespace MoroshkovieKochki
                 return;
             
             var item = raycastHit2D.collider.GetComponent<InteractionItem>();
-            var road = raycastHit2D.collider.GetComponent<Road>();
 
             if (!item || _popupPresenter.NeedCloseCurrentPopup(item))
                 _popupPresenter.CloseCurrentPopup();
-
-            if (road)
-                await _character.GoTo(raycastHit2D.point).AttachExternalCancellation(_cancellationToken.Token);
 
             if (item)
             {
@@ -39,7 +35,6 @@ namespace MoroshkovieKochki
                 }
                 else
                 {
-                    await _character.GoTo(item.CharacterInteractionPoint.position).AttachExternalCancellation(_cancellationToken.Token);
                     await _popupPresenter.ShowPopUp(item).AttachExternalCancellation(_cancellationToken.Token);
                 }
             }
