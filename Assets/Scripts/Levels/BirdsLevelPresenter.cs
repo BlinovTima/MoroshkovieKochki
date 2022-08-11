@@ -5,11 +5,12 @@ using UnityEngine;
 
 namespace MoroshkovieKochki
 {
-    public class GatherLevelPresenter : GameLevelPresenter
+    public class BirdsLevelPresenter : GameLevelPresenter
     {
         public override void PrepareLevelForStart()
         {
             base.PrepareLevelForStart();
+            _character.SetAnimationPreset(CharacterAnimationPreset.Default);
             WaitResultsForCompleteLevel(_gameLevel.InteractionItems).Forget();
         }
 

@@ -4,16 +4,15 @@ using UnityEngine;
 
 namespace MoroshkovieKochki
 {
-    public class MushroomsLevelPresenter : GameLevelPresenter
+    public class BerriesLevelPresenter : GameLevelPresenter
     {
-        
         public override void PrepareLevelForStart()
         {
             base.PrepareLevelForStart();
-            _character.SetAnimationPreset(CharacterAnimationPreset.Basket);
+            _character.SetAnimationPreset(CharacterAnimationPreset.Box);
             WaitResultsForCompleteLevel(_gameLevel.InteractionItems).Forget();
         }
-        
+
         public override async void ClickAction(RaycastHit2D raycastHit2D, Vector3 mousePosition)
         {
             _cancellationToken?.Cancel();
@@ -25,13 +24,13 @@ namespace MoroshkovieKochki
             
             var item = raycastHit2D.collider.GetComponent<InteractionItem>();
             var road = raycastHit2D.collider.GetComponent<Road>();
-
+            
             if (!item || _popupPresenter.NeedCloseCurrentPopup(item))
                 _popupPresenter.CloseCurrentPopup();
 
             if (road)
                 await _character.GoTo(raycastHit2D.point).AttachExternalCancellation(_cancellationToken.Token);
-
+            
             if (item)
             {
                 if (item.IsCompleted)

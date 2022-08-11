@@ -12,12 +12,18 @@ namespace MoroshkovieKochki
         [SerializeField] private float _speed = 0.7f;
         [SerializeField] private SkeletonAnimation _skeletonAnimation;
         [SerializeField] private MeshRenderer _meshRenderer;
-        private Sequence _sequnce;
-        private bool _isGoingLeftCahce;
+        private Sequence _sequence;
+        private bool _isGoingLeftCache;
+        private AnimationPreset _animationPreset;
 
         public float BoundsXSize => _meshRenderer.bounds.size.x;
         public int SortingOrder => _meshRenderer.sortingOrder;
         public Vector3 Position => transform.position;
+
+        public void SetAnimationPreset(CharacterAnimationPreset preset)
+        {
+            _animationPreset = Animations.GetPreset(preset);
+        }
         
         public void SetPosition(Vector3 position)
         {
@@ -32,17 +38,17 @@ namespace MoroshkovieKochki
                 return;
 
             SetSideOrientation(newPosition);
-            SetAnimation("walk");
+            SetAnimation(_animationPreset.Walk);
 
-            _sequnce?.Kill();
-            _sequnce = DOTween.Sequence();
+            _sequence?.Kill();
+            _sequence = DOTween.Sequence();
             var duration = CalculateMoveTime(newPosition);
 
-            _sequnce.Append(transform.DOLocalMove(newPosition, duration).SetEase(Ease.Linear));
-            _sequnce.AppendCallback(() => SetAnimation("idle"));
-            _sequnce.SetAutoKill(true);
+            _sequence.Append(transform.DOLocalMove(newPosition, duration).SetEase(Ease.Linear));
+            _sequence.AppendCallback(() => SetAnimation(_animationPreset.Idle));
+            _sequence.SetAutoKill(true);
 
-            await _sequnce.AsyncWaitForKill();
+            await _sequence.AsyncWaitForKill();
         }
 
         private void SetAnimation(string animationName)
@@ -54,10 +60,10 @@ namespace MoroshkovieKochki
         {
             var isGoingLeft = transform.position.x > newPosition.x;
 
-            if (isGoingLeft == _isGoingLeftCahce)
+            if (isGoingLeft == _isGoingLeftCache)
                 return;
 
-            _isGoingLeftCahce = isGoingLeft;
+            _isGoingLeftCache = isGoingLeft;
 
             var localScale = transform.localScale;
             localScale.x *= -1;
