@@ -18,7 +18,7 @@ namespace MoroshkovieKochki
         [SerializeField] private Transform _outroPathTransform;
         [SerializeField] private Transform _mosquitoContainer;
         [SerializeField] private OutlineAnimation _outlineAnimation;
-        [SerializeField] private MeshRenderer _mosquitoMeshRenderer;
+        [SerializeField] private SpriteRenderer _mosquitoSpriteRenderer;
         [SerializeField] private float _flySpeed;
         
         private bool _isGoingLeftCahce;
@@ -106,14 +106,14 @@ namespace MoroshkovieKochki
 
         private void SetOrderInLayer()
         {
-            if(!_mosquitoMeshRenderer)
+            if(!_mosquitoSpriteRenderer)
                 return;
             
             var mosquitoWorldPosition = _mosquitoContainer.TransformPoint(_mosquitoContainer.position);
             if (mosquitoWorldPosition.y > _character.Position.y)
-                _mosquitoMeshRenderer.sortingOrder = _character.SortingOrder - 1;
+                _mosquitoSpriteRenderer.sortingOrder = _character.SortingOrder - 1;
             else
-                _mosquitoMeshRenderer.sortingOrder = _character.SortingOrder + 1;
+                _mosquitoSpriteRenderer.sortingOrder = _character.SortingOrder + 1;
         }
         
         private void SetSideOrientation(Vector3 newPosition)
