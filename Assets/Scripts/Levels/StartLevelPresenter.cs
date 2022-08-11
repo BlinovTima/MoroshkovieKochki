@@ -1,4 +1,5 @@
 ﻿
+using Cysharp.Threading.Tasks;
 using MoroshkovieKochki;
 using UnityEngine;
 
@@ -9,7 +10,19 @@ public sealed class StartLevelPresenter : GameLevelPresenter
     {
       
     }
-    
+
+    public override UniTask PlayIntro()
+    {
+        GameContext.AddGameState(GameState.HideScore);
+        return base.PlayIntro();
+    }
+
+    public override UniTask PlayOutro()
+    {
+        GameContext.RemoveGameState(GameState.HideScore);
+        return base.PlayOutro();
+    }
+
     public void Dispose()
     {
       
