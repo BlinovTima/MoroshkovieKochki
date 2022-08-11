@@ -47,7 +47,7 @@ namespace MoroshkovieKochki
 
         public async UniTask ShowPopUp(InteractionItem interactionItem)
         {
-            if(IsCachedPopup(interactionItem))
+            if(IsCachedPopup(interactionItem) && _currentPopup.ActiveInHierarchy)
                 return;
             
             _currentPopupDataName = interactionItem.gameObject.name;

@@ -32,12 +32,13 @@ namespace MoroshkovieKochki
         {
             if(IsCompleted)
                 return;
-            
-            IsCompleted = true;
-            
+
+
             if (value is BooleanClickResult clickResult) 
                 IsRightAdvice = ShouldSayYes == clickResult.ButtonClickValue;
 
+            IsCompleted = IsRightAdvice;
+            
             await _outlineAnimation.ShowOutline(IsRightAdvice);
             
             if(IsRightAdvice)
@@ -50,6 +51,10 @@ namespace MoroshkovieKochki
                     Animate(spriteRenderer).Forget();
                     await UniTask.Delay(_delayBetweenSwitchOffMilliseconds);
                 }
+            }
+            else if (!IsRightAdvice)
+            {
+                await _outlineAnimation.HideOutline();
             }
         }
 
