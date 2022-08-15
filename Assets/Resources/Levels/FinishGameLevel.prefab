@@ -39587,7 +39587,7 @@ Transform:
   - {fileID: 8047881886977400955}
   - {fileID: 5096306457816287700}
   - {fileID: 7174453647538606487}
-  - {fileID: 7809977279157663177}
+  - {fileID: 6968169103312920331}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -44558,8 +44558,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -0.184, y: 0}
+  m_SizeDelta: {x: 0.369, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5958066721185002698
 CanvasRenderer:
@@ -44691,23 +44691,13 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!1001 &842713652796147575
+--- !u!1001 &531600194966957493
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 5652155840659802182}
     m_Modifications:
-    - target: {fileID: 5383982641083766012, guid: 2f43be1fd0e608345be6e062b483be23,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.52
-      objectReference: {fileID: 0}
-    - target: {fileID: 5383982641083766012, guid: 2f43be1fd0e608345be6e062b483be23,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1.05
-      objectReference: {fileID: 0}
     - target: {fileID: 6545210225592834416, guid: 2f43be1fd0e608345be6e062b483be23,
         type: 3}
       propertyPath: _animationName
@@ -44726,12 +44716,12 @@ PrefabInstance:
     - target: {fileID: 7481454724187239102, guid: 2f43be1fd0e608345be6e062b483be23,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -13.35
+      value: -13.85
       objectReference: {fileID: 0}
     - target: {fileID: 7481454724187239102, guid: 2f43be1fd0e608345be6e062b483be23,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -16.57
+      value: -18.01
       objectReference: {fileID: 0}
     - target: {fileID: 7481454724187239102, guid: 2f43be1fd0e608345be6e062b483be23,
         type: 3}
@@ -44790,9 +44780,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2f43be1fd0e608345be6e062b483be23, type: 3}
---- !u!4 &7809977279157663177 stripped
+--- !u!4 &6968169103312920331 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7481454724187239102, guid: 2f43be1fd0e608345be6e062b483be23,
     type: 3}
-  m_PrefabInstance: {fileID: 842713652796147575}
+  m_PrefabInstance: {fileID: 531600194966957493}
   m_PrefabAsset: {fileID: 0}
