@@ -44610,6 +44610,7 @@ GameObject:
   - component: {fileID: 7269306187634091819}
   - component: {fileID: 7989441954645835210}
   - component: {fileID: 6649141213153485371}
+  - component: {fileID: 6965792790107912894}
   m_Layer: 0
   m_Name: Label
   m_TagString: Untagged
@@ -44691,6 +44692,23 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &6965792790107912894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8901366284429731540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!1001 &531600194966957493
 PrefabInstance:
   m_ObjectHideFlags: 0
