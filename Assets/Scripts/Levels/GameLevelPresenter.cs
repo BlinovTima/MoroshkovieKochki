@@ -17,6 +17,8 @@ namespace MoroshkovieKochki
         private LevelTaskPopupPresenter _levelTaskPopupPresenter;
         protected CancellationTokenSource _cancellationToken = new CancellationTokenSource();
         protected Character _character;
+        protected bool _isIntroCompleted;
+        protected bool _isClickActionInProgress;
 
 
         public bool HasLevelInited => _gameLevel != null;
@@ -41,6 +43,7 @@ namespace MoroshkovieKochki
         protected async UniTask WaitResultsForCompleteLevel(IEnumerable<InteractionItem> interactionItems)
         {
             await UniTask.WaitUntil(() => interactionItems.All(x => x.IsCompleted));
+            await UniTask.WaitUntil(() => !_isClickActionInProgress);
             CompleteLevel();
         }
 
@@ -81,6 +84,7 @@ namespace MoroshkovieKochki
         public virtual async UniTask PlayIntro()
         {
             await _gameLevel.PlayIntro();
+            _isIntroCompleted = true;
         }
 
         public async UniTask ConfirmLevelTask()

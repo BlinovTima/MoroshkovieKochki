@@ -379,7 +379,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 0.71
+  m_PixelsPerUnitMultiplier: 0.4
 --- !u!1 &4050410305081869485
 GameObject:
   m_ObjectHideFlags: 0
@@ -500,7 +500,7 @@ GameObject:
   - component: {fileID: 5389927495696017644}
   - component: {fileID: 5389927495696017645}
   m_Layer: 5
-  m_Name: GatherPopup
+  m_Name: TwoButtonsPopUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -637,8 +637,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0.58000004}
-  m_AnchoredPosition: {x: 3.22, y: 5.2700043}
-  m_SizeDelta: {x: 91.58, y: -95.54}
+  m_AnchoredPosition: {x: 3.22, y: -6}
+  m_SizeDelta: {x: 91.6, y: -118.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5389927496256160081
 CanvasRenderer:
@@ -956,8 +956,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 51.9, y: 0}
+  m_AnchoredPosition: {x: -4.159973, y: 0}
+  m_SizeDelta: {x: 43.57996, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5389927497212159402
 CanvasRenderer:
@@ -1045,7 +1045,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -0.2, y: 136.03}
-  m_SizeDelta: {x: 631.67, y: 251.23}
+  m_SizeDelta: {x: 617.9, y: 241.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &886426315914808955
 MonoBehaviour:

@@ -50,9 +50,11 @@ namespace MoroshkovieKochki
             transform.localPosition = position;
         }
 
-        public void PlaySay() => SetAnimation(_animationPreset.Say);
-        public void PlayIdle() => SetAnimation(_animationPreset.Idle);
-        
+        public void PlaySay() => SetAnimation(_animationPreset.Say).Forget();
+        public void PlayIdle() => SetAnimation(_animationPreset.Idle).Forget();
+
+        public async UniTask PlayGather() => await SetAnimation(_animationPreset.Take, false);
+
         public async UniTask GoTo(Vector3 newPosition)
         {
             newPosition.z = 0;
@@ -61,22 +63,23 @@ namespace MoroshkovieKochki
                 return;
 
             SetSideOrientation(newPosition);
-            SetAnimation(_animationPreset.Walk);
+            SetAnimation(_animationPreset.Walk).Forget();
 
             _sequence?.Kill();
             _sequence = DOTween.Sequence();
             var duration = CalculateMoveTime(newPosition);
 
             _sequence.Append(transform.DOLocalMove(newPosition, duration).SetEase(Ease.Linear));
-            _sequence.AppendCallback(() => SetAnimation(_animationPreset.Idle));
+            _sequence.AppendCallback(() => SetAnimation(_animationPreset.Idle).Forget());
             _sequence.SetAutoKill(true);
 
             await _sequence.AsyncWaitForKill();
         }
 
-        private void SetAnimation(string animationName)
+        private async UniTask SetAnimation(string animationName, bool isLoop = true)
         {
-            _skeletonAnimation.AnimationName = animationName;
+            var track = _skeletonAnimation.state.SetAnimation(0, animationName, isLoop);
+            await new WaitForSpineAnimationComplete(track);
         }
 
         private void SetSideOrientation(Vector3 newPosition)

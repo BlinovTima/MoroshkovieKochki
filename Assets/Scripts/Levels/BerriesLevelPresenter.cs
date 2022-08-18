@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System;
+using System.Threading;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
@@ -15,33 +16,58 @@ namespace MoroshkovieKochki
 
         public override async void ClickAction(RaycastHit2D raycastHit2D, Vector3 mousePosition)
         {
-            _cancellationToken?.Cancel();
-            _cancellationToken = new CancellationTokenSource();
-
-            var isMouseInsidePopup = _popupPresenter.IsPointInPopup(mousePosition);
-            if (isMouseInsidePopup)
+            if(!_isIntroCompleted)
                 return;
-            
-            var item = raycastHit2D.collider.GetComponent<InteractionItem>();
-            var road = raycastHit2D.collider.GetComponent<Road>();
-            
-            if (!item || _popupPresenter.NeedCloseCurrentPopup(item))
-                _popupPresenter.CloseCurrentPopup();
 
-            if (road)
-                await _character.GoTo(raycastHit2D.point).AttachExternalCancellation(_cancellationToken.Token);
-            
-            if (item)
+            try
             {
-                if (item.IsCompleted)
+                _isClickActionInProgress = true;
+
+                _cancellationToken?.Cancel();
+                _cancellationToken?.Dispose();
+                _cancellationToken = new CancellationTokenSource();
+
+                var isMouseInsidePopup = _popupPresenter.IsPointInPopup(mousePosition);
+                if (isMouseInsidePopup)
+                    return;
+
+                var item = raycastHit2D.collider.GetComponent<BushItem>();
+                var road = raycastHit2D.collider.GetComponent<Road>();
+
+                if (!item || _popupPresenter.NeedCloseCurrentPopup(item))
+                    _popupPresenter.CloseCurrentPopup();
+
+                if (road)
+                    await _character.GoTo(raycastHit2D.point)
+                        .AttachExternalCancellation(_cancellationToken.Token);
+
+                if (item)
                 {
-                    Debug.LogError("Уже нельзя");
+                    if (item.IsCompleted)
+                    {
+                        Debug.LogError("Уже нельзя");
+                    }
+                    else
+                    {
+                        await _character.GoTo(item.CharacterInteractionPoint.position)
+                            .AttachExternalCancellation(_cancellationToken.Token);
+                        await _popupPresenter.ShowPopUp(item).AttachExternalCancellation(_cancellationToken.Token);
+                    }
+
+                    await UniTask.WaitUntil(() => !_popupPresenter.IsPopupOpen);
+
+                    if (item.IsCompleted && item.ShouldGather)
+                    {
+                        await _character.PlayGather().AttachExternalCancellation(_cancellationToken.Token);
+                        _character.PlayIdle();
+                    }
                 }
-                else
-                {
-                    await _character.GoTo(item.CharacterInteractionPoint.position).AttachExternalCancellation(_cancellationToken.Token);
-                    await _popupPresenter.ShowPopUp(item).AttachExternalCancellation(_cancellationToken.Token);
-                }
+
+                _isClickActionInProgress = false;
+            }
+            catch (Exception ex)
+            {
+                Debug.LogWarning("Отмена действия " + ex);
             }
         }
     }

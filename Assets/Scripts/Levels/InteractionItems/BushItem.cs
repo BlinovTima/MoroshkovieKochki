@@ -8,7 +8,7 @@ namespace MoroshkovieKochki
 {
     public sealed class BushItem : InteractionItem
     {
-        [SerializeField] public bool ShouldSayYes;
+        [SerializeField] public bool ShouldGather;
         
         [Header("OnClick settings")]
         [SerializeField] private OutlineAnimation _outlineAnimation;
@@ -35,7 +35,7 @@ namespace MoroshkovieKochki
 
 
             if (value is BooleanClickResult clickResult) 
-                IsRightAdvice = ShouldSayYes == clickResult.ButtonClickValue;
+                IsRightAdvice = ShouldGather == clickResult.ButtonClickValue;
 
             IsCompleted = IsRightAdvice;
             
@@ -44,7 +44,7 @@ namespace MoroshkovieKochki
             if(IsRightAdvice)
                 GameContext.AddScoreValue(1);
             
-            if (IsRightAdvice && ShouldSayYes)
+            if (IsRightAdvice && ShouldGather)
             {
                 foreach (var spriteRenderer in _berries)
                 {
