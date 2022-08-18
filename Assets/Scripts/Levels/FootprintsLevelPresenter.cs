@@ -19,8 +19,8 @@ namespace MoroshkovieKochki
         
         public override void PrepareLevelForStart()
         {
-            base.PrepareLevelForStart();
             _character.SetAnimationPreset(CharacterAnimationPreset.Default);
+            base.PrepareLevelForStart();
             WaitResultsForCompleteLevel(_gameLevel.InteractionItems).Forget();
         }
 
