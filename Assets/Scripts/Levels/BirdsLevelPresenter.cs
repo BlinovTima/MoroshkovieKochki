@@ -14,7 +14,7 @@ namespace MoroshkovieKochki
             WaitResultsForCompleteLevel(_gameLevel.InteractionItems).Forget();
         }
 
-        public override async void ClickAction(RaycastHit2D raycastHit2D, Vector3 mousePosition)
+        public override async UniTaskVoid ClickAction(RaycastHit2D raycastHit2D, Vector3 mousePosition)
         {
             _cancellationToken?.Cancel();
             _cancellationToken = new CancellationTokenSource();

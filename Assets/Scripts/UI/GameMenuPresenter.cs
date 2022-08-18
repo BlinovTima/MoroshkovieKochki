@@ -5,42 +5,37 @@ namespace MoroshkovieKochki
 {
     public class GameMenuPresenter
     {
-        private GameMenu _gameMenu;
+        private readonly GameMenu _gameMenu;
 
         public GameMenuPresenter(GameMenu gameMenu, Action onPlayButton)
         {
             _gameMenu = gameMenu;
-            gameMenu.Init(onPlayButton);
+            gameMenu.Init(onPlayButton, SwitchMenu);
         }
 
         public void ShowMenu()
         {
-            _gameMenu.SetActive(true);
+            Time.timeScale = 0f;
+            _gameMenu.Show();
+            GameContext.AddGameState(GameState.Menu);
         }  
         
         public void HideMenu()
         {
-            _gameMenu.SetActive(false);
+            _gameMenu.Hide();
+            Time.timeScale = 1f;
+            GameContext.RemoveGameState(GameState.Menu);
         }
         
         public void SwitchMenu()
         {
-            var isMenuActive = _gameMenu.gameObject.activeInHierarchy;
+            if(!GameContext.HasGameProgress)
+                return;
             
-            if(isMenuActive)
-            {
-                Time.timeScale = 1f;
-                GameContext.RemoveGameState(GameState.Menu);
-            }
+            if(_gameMenu.IsMenuOpen)
+                HideMenu();
             else
-            {
-                Time.timeScale = 0f;
-                GameContext.AddGameState(GameState.Menu);
-            }
-            
-            _gameMenu.SetActive(!isMenuActive);
-            
-            
+                ShowMenu();
         }
     }
 }

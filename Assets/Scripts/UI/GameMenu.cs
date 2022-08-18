@@ -9,21 +9,25 @@ namespace MoroshkovieKochki
     public class GameMenu : MonoBehaviour
     {
         [SerializeField] private TMP_Text _playNewButtonText;
-  
         [SerializeField] private TMP_Text _exitButtonText;
+        [SerializeField] private Transform _resumeButtonContainer;
+        
         [Space(10)]
         [SerializeField] private string _playNewButtonLabel;
         [SerializeField] private string _replayWrongButtonLabel;
         [SerializeField] private string _exitButtonLabel;
         [Space(10)]
+        [SerializeField] private Button _resumeButton;
         [SerializeField] private Button _playButton;
         [SerializeField] private Button _exitButton;
 
-
-        public void Init(Action onPlayButton)
+        public bool IsMenuOpen => gameObject.activeInHierarchy;
+        
+        public void Init(Action playButton, Action onResumeButton)
         {
             _exitButton.onClick.AddListener(Application.Quit);
-            _playButton.onClick.AddListener(onPlayButton.Invoke);
+            _playButton.onClick.AddListener(playButton.Invoke);
+            _resumeButton.onClick.AddListener(onResumeButton.Invoke);
             
             SetupButtons();
         }
@@ -39,7 +43,18 @@ namespace MoroshkovieKochki
             _playNewButtonText.text = GameContext.GameIsFinished ? _replayWrongButtonLabel : _playNewButtonLabel;
         }
 
-        public void SetActive(bool isActive)
+        public void Show()
+        {
+            _resumeButtonContainer.gameObject.SetActive(GameContext.HasGameProgress);
+            SetActive(true);
+        }
+        
+        public void Hide()
+        {
+            SetActive(false);
+        }
+
+        private void SetActive(bool isActive)
         {
             gameObject.SetActive(isActive);
         }
@@ -48,6 +63,7 @@ namespace MoroshkovieKochki
         {
             _exitButton.onClick.RemoveAllListeners();
             _playButton.onClick.RemoveAllListeners();
+            _resumeButton.onClick.RemoveAllListeners();
         }
     }
 }

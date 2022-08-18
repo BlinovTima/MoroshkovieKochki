@@ -11,6 +11,7 @@ namespace MoroshkovieKochki
 
         
         private static GameContext _instance;
+        private int _passedLevels;
 
         private static GameContext Instance
         {
@@ -23,10 +24,13 @@ namespace MoroshkovieKochki
             }
         }
 
+        public static bool HasGameProgress => Instance._passedLevels > 0;
         public static bool GameIsFinished { get; set; }
         public static event Action<int> OnScoreUpdated = x => { };
         public static event Action<GameState> OnGameStateUpdated = x => { };
 
+        public static void AddLevelPassed() => Instance._passedLevels += 1;
+        
         public static void AddScoreValue(int value)
         {
             Instance._score += value;
@@ -37,6 +41,7 @@ namespace MoroshkovieKochki
         {
             GameIsFinished = false;
             _score = 0;
+            _passedLevels = 0;
         }
 
         public static void Reset()

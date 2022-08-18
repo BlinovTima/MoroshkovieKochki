@@ -1,18 +1,21 @@
-﻿using Cysharp.Threading.Tasks;
+﻿using System;
+using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
 
 
-public class ScorePanel : MonoBehaviour
+public class HudPanel : MonoBehaviour
 {
    [SerializeField] private CanvasGroup _canvasGroup;
    [SerializeField] private TMP_Text _scoreLabel;
    [SerializeField] private float _fadeTime = 1f;
+   [SerializeField] private UnityEngine.UI.Button _menuButton;
    
 
-   public void Init(int scoreValue)
+   public void Init(int scoreValue, Action onMenuButtonClick)
    {
+      _menuButton.onClick.AddListener(onMenuButtonClick.Invoke);
       SetScoreValue(scoreValue);
       SetActive(false);
    }

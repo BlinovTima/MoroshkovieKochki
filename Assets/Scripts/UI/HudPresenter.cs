@@ -2,14 +2,14 @@
 using Cysharp.Threading.Tasks;
 using MoroshkovieKochki;
 
-public class ScorePanelPresenter : IDisposable
+public class HudPresenter : IDisposable
 {
-    private readonly ScorePanel _scorePanel;
+    private readonly HudPanel _hudPanel;
 
-    public ScorePanelPresenter(ScorePanel scorePanel)
+    public HudPresenter(HudPanel hudPanel, Action onMenuButtonClick)
     {
-        _scorePanel = scorePanel;
-        _scorePanel.Init(0);
+        _hudPanel = hudPanel;
+        _hudPanel.Init(0, onMenuButtonClick);
         GameContext.OnScoreUpdated += UpdateScore;
         GameContext.OnGameStateUpdated += UpdateVisuals;
     }
@@ -19,7 +19,7 @@ public class ScorePanelPresenter : IDisposable
         if (state.HasFlag(GameState.Menu)
             || state.HasFlag(GameState.HideScore))
         {
-            _scorePanel.SetActive(false);
+            _hudPanel.SetActive(false);
             return;
         }
             
@@ -35,17 +35,17 @@ public class ScorePanelPresenter : IDisposable
 
     private void UpdateScore(int value)
     {
-        _scorePanel.SetScoreValue(value);
+        _hudPanel.SetScoreValue(value);
     }
 
     private async UniTask Show()
     {
-        await _scorePanel.Show();
+        await _hudPanel.Show();
     }
 
     private async UniTask Hide()
     {
-        await _scorePanel.Hide();
+        await _hudPanel.Hide();
     }
 
     public void Dispose()

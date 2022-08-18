@@ -21,7 +21,7 @@ namespace MoroshkovieKochki
         protected bool _isClickActionInProgress;
 
 
-        public bool HasLevelInited => _gameLevel != null;
+        public bool HasLevelInited { get; private set; }
 
         public virtual void Init(
             GameLevel gameLevel,
@@ -37,6 +37,7 @@ namespace MoroshkovieKochki
 
             _gameLevel = gameLevel;
             _gameLevel.Init(this, _character.BoundsXSize);
+            HasLevelInited = true;
         }
 
 
@@ -50,7 +51,7 @@ namespace MoroshkovieKochki
         public virtual void PrepareLevelForStart()
         {
             SetupCharacter(_character);
-            InputListener.OnLeftMouseButtonClick += ClickAction;
+            InputListener.OnLeftMouseButtonClick += OnClickAction;
         }
 
         public void CompleteLevel()
@@ -64,12 +65,16 @@ namespace MoroshkovieKochki
         {
             await _character.GoTo(destinationPosition);
         }
-
-        public abstract void ClickAction(RaycastHit2D raycastHit2D, Vector3 mousePosition);
+        
+        private void OnClickAction(RaycastHit2D raycastHit2D, Vector3 mousePosition)
+            => ClickAction(raycastHit2D, mousePosition);
+        
+        public abstract UniTaskVoid ClickAction(RaycastHit2D raycastHit2D, Vector3 mousePosition);
 
         private void SetupCharacter(Character character)
         {
             _character = character;
+            _character.KillAnimation();
             _character.SetScale(ScaleType.Default);
             _character.PlayIdle();
             _character.transform.SetParent(_gameLevel.CharacterParent, false);
@@ -94,11 +99,13 @@ namespace MoroshkovieKochki
 
         public void Dispose()
         {
+            HasLevelInited = false;
             _gameLevel.Dispose();
             Object.Destroy(_gameLevel.gameObject);
             _popupPresenter.Dispose();
-            InputListener.OnLeftMouseButtonClick -= ClickAction;
+            InputListener.OnLeftMouseButtonClick -= OnClickAction;
             _cancellationToken?.Cancel();
+            _cancellationToken?.Dispose();
             _cancellationToken = new CancellationTokenSource();
         }
     }

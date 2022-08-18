@@ -22,7 +22,8 @@ namespace MoroshkovieKochki
         private Sequence _sequence;
         private bool _isGoingLeftCache;
         private AnimationPreset _animationPreset;
-
+  
+        
         public float BoundsXSize => _meshRenderer.bounds.size.x;
         public int SortingOrder => _meshRenderer.sortingOrder;
         public Vector3 Position => transform.position;
@@ -55,6 +56,12 @@ namespace MoroshkovieKochki
 
         public async UniTask PlayGather() => await SetAnimation(_animationPreset.Take, false);
 
+        public void KillAnimation()
+        {
+            _sequence?.Kill();
+            _sequence = null;
+        }
+        
         public async UniTask GoTo(Vector3 newPosition)
         {
             newPosition.z = 0;

@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Cysharp.Threading.Tasks;
+﻿using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 
@@ -13,7 +12,7 @@ namespace MoroshkovieKochki
         [Header("Menu settings")] [SerializeField]
         private GameMenu _gameMenu;
 
-        [SerializeField] private ScorePanel _scorePanel;
+        [SerializeField] private HudPanel hudPanel;
         [SerializeField] private RectTransform _popupsParent;
         [SerializeField] private WindowSwitcher _windowSwitcher;
 
@@ -24,7 +23,7 @@ namespace MoroshkovieKochki
         private int? _levelIndex;
         private GameLevelPresenter _gameLevelPresenter;
         private PopupPresenter _popupPresenter;
-        private ScorePanelPresenter _scorePanelPresenter;
+        private HudPresenter _hudPresenter;
         private LevelTaskPopupPresenter _levelTaskPopupPresenter;
         private LevelsFabric _levelsFabric;
         private Character _character;
@@ -35,24 +34,18 @@ namespace MoroshkovieKochki
         private void Awake()
         {
             RegisterAllSystems();
+            DontDestroyOnLoad(gameObject);
         }
 
         private void RegisterAllSystems()
         {
             InstantiateCharacter();
             
-            _scorePanelPresenter = new ScorePanelPresenter(_scorePanel);
-
-            _gameMenuPresenter = new GameMenuPresenter(_gameMenu,
-                () =>
-                {
-                    if (GameContext.GameIsFinished)
-                        ResetGame();
-                    
-                    StartNextLevel().Forget();
-                });
+            _gameMenuPresenter = new GameMenuPresenter(_gameMenu, StartNewGame);
             InputListener.OnEscKeyGet += _gameMenuPresenter.SwitchMenu;
-            
+
+            _hudPresenter = new HudPresenter(hudPanel, _gameMenuPresenter.SwitchMenu);
+
             _levelsFabric = new LevelsFabric(_levelParent,
                 _popupsParent,
                 _character,
@@ -62,9 +55,10 @@ namespace MoroshkovieKochki
             _gameMenuPresenter.ShowMenu();
         }
 
-        private void SwitchGameMenu()
+        private void StartNewGame()
         {
-            _gameMenuPresenter.SwitchMenu();
+            ResetGame();
+            StartNextLevel().Forget();
         }
 
         private async UniTask StartNextLevel()
@@ -74,19 +68,12 @@ namespace MoroshkovieKochki
 
             if (HasCurrentLevel)
                 await _gameLevelPresenter.PlayOutro();
-
-            await _windowSwitcher.SwitchWindow(() =>
-            {
-                if (!TryLoadLevel())
-                {
-                    GameContext.GameIsFinished = true;
-                    _gameMenuPresenter.ShowMenu();
-                    GameContext.RemoveGameState(GameState.CutScene);
-                }
-            });
+            
+            await _windowSwitcher.SwitchWindow(LoadLevel);
 
             if (!GameContext.GameIsFinished && HasCurrentLevel)
             {
+                GameContext.AddLevelPassed();
                 await _gameLevelPresenter.PlayIntro();
                 
                 GameContext.RemoveGameState(GameState.CutScene);
@@ -94,7 +81,7 @@ namespace MoroshkovieKochki
             }
         }
 
-        private bool TryLoadLevel()
+        private void LoadLevel()
         {
             _gameMenuPresenter.HideMenu();
 
@@ -108,17 +95,21 @@ namespace MoroshkovieKochki
             {
                 _gameLevelPresenter = gameLevelPresenter;
                 _gameLevelPresenter.PrepareLevelForStart();
-                return true;
+                return;
             }
             
             _gameLevelPresenter = null;
             GameContext.GameIsFinished = true;
-            return false;
-            
+            _gameMenuPresenter.ShowMenu();
+            GameContext.RemoveGameState(GameState.CutScene);
         }
 
         private void ResetGame()
         {
+            Time.timeScale = 1f;
+            _character.KillAnimation();
+            _character.transform.SetParent(transform.root, false);
+            _gameLevelPresenter?.Dispose();
             GameContext.Reset();
             _levelsFabric.InitLevels();
         }
@@ -131,7 +122,7 @@ namespace MoroshkovieKochki
         
         private void OnApplicationQuit()
         {
-            _scorePanelPresenter.Dispose();
+            _hudPresenter.Dispose();
             InputListener.OnEscKeyGet -= _gameMenuPresenter.SwitchMenu;
         }
     }

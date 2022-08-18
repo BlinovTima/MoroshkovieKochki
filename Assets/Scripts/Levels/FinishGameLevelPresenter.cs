@@ -5,9 +5,9 @@ using UnityEngine;
 public sealed class FinishGameLevelPresenter : GameLevelPresenter
 {
 
-    public override void ClickAction(RaycastHit2D raycastHit2D, Vector3 mousePosition)
+    public override async UniTaskVoid ClickAction(RaycastHit2D raycastHit2D, Vector3 mousePosition)
     {
-      
+        await UniTask.Yield();
     }
     
     public override UniTask PlayIntro()
