@@ -175,6 +175,9 @@ MonoBehaviour:
   _speed: 5
   _skeletonAnimation: {fileID: 6545210225592834416}
   _meshRenderer: {fileID: 6545210225592834417}
+  _skeletonTransform: {fileID: 5383982641083766012}
+  _defaultScale: {x: 0.45, y: 0.45, z: 0.45}
+  _titleScale: {x: 1, y: 1, z: 1}
 --- !u!1 &8764315728903215736
 GameObject:
   m_ObjectHideFlags: 0

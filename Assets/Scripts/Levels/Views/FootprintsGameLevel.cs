@@ -17,6 +17,8 @@ namespace MoroshkovieKochki
             float characterXBound)
         {
             base.Init(eventReceiver, characterXBound);
+            
+            _initialPosition.MovePositionBehindFrustrum(_characterXBound);
             _outroPosition.MovePositionBehindFrustrum(_characterXBound);
         }
         

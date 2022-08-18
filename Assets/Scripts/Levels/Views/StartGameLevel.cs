@@ -11,6 +11,7 @@ namespace MoroshkovieKochki
             float characterXBound)
         {
             base.Init(eventReceiver, characterXBound);
+            
             _startGameButton.onClick.AddListener(eventReceiver.CompleteLevel);
         }
 

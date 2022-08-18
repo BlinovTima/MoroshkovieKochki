@@ -67,6 +67,8 @@ namespace MoroshkovieKochki
         private void SetupCharacter(Character character)
         {
             _character = character;
+            _character.SetScale(ScaleType.Default);
+            _character.PlayIdle();
             _character.transform.SetParent(_gameLevel.CharacterParent, false);
             _character.SetPosition(_gameLevel.InitialPosition.position);
         }

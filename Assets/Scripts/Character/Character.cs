@@ -1,3 +1,4 @@
+using System;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using Spine.Unity;
@@ -6,12 +7,18 @@ using UnityEngine;
 
 namespace MoroshkovieKochki
 {
-    public sealed class Character : MonoBehaviour
+    public sealed partial class Character : MonoBehaviour
     {
         [SerializeField] private float _minAnimationDistance = 0.1f;
         [SerializeField] private float _speed = 0.7f;
         [SerializeField] private SkeletonAnimation _skeletonAnimation;
         [SerializeField] private MeshRenderer _meshRenderer;
+        [SerializeField] private Transform _skeletonTransform;
+
+        [Header("Scale setup")]
+        [SerializeField] private Vector3 _defaultScale = new Vector3(0.45f, 0.45f, 0.45f);
+        [SerializeField] private Vector3 _titleScale = new Vector3(0.7f, 0.7f, 0.7f);
+        
         private Sequence _sequence;
         private bool _isGoingLeftCache;
         private AnimationPreset _animationPreset;
@@ -20,6 +27,19 @@ namespace MoroshkovieKochki
         public int SortingOrder => _meshRenderer.sortingOrder;
         public Vector3 Position => transform.position;
 
+        public void SetScale(ScaleType scaleType)
+        {
+            switch (scaleType)
+            {
+                case ScaleType.Default:
+                    _skeletonTransform.localScale = _defaultScale;
+                    break;
+                case ScaleType.Title:
+                    _skeletonTransform.localScale = _titleScale;
+                    break;
+            }
+        }
+        
         public void SetAnimationPreset(CharacterAnimationPreset preset)
         {
             _animationPreset = Animations.GetPreset(preset);
@@ -30,6 +50,9 @@ namespace MoroshkovieKochki
             transform.localPosition = position;
         }
 
+        public void PlaySay() => SetAnimation(_animationPreset.Say);
+        public void PlayIdle() => SetAnimation(_animationPreset.Idle);
+        
         public async UniTask GoTo(Vector3 newPosition)
         {
             newPosition.z = 0;

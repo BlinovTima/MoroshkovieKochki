@@ -15,6 +15,7 @@ namespace MoroshkovieKochki
             _eventReceiver = eventReceiver;
             base.Init(eventReceiver, characterXBound);
 
+            _initialPosition.MovePositionBehindFrustrum(_characterXBound);
             _outroPosition.MovePositionBehindFrustrum(_characterXBound);
         }
 

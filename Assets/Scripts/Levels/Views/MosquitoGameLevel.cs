@@ -16,6 +16,8 @@ namespace MoroshkovieKochki
         public override void Init(IGameLevelEventReceiver eventReceiver, float characterXBound)
         {
             base.Init(eventReceiver, characterXBound);
+            
+            _initialPosition.MovePositionBehindFrustrum(_characterXBound);
             _outroPosition.MovePositionBehindFrustrum(_characterXBound);
         }
         

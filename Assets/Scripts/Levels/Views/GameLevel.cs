@@ -44,8 +44,6 @@ namespace MoroshkovieKochki
         {
             _characterXBound = characterXBound;
             _eventReceiver = eventReceiver;
-            
-            _initialPosition.MovePositionBehindFrustrum(_characterXBound);
         }
 
         public virtual async UniTask PlayIntro()
