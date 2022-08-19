@@ -32,9 +32,9 @@ namespace MoroshkovieKochki
         public void InitLevels()
         {
             _levelsQueue = new Queue<Func<GameLevelPresenter>>();
-            _levelsQueue.Enqueue(InitLevel<MushroomsGameLevel, MushroomsLevelPresenter>);
             _levelsQueue.Enqueue(InitLevel<BirdsGameLevel, BirdsLevelPresenter>);
             _levelsQueue.Enqueue(InitLevel<MosquitoGameLevel, MosquitoLevelPresenter>);
+            _levelsQueue.Enqueue(InitLevel<MushroomsGameLevel, MushroomsLevelPresenter>);
             _levelsQueue.Enqueue(InitLevel<FinishGameLevel, FinishGameLevelPresenter>);
             _levelsQueue.Enqueue(InitLevel<FootprintsGameLevel, FootprintsLevelPresenter>);
             _levelsQueue.Enqueue(InitLevel<BerriesGameLevel, BerriesLevelPresenter>);
