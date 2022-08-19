@@ -9,9 +9,9 @@ namespace MoroshkovieKochki
     {
         public override void PrepareLevelForStart()
         {
-            base.PrepareLevelForStart();
             _character.SetAnimationPreset(CharacterAnimationPreset.Default);
             WaitResultsForCompleteLevel(_gameLevel.InteractionItems).Forget();
+            base.PrepareLevelForStart();
         }
 
         public override async UniTaskVoid ClickAction(RaycastHit2D raycastHit2D, Vector3 mousePosition)

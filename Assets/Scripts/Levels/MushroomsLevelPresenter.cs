@@ -9,13 +9,17 @@ namespace MoroshkovieKochki
         
         public override void PrepareLevelForStart()
         {
-            base.PrepareLevelForStart();
             _character.SetAnimationPreset(CharacterAnimationPreset.Basket);
             WaitResultsForCompleteLevel(_gameLevel.InteractionItems).Forget();
+            base.PrepareLevelForStart();
         }
         
         public override async UniTaskVoid ClickAction(RaycastHit2D raycastHit2D, Vector3 mousePosition)
         {
+            if (!_isIntroCompleted)
+                return;
+            
+            _isClickActionInProgress = true;
             _cancellationToken?.Cancel();
             _cancellationToken = new CancellationTokenSource();
 
@@ -23,14 +27,15 @@ namespace MoroshkovieKochki
             if (isMouseInsidePopup)
                 return;
             
-            var item = raycastHit2D.collider.GetComponent<InteractionItem>();
+            var item = raycastHit2D.collider.GetComponent<GatherItem>();
             var road = raycastHit2D.collider.GetComponent<Road>();
 
             if (!item || _popupPresenter.NeedCloseCurrentPopup(item))
                 _popupPresenter.CloseCurrentPopup();
 
             if (road)
-                await _character.GoTo(raycastHit2D.point).AttachExternalCancellation(_cancellationToken.Token);
+                await _character.GoTo(raycastHit2D.point)
+                    .AttachExternalCancellation(_cancellationToken.Token);
 
             if (item)
             {
@@ -42,8 +47,18 @@ namespace MoroshkovieKochki
                 {
                     await _character.GoTo(item.CharacterInteractionPoint.position).AttachExternalCancellation(_cancellationToken.Token);
                     await _popupPresenter.ShowPopUp(item).AttachExternalCancellation(_cancellationToken.Token);
+                    
+                    await UniTask.WaitUntil(() => !_popupPresenter.IsPopupOpen);
+
+                    if (item.IsCompleted && item.ShouldSayYes)
+                    {
+                        await _character.PlayGather().AttachExternalCancellation(_cancellationToken.Token);
+                        _character.PlayIdle();
+                    }
                 }
             }
+            
+            _isClickActionInProgress = false;
         }
     }
 }
