@@ -9,7 +9,13 @@ public sealed class FinishGameLevelPresenter : GameLevelPresenter
     {
         await UniTask.Yield();
     }
-    
+
+    public override void PrepareLevelForStart()
+    {
+        _character.SetAnimationPreset(CharacterAnimationPreset.Default);
+        base.PrepareLevelForStart();
+    }
+
     public override UniTask PlayIntro()
     {
         GameContext.AddGameState(GameState.HideScore);
