@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace MoroshkovieKochki
 {
-    internal class FootprintsPopup : ItemPopup, IDisposable
+    internal class InfoPopup : ItemPopup, IDisposable
     {
         [SerializeField] private Image _image;
         [SerializeField] private TMP_Text _desription;
@@ -13,6 +13,13 @@ namespace MoroshkovieKochki
 
         public Animals RightAnswer => _rightAnswer;
 
+        public void Init(InteractionItem item)
+        {
+            Dispose();
+            _image.sprite = item.Sprite;
+            _desription.text = item.Desription;
+        }   
+        
         public void Init(FootprintsItem item)
         {
             Dispose();

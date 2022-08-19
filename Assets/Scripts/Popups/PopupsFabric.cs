@@ -8,7 +8,7 @@ namespace MoroshkovieKochki
     {
         private readonly RectTransform _popupsParent;
         private TwoButtonsPopUp _twoButtonsPopUpCache;
-        private FootprintsPopup _footprintsPopupCache;
+        private InfoPopup _infoPopupCache;
         private OneButtonPopUp _oneButtonPopUpPopupCache;
 
         public PopupsFabric(RectTransform popupsParent)
@@ -29,11 +29,11 @@ namespace MoroshkovieKochki
         {
             if (interactionItem is MosquitoItem)
             {
-                if(!_twoButtonsPopUpCache)
-                    _twoButtonsPopUpCache = CreatePopup<TwoButtonsPopUp>();
+                if(!_infoPopupCache)
+                    _infoPopupCache = CreatePopup<InfoPopup>();
                 
-                _twoButtonsPopUpCache.Init(interactionItem, false);
-                return _twoButtonsPopUpCache;
+                _infoPopupCache.Init(interactionItem);
+                return _infoPopupCache;
             }
             
             if (interactionItem is BushItem 
@@ -48,11 +48,11 @@ namespace MoroshkovieKochki
             
             if (interactionItem is FootprintsItem footprintsItemData)
             {
-                if(!_footprintsPopupCache)
-                    _footprintsPopupCache = CreatePopup<FootprintsPopup>();
+                if(!_infoPopupCache)
+                    _infoPopupCache = CreatePopup<InfoPopup>();
                 
-                _footprintsPopupCache.Init(footprintsItemData);
-                return _footprintsPopupCache;
+                _infoPopupCache.Init(footprintsItemData);
+                return _infoPopupCache;
             }
 
             throw new NotImplementedException();

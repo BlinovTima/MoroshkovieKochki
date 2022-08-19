@@ -31,7 +31,7 @@ namespace MoroshkovieKochki
             var road = raycastHit2D.collider.GetComponent<Road>();
 
             if (!item || _popupPresenter.NeedCloseCurrentPopup(item))
-                _popupPresenter.CloseCurrentPopup();
+                _popupPresenter.CloseCurrentPopup().Forget();
 
             if (road)
                 await _character.GoTo(raycastHit2D.point)

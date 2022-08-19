@@ -1,6 +1,6 @@
-﻿using Cysharp.Threading.Tasks;
+﻿using System;
+using Cysharp.Threading.Tasks;
 using PathCreation;
-using Spine.Unity;
 using UnityEngine;
 
 
@@ -8,7 +8,7 @@ namespace MoroshkovieKochki
 {
     public sealed class MosquitoItem : InteractionItem
     {
-        private const float _minDistance = 0.05f;
+        private const float _minDistance = 0.1f;
         
         [Header("OnClick settings")]
         [SerializeField] private MosquitoHouse _mosquitoHouse;
@@ -26,29 +26,28 @@ namespace MoroshkovieKochki
         private Character _character;
         private static readonly int IsIdle = Animator.StringToHash("IsIdle");
 
-        public MosquitoHouse MosquitoHouse => _mosquitoHouse;
+        private void Awake()
+        {
+            _outroPathTransform.position = Vector3.zero;
+        }
 
         public void Init(Character character)
         {
             _character = character;
         }
         
-        public override async void OnClick<TClickResult>(TClickResult value)
+        public override void OnClick<TClickResult>(TClickResult value)
         {
-            if(IsCompleted)
+            if (IsCompleted)
                 return;
 
             if (value is MosquitoClickResult clickResult)
                 IsRightAdvice = _mosquitoHouse == clickResult.MosquitoHouse;
-            
+
             IsCompleted = IsRightAdvice;
-            
-            await _outlineAnimation.ShowOutline(IsRightAdvice);
 
             if (IsRightAdvice)
                 GameContext.AddScoreValue(1);
-            else
-                await _outlineAnimation.HideOutline();
         }
 
         public async UniTask FlyOutro(Vector3 finishPosition)
@@ -98,11 +97,11 @@ namespace MoroshkovieKochki
             
             while (finalDistance - distance > _minDistance)
             {
-                distance += _flySpeed * Time.deltaTime;
                 var newPosition = vertexPath.GetPointAtDistance(distance);
                 SetSideOrientation(newPosition);
                 _mosquitoContainer.position = newPosition;
-                
+                distance += _flySpeed * Time.deltaTime;
+
                 await UniTask.Yield(PlayerLoopTiming.Update);
             }
         }

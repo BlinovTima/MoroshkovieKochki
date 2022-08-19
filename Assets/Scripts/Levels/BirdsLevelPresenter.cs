@@ -30,7 +30,7 @@ namespace MoroshkovieKochki
             var item = raycastHit2D.collider.GetComponent<GatherItem>();
 
             if (!item || _popupPresenter.NeedCloseCurrentPopup(item))
-                _popupPresenter.CloseCurrentPopup();
+                _popupPresenter.CloseCurrentPopup().Forget();
 
             if (item)
             {

@@ -39,13 +39,13 @@ namespace MoroshkovieKochki
            return !string.IsNullOrEmpty(_currentPopupDataName) && interactionItem.gameObject.name == _currentPopupDataName;
         }
 
-        public void CloseCurrentPopup()
+        public async UniTask CloseCurrentPopup()
         {
             if (!_currentPopup)
                 return;
 
             _currentPopupDataName = null;
-            _currentPopup.Hide().Forget();
+            await _currentPopup.Hide();
         }
 
         public async UniTask ShowPopUp(InteractionItem interactionItem)

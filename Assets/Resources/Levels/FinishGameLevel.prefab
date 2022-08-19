@@ -9875,6 +9875,9 @@ MonoBehaviour:
   _speed: 0.7
   _skeletonAnimation: {fileID: 0}
   _meshRenderer: {fileID: 0}
+  _skeletonTransform: {fileID: 0}
+  _defaultScale: {x: 0.45, y: 0.45, z: 0.45}
+  _titleScale: {x: 0.7, y: 0.7, z: 0.7}
 --- !u!1 &1869661511238311084
 GameObject:
   m_ObjectHideFlags: 0
@@ -44739,7 +44742,7 @@ PrefabInstance:
     - target: {fileID: 7481454724187239102, guid: 2f43be1fd0e608345be6e062b483be23,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -18.01
+      value: -15.6
       objectReference: {fileID: 0}
     - target: {fileID: 7481454724187239102, guid: 2f43be1fd0e608345be6e062b483be23,
         type: 3}

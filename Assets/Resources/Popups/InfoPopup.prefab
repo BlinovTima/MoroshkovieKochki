@@ -63,7 +63,7 @@ GameObject:
   - component: {fileID: 4597811196115051241}
   - component: {fileID: 3096746537108144744}
   m_Layer: 0
-  m_Name: FootprintsPopup
+  m_Name: InfoPopup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -240,7 +240,7 @@ MonoBehaviour:
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 0.6
-  m_fontSizeMax: 120
+  m_fontSizeMax: 64
   m_fontStyle: 0
   m_textAlignment: 513
   m_characterSpacing: 0

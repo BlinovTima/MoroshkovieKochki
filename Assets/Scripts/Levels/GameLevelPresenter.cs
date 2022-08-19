@@ -57,7 +57,7 @@ namespace MoroshkovieKochki
         public void CompleteLevel()
         {
             _levelTaskPopupPresenter.HidePopup().Forget();
-            _popupPresenter.CloseCurrentPopup();
+            _popupPresenter.CloseCurrentPopup().Forget();
             _onLevelComplete.Invoke();
         }
 

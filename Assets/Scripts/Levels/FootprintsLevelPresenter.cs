@@ -65,7 +65,7 @@ namespace MoroshkovieKochki
                 }
                 else
                 {
-                    var popup = (FootprintsPopup) _popupPresenter.CurrentPopup;
+                    var popup = (InfoPopup) _popupPresenter.CurrentPopup;
                     item.OnClick(new FootprintClickResult(){FootprintAnimal = popup.RightAnswer});
                 }
             }

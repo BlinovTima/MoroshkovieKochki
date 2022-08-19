@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
@@ -47,25 +48,36 @@ namespace MoroshkovieKochki
                 await _popupPresenter.ShowPopUp(mosquitoItem)
                     .AttachExternalCancellation(_cancellationToken.Token);
 
+                await UniTask.WaitUntil(() => _activeMosquito.IsCompleted);
+                await _popupPresenter.CloseCurrentPopup();
                 await UniTask.WaitUntil(() => !_hasActiveMosquito);
             }
         }
 
         public override async UniTaskVoid ClickAction(RaycastHit2D raycastHit2D, Vector3 mousePosition)
         {
-            var item = raycastHit2D.collider.GetComponentInParent<MosquitoItem>();
+            if (!_isIntroCompleted || _isClickActionInProgress)
+                return;
+            
+            _isClickActionInProgress = true; 
+            
+            var item = raycastHit2D.collider.GetComponentInParent<House>();
             
             if (item && _activeMosquito)
             {
-                item.OnClick(new MosquitoClickResult(){MosquitoHouse = _activeMosquito.MosquitoHouse});
-                
+                _activeMosquito.OnClick(new MosquitoClickResult(){MosquitoHouse = item.MosquitoHouse});
+
                 if(_activeMosquito.IsCompleted)
                 {
-                    await _activeMosquito.FlyOutro(raycastHit2D.transform.position);
+                    _character.PlayHit().Forget();
+                    
+                    await _activeMosquito.FlyOutro(item.transform.position);
                     _activeMosquito = null;
                     _hasActiveMosquito = false;
                 }
             }
+            
+            _isClickActionInProgress = false; 
         }
     }
 }

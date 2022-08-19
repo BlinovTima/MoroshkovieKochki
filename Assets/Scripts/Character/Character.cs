@@ -54,6 +54,11 @@ namespace MoroshkovieKochki
         public void PlaySay() => SetAnimation(_animationPreset.Say).Forget();
         public void PlayIdle() => SetAnimation(_animationPreset.Idle).Forget();
         public async UniTask PlayHello() => await SetAnimation(_animationPreset.Hello, false);
+        public async UniTask PlayHit()
+        {
+            await SetAnimation(_animationPreset.Hit, false);
+            PlayIdle();
+        }
 
         public async UniTask PlayGather() => await SetAnimation(_animationPreset.Take, false);
 
