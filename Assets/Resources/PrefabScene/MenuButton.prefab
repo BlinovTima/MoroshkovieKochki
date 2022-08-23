@@ -300,8 +300,8 @@ MonoBehaviour:
     initialPlayDelay: 0
     duration: 3
     loop: 1
-    loopDelay: 3.5
-    updateMode: 0
+    loopDelay: 1
+    updateMode: 2
 --- !u!1 &3907301031618263244
 GameObject:
   m_ObjectHideFlags: 0
