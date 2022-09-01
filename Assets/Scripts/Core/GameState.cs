@@ -9,6 +9,7 @@ namespace MoroshkovieKochki
         Menu = 1,
         Play = 2,
         CutScene = 4,
-        HideScore = 5,
+        HideHud = 8,
+        FinishLevel = 16,
     }
 }

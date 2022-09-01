@@ -21,14 +21,14 @@ public sealed class StartLevelPresenter : GameLevelPresenter
 
     public override UniTask PlayIntro()
     {
-        GameContext.AddGameState(GameState.HideScore);
+        GameContext.AddGameState(GameState.HideHud);
         
         return base.PlayIntro();
     }
 
     public override UniTask PlayOutro()
     {
-        GameContext.RemoveGameState(GameState.HideScore);
+        GameContext.RemoveGameState(GameState.HideHud);
         return base.PlayOutro();
     }
 

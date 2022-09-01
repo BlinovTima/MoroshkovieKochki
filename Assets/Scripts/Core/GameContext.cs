@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace MoroshkovieKochki
 {
@@ -8,8 +6,6 @@ namespace MoroshkovieKochki
     {
         private int _score;
         private GameState _gameState;
-
-        
         private static GameContext _instance;
         private int _passedLevels;
 
@@ -28,8 +24,8 @@ namespace MoroshkovieKochki
         public static bool GameIsFinished { get; set; }
         public static event Action<int> OnScoreUpdated = x => { };
         public static event Action<GameState> OnGameStateUpdated = x => { };
-
         public static void AddLevelPassed() => Instance._passedLevels += 1;
+        
         
         public static void AddScoreValue(int value)
         {
@@ -37,7 +33,7 @@ namespace MoroshkovieKochki
             OnScoreUpdated.Invoke(Instance._score);
         }
         
-        private GameContext()
+        public GameContext()
         {
             GameIsFinished = false;
             _score = 0;

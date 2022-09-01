@@ -15,13 +15,13 @@ namespace MoroshkovieKochki
 
         public bool ActiveInHierarchy => gameObject.activeInHierarchy;
         public RectTransform BoundsRect => _boundsRect;
-        
+        public void SetActive(bool value) => gameObject.SetActive(value);
         
         public async UniTask Show(Vector3 screenPivotPoint)
         {
             transform.position = screenPivotPoint;
             _canvasGroup.alpha = 0;
-            gameObject.SetActive(true);
+            SetActive(true);
             
             _sequence?.Kill();
             _sequence = DOTween.Sequence();
@@ -37,7 +37,7 @@ namespace MoroshkovieKochki
             _sequence = DOTween.Sequence();
             
             _sequence.Append(DOTween.To(() => _canvasGroup.alpha, x => _canvasGroup.alpha = x, 0f, _switchTime));
-            _sequence.AppendCallback(() => gameObject.SetActive(false));
+            _sequence.AppendCallback(() => SetActive(false));
             _sequence.SetAutoKill(true);
             
             await _sequence.AsyncWaitForKill();

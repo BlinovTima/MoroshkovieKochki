@@ -9648,12 +9648,12 @@ GameObject:
   - component: {fileID: 8652503050590229805}
   - component: {fileID: 2733626052497361587}
   m_Layer: 0
-  m_Name: Button
+  m_Name: Buttons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8652503050590229805
 RectTransform:
   m_ObjectHideFlags: 0
@@ -34476,7 +34476,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 2527607607167286074, guid: 69bffa2afc80dc1419124bb6201467d8,
+  m_Sprite: {fileID: -2574449355943416012, guid: 69bffa2afc80dc1419124bb6201467d8,
     type: 3}
   m_Type: 0
   m_PreserveAspect: 1
@@ -39611,6 +39611,8 @@ MonoBehaviour:
   _buttonLabel: 
   _characterParent: {fileID: 137141369647413807}
   _initialPosition: {fileID: 5851954819382258141}
+  _playButton: {fileID: 0}
+  _openMenuButton: {fileID: 0}
 --- !u!1 &6694808033977782474
 GameObject:
   m_ObjectHideFlags: 0

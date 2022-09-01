@@ -1,6 +1,7 @@
 ﻿using System;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 
 namespace MoroshkovieKochki
@@ -16,6 +17,15 @@ namespace MoroshkovieKochki
         public PopupPresenter(PopupsFabric popupsFabric)
         {
             _popupsFabric = popupsFabric;
+            GameContext.OnGameStateUpdated += UpdateVisuals;
+        }
+
+        private void UpdateVisuals(GameState state)
+        {
+            if(!_currentPopup)
+                return;
+
+            _currentPopup.SetActive(!state.HasFlag(GameState.Menu));
         }
 
         public bool IsPointInPopup(Vector2 mousePoint)
@@ -39,13 +49,17 @@ namespace MoroshkovieKochki
            return !string.IsNullOrEmpty(_currentPopupDataName) && interactionItem.gameObject.name == _currentPopupDataName;
         }
 
-        public async UniTask CloseCurrentPopup()
+        public async UniTask CloseCurrentPopup(bool force = false)
         {
             if (!_currentPopup)
                 return;
 
             _currentPopupDataName = null;
-            await _currentPopup.Hide();
+            
+            if (force)
+                _currentPopup.SetActive(false);
+            else
+                await _currentPopup.Hide();
         }
 
         public async UniTask ShowPopUp(InteractionItem interactionItem)
@@ -66,6 +80,9 @@ namespace MoroshkovieKochki
 
         public void Dispose()
         {
+            if (_currentPopup)
+                Object.Destroy(_currentPopup.gameObject);
+
             _popupsFabric.Dispose();
             _currentPopupDataName = null;
         }

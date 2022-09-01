@@ -6,10 +6,10 @@ public class HudPresenter : IDisposable
 {
     private readonly HudPanel _hudPanel;
 
-    public HudPresenter(HudPanel hudPanel, Action onMenuButtonClick)
+    public HudPresenter(HudPanel hudPanel, Action onMenuButtonClick, Action startNewGame)
     {
         _hudPanel = hudPanel;
-        _hudPanel.Init(0, onMenuButtonClick);
+        _hudPanel.Init(0, onMenuButtonClick, startNewGame);
         GameContext.OnScoreUpdated += UpdateScore;
         GameContext.OnGameStateUpdated += UpdateVisuals;
     }
@@ -17,14 +17,19 @@ public class HudPresenter : IDisposable
     private void UpdateVisuals(GameState state)
     {
         if (state.HasFlag(GameState.Menu)
-            || state.HasFlag(GameState.HideScore))
+            || state.HasFlag(GameState.HideHud))
         {
-            _hudPanel.SetActive(false);
+            _hudPanel.SetActiveScore(false);
+            _hudPanel.SetActiveMenuButton(false);
+            _hudPanel.SetActiveNewGameButton(false);
             return;
         }
-            
+        
         if (state.HasFlag(GameState.Play))
         {
+            _hudPanel.SetActiveScore(true);
+            _hudPanel.SetActiveMenuButton(true);
+            _hudPanel.SetActiveNewGameButton(state.HasFlag(GameState.FinishLevel));
             Show().Forget();
         }
         else

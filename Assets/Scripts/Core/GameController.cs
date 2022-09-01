@@ -1,4 +1,5 @@
-﻿using Cysharp.Threading.Tasks;
+﻿using System;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 
@@ -22,7 +23,6 @@ namespace MoroshkovieKochki
         private GameMenuPresenter _gameMenuPresenter;
         private int? _levelIndex;
         private GameLevelPresenter _gameLevelPresenter;
-        private PopupPresenter _popupPresenter;
         private HudPresenter _hudPresenter;
         private LevelTaskPopupPresenter _levelTaskPopupPresenter;
         private LevelsFabric _levelsFabric;
@@ -33,18 +33,17 @@ namespace MoroshkovieKochki
 
         private void Awake()
         {
-            RegisterAllSystems();
             DontDestroyOnLoad(gameObject);
+            InstantiateCharacter();
+            RegisterAllSystems();
         }
 
         private void RegisterAllSystems()
         {
-            InstantiateCharacter();
-            
             _gameMenuPresenter = new GameMenuPresenter(_gameMenu, StartNewGame);
-            InputListener.OnEscKeyGet += _gameMenuPresenter.SwitchMenu;
+            InputListener.OnEscKeyGet += OpenGameMenu;
 
-            _hudPresenter = new HudPresenter(hudPanel, _gameMenuPresenter.SwitchMenu);
+            _hudPresenter = new HudPresenter(hudPanel, OpenGameMenu, StartNewGame);
 
             _levelsFabric = new LevelsFabric(_levelParent,
                 _popupsParent,
@@ -53,6 +52,11 @@ namespace MoroshkovieKochki
 
             _levelsFabric.InitLevels();
             _gameMenuPresenter.ShowMenu();
+        }
+
+        private void OpenGameMenu()
+        {
+            _gameMenuPresenter.SwitchMenu();
         }
 
         private void StartNewGame()
@@ -123,7 +127,7 @@ namespace MoroshkovieKochki
         private void OnApplicationQuit()
         {
             _hudPresenter.Dispose();
-            InputListener.OnEscKeyGet -= _gameMenuPresenter.SwitchMenu;
+            InputListener.OnEscKeyGet -= OpenGameMenu;
         }
     }
 }

@@ -3,21 +3,25 @@ using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 
-public class HudPanel : MonoBehaviour
+public sealed class HudPanel : MonoBehaviour
 {
    [SerializeField] private CanvasGroup _canvasGroup;
    [SerializeField] private TMP_Text _scoreLabel;
    [SerializeField] private float _fadeTime = 1f;
-   [SerializeField] private UnityEngine.UI.Button _menuButton;
+   [SerializeField] private Button _menuButton;
+   [SerializeField] private Button _playAgainButton;
    
 
-   public void Init(int scoreValue, Action onMenuButtonClick)
+   public void Init(int scoreValue, Action menuButtonClick, Action startNewGame)
    {
-      _menuButton.onClick.AddListener(onMenuButtonClick.Invoke);
+      _menuButton.onClick.AddListener(menuButtonClick.Invoke);
+      _playAgainButton.onClick.AddListener(startNewGame.Invoke);
+      
       SetScoreValue(scoreValue);
-      SetActive(false);
+      gameObject.SetActive(false);
    }
 
    public void SetScoreValue(int value)
@@ -25,16 +29,15 @@ public class HudPanel : MonoBehaviour
       _scoreLabel.text = value.ToString();
    }
    
-   public void SetActive(bool isActive)
-   {
+   public void SetActiveScore(bool isActive) => 
       gameObject.SetActive(isActive);
-   }
+   public void SetActiveMenuButton(bool isActive) => 
+      _menuButton.gameObject.SetActive(isActive);
+   public void SetActiveNewGameButton(bool isActive) => 
+      _playAgainButton.gameObject.SetActive(isActive);
    
    public async UniTask Show()
    {
-      if (gameObject.activeInHierarchy)
-         return;
-
       _canvasGroup.alpha = 0f;
       gameObject.SetActive(true);
          

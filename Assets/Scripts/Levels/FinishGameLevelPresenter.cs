@@ -18,13 +18,13 @@ public sealed class FinishGameLevelPresenter : GameLevelPresenter
 
     public override UniTask PlayIntro()
     {
-        GameContext.AddGameState(GameState.HideScore);
+        GameContext.AddGameState(GameState.FinishLevel);
         return base.PlayIntro();
     }
 
     public override UniTask PlayOutro()
     {
-        GameContext.RemoveGameState(GameState.HideScore);
+        GameContext.RemoveGameState(GameState.FinishLevel);
         return base.PlayOutro();
     }
     
