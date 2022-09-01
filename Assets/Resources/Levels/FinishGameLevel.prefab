@@ -44468,7 +44468,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 0.2
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -44743,7 +44743,7 @@ GameObject:
   - component: {fileID: 6649141213153485371}
   - component: {fileID: 6965792790107912894}
   m_Layer: 0
-  m_Name: Label
+  m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
