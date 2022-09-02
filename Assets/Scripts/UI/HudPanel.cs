@@ -13,7 +13,8 @@ public sealed class HudPanel : MonoBehaviour
    [SerializeField] private float _fadeTime = 1f;
    [SerializeField] private Button _menuButton;
    [SerializeField] private Button _playAgainButton;
-   
+
+   public bool IsShown => gameObject.activeInHierarchy;
 
    public void Init(int scoreValue, Action menuButtonClick, Action startNewGame)
    {

@@ -25,14 +25,14 @@ public class HudPresenter : IDisposable
             return;
         }
         
-        if (state.HasFlag(GameState.Play))
+        if (state.HasFlag(GameState.Play) && !_hudPanel.IsShown)
         {
             _hudPanel.SetActiveScore(true);
             _hudPanel.SetActiveMenuButton(true);
             _hudPanel.SetActiveNewGameButton(state.HasFlag(GameState.FinishLevel));
             Show().Forget();
         }
-        else
+        else if (!state.HasFlag(GameState.Play) && _hudPanel.IsShown)
         {
             Hide().Forget();
         }

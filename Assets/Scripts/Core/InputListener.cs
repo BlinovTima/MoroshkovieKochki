@@ -11,7 +11,7 @@ namespace MoroshkovieKochki
 
         public static event Action OnEscKeyGet = () => { };
         public static event Action<RaycastHit2D, Vector3> OnLeftMouseButtonClick = (x, y) => { };
-        
+
 
         private void Awake()
         {

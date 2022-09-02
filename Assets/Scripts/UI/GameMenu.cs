@@ -36,7 +36,7 @@ namespace MoroshkovieKochki
 
         private void ApplyVolumeLevel(float value)
         {
-            AudioManager.SetMasterVolumeLerp(value);
+            AudioManager.SetMusicAndSpeechVolumeLerp(value);
         }
 
 

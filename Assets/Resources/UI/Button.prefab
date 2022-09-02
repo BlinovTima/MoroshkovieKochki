@@ -73,7 +73,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4279922610
+    rgba: 4294967295
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -92,7 +92,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 101.2
+  m_fontSize: 89.1
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -168,6 +168,7 @@ GameObject:
   - component: {fileID: 3228069503484758199}
   - component: {fileID: 4784872760737889198}
   - component: {fileID: 6951986476412168405}
+  - component: {fileID: 8369893110303052013}
   - component: {fileID: 7803157805791574967}
   m_Layer: 5
   m_Name: Button
@@ -275,7 +276,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4784872760737889198}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8369893110303052013}
+        m_MethodName: PlayEffectOnce
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &8369893110303052013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3156730499249129245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77998ed98c5844b7bc25865f8dc54a12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _effectAudio: {fileID: 8300000, guid: 8aa909e8f6299254290cf50fc8e8fe06, type: 3}
 --- !u!114 &7803157805791574967
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -314,7 +339,7 @@ GameObject:
   - component: {fileID: 29547383631702057}
   - component: {fileID: 3621288009934061184}
   m_Layer: 5
-  m_Name: MenuButton
+  m_Name: Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

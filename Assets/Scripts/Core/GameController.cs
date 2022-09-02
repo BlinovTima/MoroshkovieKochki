@@ -10,12 +10,12 @@ namespace MoroshkovieKochki
         [Header("Character settings")] [SerializeField]
         private Character _characterPrefab;
 
-        [Header("Menu settings")] [SerializeField]
-        private GameMenu _gameMenu;
-
+        [Header("Menu settings")] 
+        [SerializeField] private GameMenu _gameMenu;
         [SerializeField] private HudPanel hudPanel;
         [SerializeField] private RectTransform _popupsParent;
         [SerializeField] private WindowSwitcher _windowSwitcher;
+        [SerializeField] private CursorEffectsView _cursorEffectsView;
 
         [Header("Levels settings")] 
         [SerializeField] private Transform _levelParent;
@@ -27,8 +27,9 @@ namespace MoroshkovieKochki
         private LevelTaskPopupPresenter _levelTaskPopupPresenter;
         private LevelsFabric _levelsFabric;
         private Character _character;
-     
-        
+        private CursorEffectsPresenter _cursorEffectsPresenter;
+
+
         private bool HasCurrentLevel => _gameLevelPresenter != null && _gameLevelPresenter.HasLevelInited;
 
         private void Awake()
@@ -40,8 +41,9 @@ namespace MoroshkovieKochki
 
         private void RegisterAllSystems()
         {
+            _cursorEffectsPresenter = new CursorEffectsPresenter(_cursorEffectsView);
+
             _gameMenuPresenter = new GameMenuPresenter(_gameMenu, StartNewGame);
-            InputListener.OnEscKeyGet += OpenGameMenu;
 
             _hudPresenter = new HudPresenter(hudPanel, OpenGameMenu, StartNewGame);
 
@@ -50,6 +52,8 @@ namespace MoroshkovieKochki
                 _character,
                 () => StartNextLevel().Forget());
 
+            
+            InputListener.OnEscKeyGet += OpenGameMenu;
             _levelsFabric.InitLevels();
             _gameMenuPresenter.ShowMenu();
         }

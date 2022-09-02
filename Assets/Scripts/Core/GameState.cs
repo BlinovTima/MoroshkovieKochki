@@ -11,5 +11,6 @@ namespace MoroshkovieKochki
         CutScene = 4,
         HideHud = 8,
         FinishLevel = 16,
+        OpenPopup = 32,
     }
 }

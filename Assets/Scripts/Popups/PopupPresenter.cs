@@ -60,6 +60,8 @@ namespace MoroshkovieKochki
                 _currentPopup.SetActive(false);
             else
                 await _currentPopup.Hide();
+            
+            GameContext.RemoveGameState(GameState.OpenPopup);
         }
 
         public async UniTask ShowPopUp(InteractionItem interactionItem)
@@ -67,6 +69,7 @@ namespace MoroshkovieKochki
             if(IsCachedPopup(interactionItem) && _currentPopup.ActiveInHierarchy)
                 return;
             
+            GameContext.AddGameState(GameState.OpenPopup);
             _currentPopupDataName = interactionItem.gameObject.name;
             
             if (_currentPopup && _currentPopup.ActiveInHierarchy)
