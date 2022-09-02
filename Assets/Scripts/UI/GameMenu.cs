@@ -1,6 +1,7 @@
 ﻿using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.UI;
 
 
@@ -20,6 +21,7 @@ namespace MoroshkovieKochki
         [SerializeField] private Button _resumeButton;
         [SerializeField] private Button _playButton;
         [SerializeField] private Button _exitButton;
+        [SerializeField] private Slider _masterVolumeSlider;
 
         public bool IsMenuOpen => gameObject.activeInHierarchy;
         
@@ -28,9 +30,15 @@ namespace MoroshkovieKochki
             _exitButton.onClick.AddListener(Application.Quit);
             _playButton.onClick.AddListener(playButton.Invoke);
             _resumeButton.onClick.AddListener(onResumeButton.Invoke);
-            
+            _masterVolumeSlider.onValueChanged.AddListener(ApplyVolumeLevel);
             SetupButtons();
         }
+
+        private void ApplyVolumeLevel(float value)
+        {
+            AudioManager.SetMasterVolumeLerp(value);
+        }
+
 
         private void OnEnable()
         {

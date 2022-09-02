@@ -39611,8 +39611,6 @@ MonoBehaviour:
   _buttonLabel: 
   _characterParent: {fileID: 137141369647413807}
   _initialPosition: {fileID: 5851954819382258141}
-  _playButton: {fileID: 0}
-  _openMenuButton: {fileID: 0}
 --- !u!1 &6694808033977782474
 GameObject:
   m_ObjectHideFlags: 0
@@ -44436,7 +44434,7 @@ GameObject:
   - component: {fileID: 3502332934982427620}
   - component: {fileID: 6923761511557943300}
   m_Layer: 0
-  m_Name: "\u043C\u0443\u0437\u044B\u043A\u0430_\u043F\u043E\u0431\u0435\u0434\u0430"
+  m_Name: VictoryEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44465,7 +44463,8 @@ AudioSource:
   m_GameObject: {fileID: 6869869288389135666}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -4717984820220393862, guid: 48d269b25f4d3df44af39712298bfe8c,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 3b017f3a31ad7584e84631df924e095b, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.2
