@@ -2723,7 +2723,7 @@ GameObject:
   - component: {fileID: 1087075472169498507}
   - component: {fileID: 9170205436954412449}
   m_Layer: 0
-  m_Name: "\u043C\u0443\u0437\u044B\u043A\u0430_\u044F\u0433\u043E\u0434\u044B"
+  m_Name: music_berries
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
