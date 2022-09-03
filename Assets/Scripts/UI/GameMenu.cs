@@ -1,9 +1,7 @@
 ﻿using System;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Audio;
 using UnityEngine.UI;
-using Utils;
 
 
 namespace MoroshkovieKochki
@@ -22,8 +20,11 @@ namespace MoroshkovieKochki
         [SerializeField] private Button _resumeButton;
         [SerializeField] private Button _playButton;
         [SerializeField] private Button _exitButton;
+        [Space(7)]
+        [SerializeField] private Button _switchSoundButton;
         [SerializeField] private Slider _masterVolumeSlider;
         private Action<float> _onVolumeLevelChanged;
+        private float _cachedValue;
 
         public bool IsMenuOpen => gameObject.activeInHierarchy;
         
@@ -33,8 +34,25 @@ namespace MoroshkovieKochki
             _exitButton.onClick.AddListener(Application.Quit);
             _playButton.onClick.AddListener(playButton.Invoke);
             _resumeButton.onClick.AddListener(onResumeButton.Invoke);
+            _switchSoundButton.onClick.AddListener(SwitchSound);
             _masterVolumeSlider.onValueChanged.AddListener(OnSetVolumeSlider);
             SetupButtons();
+        }
+
+        private void SwitchSound()
+        {
+            if (_masterVolumeSlider.value > 0)
+            {
+                _cachedValue = _masterVolumeSlider.value;
+                OnSetVolumeSlider(0);
+                SetSlider(0);
+            }
+            else
+            {
+                OnSetVolumeSlider(_cachedValue);
+                SetSlider(_cachedValue);
+                _cachedValue = 0;
+            }
         }
 
         public void SetSlider(float value) =>

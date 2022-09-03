@@ -76,8 +76,9 @@ namespace MoroshkovieKochki
 
         private static float ConvertLerp(float value)
         {
-            var lerpedValue = Mathf.Lerp(0.5f, 1f, value);
+            var lerpedValue = Mathf.Lerp(0.35f, 1f, value);
             var result = Mathf.Lerp(_minValue, 0f, lerpedValue);
+            result = result < -50 ? _minValue : result;
             return result;
         }
     }
