@@ -1,6 +1,6 @@
-﻿using System;
-using Cysharp.Threading.Tasks;
+﻿using Cysharp.Threading.Tasks;
 using UnityEngine;
+using Utils;
 
 
 namespace MoroshkovieKochki
@@ -34,13 +34,19 @@ namespace MoroshkovieKochki
 
         private void Awake()
         {
-            DontDestroyOnLoad(gameObject);
-            InstantiateCharacter();
-            RegisterAllSystems();
+            _windowSwitcher.PlayGameIntro(() =>
+            {
+                DontDestroyOnLoad(gameObject);
+                InstantiateCharacter();
+                RegisterAllSystems();
+                _gameMenuPresenter.ShowMenu(false);
+            }).Forget();
         }
 
         private void RegisterAllSystems()
         {
+            PlayerSettings.Init();
+            
             _cursorEffectsPresenter = new CursorEffectsPresenter(_cursorEffectsView);
 
             _gameMenuPresenter = new GameMenuPresenter(_gameMenu, StartNewGame);
@@ -51,11 +57,6 @@ namespace MoroshkovieKochki
                 _popupsParent,
                 _character,
                 () => StartNextLevel().Forget());
-
-            
-            InputListener.OnEscKeyGet += OpenGameMenu;
-            _levelsFabric.InitLevels();
-            _gameMenuPresenter.ShowMenu();
         }
 
         private void OpenGameMenu()

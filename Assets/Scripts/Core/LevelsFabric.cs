@@ -27,6 +27,7 @@ namespace MoroshkovieKochki
             var popupsFabric = new PopupsFabric(popupsParent);
             _popupPresenter = new PopupPresenter(popupsFabric);
             _levelTaskPopupPresenter = new LevelTaskPopupPresenter(popupsFabric);
+            InitLevels();
         }
 
         public void InitLevels()

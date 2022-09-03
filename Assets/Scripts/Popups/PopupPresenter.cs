@@ -61,15 +61,15 @@ namespace MoroshkovieKochki
             else
                 await _currentPopup.Hide();
             
-            GameContext.RemoveGameState(GameState.OpenPopup);
+            if(_currentPopup.HasButtons)
+                GameContext.RemoveGameState(GameState.OpenPopup);
         }
 
         public async UniTask ShowPopUp(InteractionItem interactionItem)
         {
             if(IsCachedPopup(interactionItem) && _currentPopup.ActiveInHierarchy)
                 return;
-            
-            GameContext.AddGameState(GameState.OpenPopup);
+
             _currentPopupDataName = interactionItem.gameObject.name;
             
             if (_currentPopup && _currentPopup.ActiveInHierarchy)
@@ -79,6 +79,9 @@ namespace MoroshkovieKochki
 
             var screenPoint = Camera.main.WorldToScreenPoint(interactionItem.PopupPivotPoint.position);
             await _currentPopup.Show(screenPoint);
+            
+            if(_currentPopup.HasButtons)
+                GameContext.AddGameState(GameState.OpenPopup);
         }
 
         public void Dispose()

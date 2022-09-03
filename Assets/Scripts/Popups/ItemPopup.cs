@@ -1,4 +1,5 @@
-﻿using Cysharp.Threading.Tasks;
+﻿using System.Linq;
+using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using UnityEngine;
 
@@ -11,12 +12,19 @@ namespace MoroshkovieKochki
         [SerializeField] private CanvasGroup _canvasGroup;
         [SerializeField] private float _switchTime = 0.4f;
           
+        private bool _hasButtons;
         private Sequence _sequence;
-
+        
+        public bool HasButtons => _hasButtons;
         public bool ActiveInHierarchy => gameObject.activeInHierarchy;
         public RectTransform BoundsRect => _boundsRect;
         public void SetActive(bool value) => gameObject.SetActive(value);
-        
+
+        private void Awake()
+        {
+            _hasButtons = GetComponentsInChildren<UnityEngine.UI.Button>().Any();
+        }
+
         public async UniTask Show(Vector3 screenPivotPoint)
         {
             transform.position = screenPivotPoint;

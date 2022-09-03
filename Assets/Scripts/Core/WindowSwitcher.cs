@@ -19,6 +19,12 @@ namespace MoroshkovieKochki
             gameObject.SetActive(true);
         }
 
+        public async UniTask PlayGameIntro(Action loadLevelCallback)
+        {
+            SwitchScreen(loadLevelCallback);
+            await _sequence.AsyncWaitForCompletion();
+        }
+        
         public async UniTask SwitchWindow(Action loadLevelCallback)
         {
             FadeVolume().Forget();
