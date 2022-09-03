@@ -60,8 +60,17 @@ namespace MoroshkovieKochki
             PlayIdle();
         }
 
-        public async UniTask PlayGather() => await SetAnimation(_animationPreset.Take, false);
+        public async UniTask PlayGather() => 
+            await SetAnimation(_animationPreset.Take, false);
 
+        public void SetOrientationRight()
+        {
+            var localScale = transform.localScale;
+            localScale.x = 1;
+            transform.localScale = localScale;
+        }
+            
+        
         public void KillAnimation()
         {
             _sequence?.Kill();

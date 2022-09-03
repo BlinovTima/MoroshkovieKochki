@@ -16,13 +16,13 @@ public sealed class StartLevelPresenter : GameLevelPresenter
         _character.SetAnimationPreset(CharacterAnimationPreset.Default);
         base.PrepareLevelForStart();
         _character.SetScale(ScaleType.Title);
+        _character.SetOrientationRight();
         _character.PlaySay();
     }
 
     public override UniTask PlayIntro()
     {
         GameContext.AddGameState(GameState.HideHud);
-        
         return base.PlayIntro();
     }
 
