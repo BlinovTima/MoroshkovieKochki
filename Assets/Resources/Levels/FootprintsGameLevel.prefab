@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 5217134310291277575}
   - component: {fileID: 8707521591174670024}
   m_Layer: 0
-  m_Name: "\u043C\u0443\u0437\u044B\u043A\u0430_\u0437\u0438\u043C\u0430"
+  m_Name: music_winter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

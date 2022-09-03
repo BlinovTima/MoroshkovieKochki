@@ -12020,7 +12020,7 @@ GameObject:
   - component: {fileID: 3324930308811653840}
   - component: {fileID: 7456984704651381257}
   m_Layer: 0
-  m_Name: "\u043C\u0443\u0437\u044B\u043A\u0430_\u043D\u0430\u0441\u0435\u043A\u043E\u043C\u044B\u0435"
+  m_Name: music_mosquito
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

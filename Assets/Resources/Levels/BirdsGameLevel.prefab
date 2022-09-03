@@ -1795,7 +1795,7 @@ GameObject:
   - component: {fileID: 5435234191080260604}
   - component: {fileID: 5055516496659714552}
   m_Layer: 0
-  m_Name: "\u043C\u0443\u0437\u044B\u043A\u0430_\u043F\u0442\u0438\u0446\u044B"
+  m_Name: music_birds
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

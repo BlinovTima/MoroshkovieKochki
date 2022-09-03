@@ -968,7 +968,7 @@ GameObject:
   - component: {fileID: 7764773965543570582}
   - component: {fileID: 6705992721221036245}
   m_Layer: 0
-  m_Name: "\u043C\u0443\u0437\u044B\u043A\u0430_\u043E\u0441\u0435\u043D\u044C"
+  m_Name: music_mushrooms
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
