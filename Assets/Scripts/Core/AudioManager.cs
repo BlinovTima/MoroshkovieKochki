@@ -1,8 +1,8 @@
-﻿using System;
-using Cysharp.Threading.Tasks;
+﻿using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Audio;
+using Utils;
 
 namespace MoroshkovieKochki
 {
@@ -11,22 +11,27 @@ namespace MoroshkovieKochki
         private const string _masterVolumeName = "MasterVolume";
         private const string _musicVolumeName = "MusicVolume";
         private const string _speechVolumeName = "SpeechVolume";
-        private const string _sffectsVolumeName = "EffectsVolume";
+        private const string _effectsVolumeName = "EffectsVolume";
         
         private const float _minValue = -80f;
-        private const float _defaultMasterVolume = 0f;
+        private float _defaultMasterVolume;
 
         [SerializeField] private AudioMixer _audioMixer;
         [SerializeField] private AudioSource _effectsAudioSource;
+        [SerializeField] private AudioSource _speechAudioSource;
 
         private static AudioManager _instance;
+        private static bool _isAnimated;
 
         private static AudioManager Instance
         {
             get
             {
                 if (!_instance)
+                {
                     _instance = FindObjectOfType<AudioManager>();
+                    SetMasterVolumeLerp(PlayerSettings.GetMasterVolumeValue());
+                }
 
                 return _instance;
             }
@@ -37,33 +42,43 @@ namespace MoroshkovieKochki
             DontDestroyOnLoad(gameObject);
         }
 
-        public static async UniTask SmoothMasterVolumeUp(float switchTime = 1f)
+        public static async UniTask SmoothMusicVolumeUp(float switchTime = 1f)
         {
-            Instance._audioMixer.DOSetFloat(_speechVolumeName, _defaultMasterVolume, switchTime);
-            await Instance._audioMixer.DOSetFloat(_musicVolumeName, _defaultMasterVolume, switchTime).AsyncWaitForCompletion();
+            await Instance._audioMixer.DOSetFloat(_musicVolumeName, 0f, switchTime).AsyncWaitForCompletion();
         }
         
-        public static async UniTask SmoothMasterVolumeDown(float switchTime)
+        public static async UniTask SetMusicVolumeDown(float switchTime)
         {
-            Instance._audioMixer.DOSetFloat(_speechVolumeName, _minValue, switchTime);
             await Instance._audioMixer.DOSetFloat(_musicVolumeName, _minValue, switchTime).AsyncWaitForCompletion();
         }
 
-        private static void SetMusicAndSpeechVolume(float value)
+        public static void SetMasterVolumeLerp(float value)
         {
-            Instance._audioMixer.SetFloat(_speechVolumeName, value);
-            Instance._audioMixer.SetFloat(_musicVolumeName, value);
-        }   
-        
-
-        public static void SetMusicAndSpeechVolumeLerp(float value)
-        {
-            SetMusicAndSpeechVolume(Mathf.Lerp(_minValue, 0, value));
+            var convertedValue = ConvertLerp(value);
+            Instance._defaultMasterVolume = convertedValue;
+            Instance._audioMixer.SetFloat(_masterVolumeName, convertedValue);
         }
 
-        public static void PlayEffect(AudioClip audioClip)
-        {
+        public static void PlayEffect(AudioClip audioClip) => 
             Instance._effectsAudioSource.PlayOneShot(audioClip);
+
+        public static void PlaySpeech(AudioClip audioClip) => 
+            Instance._speechAudioSource.PlayOneShot(audioClip);
+
+        public static void ResumeSpeech() => 
+            Instance._speechAudioSource.UnPause();
+
+        public static void PauseSpeech() => 
+            Instance._speechAudioSource.Pause();
+        
+        public static void StopSpeech() => 
+            Instance._speechAudioSource.Stop();
+
+        private static float ConvertLerp(float value)
+        {
+            var lerpedValue = Mathf.Lerp(0.5f, 1f, value);
+            var result = Mathf.Lerp(_minValue, 0f, lerpedValue);
+            return result;
         }
     }
 }

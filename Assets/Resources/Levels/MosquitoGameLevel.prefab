@@ -17583,6 +17583,11 @@ PrefabInstance:
       propertyPath: _outlineAnimation
       value: 
       objectReference: {fileID: 396572280357321533}
+    - target: {fileID: 7476946437143006427, guid: d9b381f0a27a43e47bd191f8c4833977,
+        type: 3}
+      propertyPath: SpeechAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: babf594bb236d5a4d8a91f0ab76937e4, type: 3}
     - target: {fileID: 7549060402089062937, guid: d9b381f0a27a43e47bd191f8c4833977,
         type: 3}
       propertyPath: m_Controller
@@ -18025,6 +18030,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 17c5a00e00f9446449c191a53e84ea02,
         type: 3}
+    - target: {fileID: 7476946437143006427, guid: d9b381f0a27a43e47bd191f8c4833977,
+        type: 3}
+      propertyPath: SpeechAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: babf594bb236d5a4d8a91f0ab76937e4, type: 3}
     - target: {fileID: 7549060402089062937, guid: d9b381f0a27a43e47bd191f8c4833977,
         type: 3}
       propertyPath: m_Controller
@@ -18562,6 +18572,11 @@ PrefabInstance:
       propertyPath: _mosquitoSpriteRenderer
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 7476946437143006427, guid: d9b381f0a27a43e47bd191f8c4833977,
+        type: 3}
+      propertyPath: SpeechAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: babf594bb236d5a4d8a91f0ab76937e4, type: 3}
     - target: {fileID: 7549060402089062937, guid: d9b381f0a27a43e47bd191f8c4833977,
         type: 3}
       propertyPath: m_Controller
@@ -18923,6 +18938,11 @@ PrefabInstance:
       propertyPath: _outlineAnimation
       value: 
       objectReference: {fileID: 4728931717984750338}
+    - target: {fileID: 7476946437143006427, guid: d9b381f0a27a43e47bd191f8c4833977,
+        type: 3}
+      propertyPath: SpeechAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: babf594bb236d5a4d8a91f0ab76937e4, type: 3}
     - target: {fileID: 7549060402089062937, guid: d9b381f0a27a43e47bd191f8c4833977,
         type: 3}
       propertyPath: m_Controller
@@ -19337,6 +19357,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: b4b1b7538140e6b4b93cf56396eb83d5,
         type: 3}
+    - target: {fileID: 7476946437143006427, guid: d9b381f0a27a43e47bd191f8c4833977,
+        type: 3}
+      propertyPath: SpeechAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: babf594bb236d5a4d8a91f0ab76937e4, type: 3}
     - target: {fileID: 7549060402089062937, guid: d9b381f0a27a43e47bd191f8c4833977,
         type: 3}
       propertyPath: m_Controller
@@ -19642,6 +19667,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 74a181caef6a4fb48b7a19e1eba2a48a,
         type: 3}
+    - target: {fileID: 7476946437143006427, guid: d9b381f0a27a43e47bd191f8c4833977,
+        type: 3}
+      propertyPath: SpeechAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: babf594bb236d5a4d8a91f0ab76937e4, type: 3}
     - target: {fileID: 8161311356379480588, guid: d9b381f0a27a43e47bd191f8c4833977,
         type: 3}
       propertyPath: m_LocalPosition.y

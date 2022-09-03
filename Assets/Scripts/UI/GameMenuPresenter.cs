@@ -27,6 +27,7 @@ namespace MoroshkovieKochki
         private void LoadGameSettings()
         {
             var value = PlayerSettings.GetMasterVolumeValue();
+            _gameMenu.SetSlider(value);
             ApplyVolumeLevel(value);
         }
 
@@ -43,15 +44,21 @@ namespace MoroshkovieKochki
                 return;
             
             if(_gameMenu.IsMenuOpen)
+            {
                 HideMenu();
+                AudioManager.ResumeSpeech();
+            }
             else
+            {
+                AudioManager.PauseSpeech();
                 ShowMenu();
+            }
         }
         
         private void ApplyVolumeLevel(float value)
         {
             PlayerSettings.SafeMasterVolumeValue(value);
-            AudioManager.SetMusicAndSpeechVolumeLerp(value);
+            AudioManager.SetMasterVolumeLerp(value);
         }
     }
 }

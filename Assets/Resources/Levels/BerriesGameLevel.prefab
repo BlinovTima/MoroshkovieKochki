@@ -5613,6 +5613,11 @@ PrefabInstance:
       propertyPath: ShouldGather
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 9036862959109666081, guid: 558d33629560349408da558923354aae,
+        type: 3}
+      propertyPath: SpeechAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: babf594bb236d5a4d8a91f0ab76937e4, type: 3}
     - target: {fileID: 9128276527989069411, guid: 558d33629560349408da558923354aae,
         type: 3}
       propertyPath: m_LocalRotation.z
@@ -5782,6 +5787,11 @@ PrefabInstance:
       propertyPath: ShouldGather
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 9036862959109666081, guid: 558d33629560349408da558923354aae,
+        type: 3}
+      propertyPath: SpeechAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: babf594bb236d5a4d8a91f0ab76937e4, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 558d33629560349408da558923354aae, type: 3}
 --- !u!4 &3212995609533025001 stripped
@@ -6190,6 +6200,11 @@ PrefabInstance:
       propertyPath: ShouldGather
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 9036862959109666081, guid: 558d33629560349408da558923354aae,
+        type: 3}
+      propertyPath: SpeechAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: babf594bb236d5a4d8a91f0ab76937e4, type: 3}
     - target: {fileID: 9128276527989069411, guid: 558d33629560349408da558923354aae,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6573,6 +6588,11 @@ PrefabInstance:
       propertyPath: ShouldGather
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 9036862959109666081, guid: 558d33629560349408da558923354aae,
+        type: 3}
+      propertyPath: SpeechAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: babf594bb236d5a4d8a91f0ab76937e4, type: 3}
     - target: {fileID: 9128276527989069411, guid: 558d33629560349408da558923354aae,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6941,6 +6961,11 @@ PrefabInstance:
       propertyPath: ShouldGather
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 9036862959109666081, guid: 558d33629560349408da558923354aae,
+        type: 3}
+      propertyPath: SpeechAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: babf594bb236d5a4d8a91f0ab76937e4, type: 3}
     - target: {fileID: 9128276527989069411, guid: 558d33629560349408da558923354aae,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7289,6 +7314,11 @@ PrefabInstance:
       propertyPath: ShouldGather
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 9036862959109666081, guid: 558d33629560349408da558923354aae,
+        type: 3}
+      propertyPath: SpeechAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: babf594bb236d5a4d8a91f0ab76937e4, type: 3}
     - target: {fileID: 9128276527989069411, guid: 558d33629560349408da558923354aae,
         type: 3}
       propertyPath: m_LocalRotation.z
@@ -7760,6 +7790,11 @@ PrefabInstance:
       propertyPath: _popupPivotPoint
       value: 
       objectReference: {fileID: 7292956298040251194}
+    - target: {fileID: 9036862959109666081, guid: 558d33629560349408da558923354aae,
+        type: 3}
+      propertyPath: SpeechAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: babf594bb236d5a4d8a91f0ab76937e4, type: 3}
     - target: {fileID: 9128276527989069411, guid: 558d33629560349408da558923354aae,
         type: 3}
       propertyPath: m_LocalRotation.z
@@ -8245,6 +8280,11 @@ PrefabInstance:
       propertyPath: _popupPivotPoint
       value: 
       objectReference: {fileID: 7292956298040251194}
+    - target: {fileID: 9036862959109666081, guid: 558d33629560349408da558923354aae,
+        type: 3}
+      propertyPath: SpeechAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: babf594bb236d5a4d8a91f0ab76937e4, type: 3}
     - target: {fileID: 9128276527989069411, guid: 558d33629560349408da558923354aae,
         type: 3}
       propertyPath: m_LocalRotation.z
@@ -8636,6 +8676,11 @@ PrefabInstance:
       propertyPath: ShouldGather
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 9036862959109666081, guid: 558d33629560349408da558923354aae,
+        type: 3}
+      propertyPath: SpeechAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: babf594bb236d5a4d8a91f0ab76937e4, type: 3}
     - target: {fileID: 9128276527989069411, guid: 558d33629560349408da558923354aae,
         type: 3}
       propertyPath: m_LocalPosition.x

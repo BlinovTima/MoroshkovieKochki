@@ -35,8 +35,8 @@ namespace MoroshkovieKochki
         private async UniTaskVoid FadeVolume()
         {
             var fadeTime = _switchTime / 3;
-            await AudioManager.SmoothMasterVolumeDown(fadeTime);
-            AudioManager.SmoothMasterVolumeUp(fadeTime).Forget();
+            await AudioManager.SetMusicVolumeDown(fadeTime);
+            AudioManager.SmoothMusicVolumeUp(fadeTime).Forget();
         }
 
         private void SwitchScreen(Action loadLevelCallback)

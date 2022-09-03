@@ -16,6 +16,7 @@ namespace MoroshkovieKochki
         [SerializeField] public string Desription;
         [ResizableTextArea]
         [SerializeField] public string CustomQuestion;
+        [SerializeField] public AudioClip SpeechAudio;
 
 
         public Transform PopupPivotPoint => _popupPivotPoint;

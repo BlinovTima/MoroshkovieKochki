@@ -17,7 +17,7 @@ namespace MoroshkovieKochki
         public void Init(InteractionItem item, bool subscribeResult)
         {
             Dispose();
-            
+            _interactionItem = item;
             _image.sprite = item.Sprite;
             _desription.text = item.Desription;
             _customQuestion.text = item.CustomQuestion;

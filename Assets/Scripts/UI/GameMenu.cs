@@ -33,16 +33,18 @@ namespace MoroshkovieKochki
             _exitButton.onClick.AddListener(Application.Quit);
             _playButton.onClick.AddListener(playButton.Invoke);
             _resumeButton.onClick.AddListener(onResumeButton.Invoke);
-            _masterVolumeSlider.onValueChanged.AddListener(SetVolumeSlider);
+            _masterVolumeSlider.onValueChanged.AddListener(OnSetVolumeSlider);
             SetupButtons();
         }
 
-        private void SetVolumeSlider(float value)
+        public void SetSlider(float value) =>
+            _masterVolumeSlider.value = value;
+
+        private void OnSetVolumeSlider(float value)
         {
             _onVolumeLevelChanged.Invoke(value);
-            _masterVolumeSlider.value = value;
         }
-        
+
         private void OnEnable()
         {
             SetupButtons();
