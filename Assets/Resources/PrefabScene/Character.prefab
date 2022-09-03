@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6545210225592834430}
   - component: {fileID: 6545210225592834417}
   - component: {fileID: 6545210225592834416}
+  - component: {fileID: 547798132953047907}
   m_Layer: 0
   m_Name: Spine GameObject (New SkeletonDataAsset)
   m_TagString: Untagged
@@ -117,6 +118,20 @@ MonoBehaviour:
   _animationName: idle
   loop: 1
   timeScale: 1
+--- !u!114 &547798132953047907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6545210225592834418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c2f96cc0b4347f498ad5d311e2d72f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _skeletonAnimation: {fileID: 6545210225592834416}
+  _eventName: step
 --- !u!1 &6545210225750011122
 GameObject:
   m_ObjectHideFlags: 0
@@ -176,6 +191,7 @@ MonoBehaviour:
   _skeletonAnimation: {fileID: 6545210225592834416}
   _meshRenderer: {fileID: 6545210225592834417}
   _skeletonTransform: {fileID: 5383982641083766012}
+  _skeletonAnimationEvents: {fileID: 547798132953047907}
   _defaultScale: {x: 0.45, y: 0.45, z: 0.45}
   _titleScale: {x: 1, y: 1, z: 1}
 --- !u!1 &8764315728903215736

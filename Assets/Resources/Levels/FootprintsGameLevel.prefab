@@ -429,6 +429,7 @@ MonoBehaviour:
   _buttonLabel: "\u0412\u043F\u0435\u0440\u0435\u0434!"
   _characterParent: {fileID: 7039548383074467219}
   _initialPosition: {fileID: 3407024205660329598}
+  _footstepSound: {fileID: 8300000, guid: 5ed8b3acaef3a27408cc9ea74e0530ef, type: 3}
   _introPosition: {fileID: 8501151870329986830}
   _outroPosition: {fileID: 255604928467609836}
   _footprintsItems:

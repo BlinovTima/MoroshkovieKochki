@@ -79,6 +79,7 @@ namespace MoroshkovieKochki
             _character.PlayIdle();
             _character.transform.SetParent(_gameLevel.CharacterParent, false);
             _character.SetPosition(_gameLevel.InitialPosition.position);
+            _character.SetupFootstepSound(_gameLevel.FootstepSound);
         }
 
         public virtual async UniTask PlayOutro()

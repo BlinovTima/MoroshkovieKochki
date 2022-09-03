@@ -14,13 +14,13 @@ namespace MoroshkovieKochki
         [SerializeField] private SkeletonAnimation _skeletonAnimation;
         [SerializeField] private MeshRenderer _meshRenderer;
         [SerializeField] private Transform _skeletonTransform;
+        [SerializeField] private SkeletonAnimationEvents _skeletonAnimationEvents;
 
         [Header("Scale setup")]
         [SerializeField] private Vector3 _defaultScale = new Vector3(0.45f, 0.45f, 0.45f);
         [SerializeField] private Vector3 _titleScale = new Vector3(0.7f, 0.7f, 0.7f);
         
         private Sequence _sequence;
-        private bool _isGoingLeftCache;
         private AnimationPreset _animationPreset;
   
         
@@ -63,20 +63,12 @@ namespace MoroshkovieKochki
         public async UniTask PlayGather() => 
             await SetAnimation(_animationPreset.Take, false);
 
-        public void SetOrientationRight()
-        {
-            var localScale = transform.localScale;
-            localScale.x = 1;
-            transform.localScale = localScale;
-        }
-            
-        
         public void KillAnimation()
         {
             _sequence?.Kill();
             _sequence = null;
         }
-        
+
         public async UniTask GoTo(Vector3 newPosition)
         {
             newPosition.z = 0;
@@ -104,17 +96,20 @@ namespace MoroshkovieKochki
             await new WaitForSpineAnimationComplete(track);
         }
 
+        public void SetOrientationRight() => 
+            SetOrientation(1);
+
         private void SetSideOrientation(Vector3 newPosition)
         {
-            var isGoingLeft = transform.position.x > newPosition.x;
+            var scale = transform.position.x > newPosition.x ? -1 : 1;
+            SetOrientation(scale);
+        }
 
-            if (isGoingLeft == _isGoingLeftCache)
-                return;
-
-            _isGoingLeftCache = isGoingLeft;
-
+        private void SetOrientation(float scale)
+        {
+            var scaleClamped = Mathf.Clamp(scale, -1, 1);
             var localScale = transform.localScale;
-            localScale.x *= -1;
+            localScale.x = scaleClamped;
             transform.localScale = localScale;
         }
 
@@ -122,6 +117,11 @@ namespace MoroshkovieKochki
         {
             var distance = Vector3.Distance(transform.position, newPosition);
             return distance / _speed;
+        }
+
+        public void SetupFootstepSound(AudioClip footstepSound)
+        {
+            _skeletonAnimationEvents.SetupAudioClip(footstepSound);
         }
     }
 }

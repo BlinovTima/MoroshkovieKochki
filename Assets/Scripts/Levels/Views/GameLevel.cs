@@ -18,6 +18,7 @@ namespace MoroshkovieKochki
         [Header("Character")]
         [SerializeField] private Transform _characterParent;
         [SerializeField] protected Transform _initialPosition;
+        [SerializeField] private AudioClip _footstepSound;
         
         protected IGameLevelEventReceiver _eventReceiver;
         protected float _characterXBound;
@@ -27,6 +28,7 @@ namespace MoroshkovieKochki
         public string ButtonLabel => _buttonLabel;
         public Transform CharacterParent => _characterParent;
         public Transform InitialPosition => _initialPosition;
+        public AudioClip FootstepSound => _footstepSound;
 
         public InteractionItem[] InteractionItems
         {
