@@ -75,7 +75,16 @@ namespace MoroshkovieKochki
                     _activeMosquito = null;
                     _hasActiveMosquito = false;
                 }
+                else
+                {
+                   await _character.PlayNo().AttachExternalCancellation(_cancellationToken.Token);
+                }
+                
+                _character.PlayIdle();
             }
+            
+            if(_cancellationToken.IsCancellationRequested)
+                _character.PlayIdle();
             
             _isClickActionInProgress = false; 
         }

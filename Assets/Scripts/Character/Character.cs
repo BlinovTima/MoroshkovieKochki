@@ -73,6 +73,9 @@ namespace MoroshkovieKochki
         public async UniTask PlayGather() => 
             await SetAnimation(_animationPreset.Take, false);
 
+        public async UniTask PlayNo() => 
+            await SetAnimation(_animationPreset.No, false);
+
         public void KillAnimation()
         {
             _sequence?.Kill();

@@ -17,7 +17,7 @@
                         ThinkStart = "idle_newspaper_think_one",
                         ThinkLoop = "idle_newspaper_think_two",
                         ThinkFinish = "idle_newspaper_think_three",
-                        No = "idle_newspaper_think_no",
+                        No = "idle_think_newspaper_no",
                     };
                 
                 case CharacterAnimationPreset.Box:
@@ -31,7 +31,7 @@
                         ThinkStart = "idle_box_think_one",
                         ThinkLoop = "idle_box_think_two",
                         ThinkFinish = "idle_box_think_three",
-                        No = "idle_box_think_no",
+                        No = "idle_think_box_no",
                     };
                 
                 case CharacterAnimationPreset.Basket:
@@ -45,7 +45,7 @@
                         ThinkStart = "idle_basket_think_one",
                         ThinkLoop = "idle_basket_think_two",
                         ThinkFinish = "idle_basket_think_three",
-                        No = "idle_basket_think_no",
+                        No = "idle_think_basket_no",
                     };
                 
                 default:

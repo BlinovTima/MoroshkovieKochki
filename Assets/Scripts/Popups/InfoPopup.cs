@@ -24,6 +24,7 @@ namespace MoroshkovieKochki
         public void Init(FootprintsItem item)
         {
             Dispose();
+            _interactionItem = item;
             _image.sprite = item.Sprite;
             _desription.text = item.Desription;
             _rightAnswer = item.ThisFootprints;

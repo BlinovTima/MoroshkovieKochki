@@ -67,8 +67,16 @@ namespace MoroshkovieKochki
                 {
                     var popup = (InfoPopup) _popupPresenter.CurrentPopup;
                     item.OnClick(new FootprintClickResult(){FootprintAnimal = popup.RightAnswer});
+                    
+                    if (item.ThisFootprints !=  popup.RightAnswer)
+                        await _character.PlayNo().AttachExternalCancellation(_cancellationToken.Token);
+                    
+                    _character.PlayIdle();
                 }
             }
+            
+            if(_cancellationToken.IsCancellationRequested)
+                _character.PlayIdle();
         }
     }
 }

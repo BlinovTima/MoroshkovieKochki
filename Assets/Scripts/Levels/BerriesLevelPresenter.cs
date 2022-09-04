@@ -55,15 +55,18 @@ namespace MoroshkovieKochki
                         .AttachExternalCancellation(_cancellationToken.Token);
                     
                     await UniTask.WaitUntil(() => !_popupPresenter.IsPopupOpen);
-                    await _character.PlayFinishThinking();
-                   
+
                     if (item.IsCompleted && item.ShouldGather)
-                    {
                         await _character.PlayGather().AttachExternalCancellation(_cancellationToken.Token);
-                        _character.PlayIdle();
-                    }
+                    else if (!item.IsCompleted && item.ShouldGather)
+                        await _character.PlayNo().AttachExternalCancellation(_cancellationToken.Token);
+                    
+                    _character.PlayIdle();
                 }
             }
+            
+            if(_cancellationToken.IsCancellationRequested)
+                _character.PlayIdle();
             
             _isClickActionInProgress = false;
         }
