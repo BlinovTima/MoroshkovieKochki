@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading;
+﻿using System.Threading;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
@@ -49,11 +48,15 @@ namespace MoroshkovieKochki
                 {
                     await _character.GoTo(item.CharacterInteractionPoint.position)
                         .AttachExternalCancellation(_cancellationToken.Token);
+                    
+                    _character.PlayThinking().Forget();
+                    
                     await _popupPresenter.ShowPopUp(item)
                         .AttachExternalCancellation(_cancellationToken.Token);
-
+                    
                     await UniTask.WaitUntil(() => !_popupPresenter.IsPopupOpen);
-
+                    await _character.PlayFinishThinking();
+                   
                     if (item.IsCompleted && item.ShouldGather)
                     {
                         await _character.PlayGather().AttachExternalCancellation(_cancellationToken.Token);

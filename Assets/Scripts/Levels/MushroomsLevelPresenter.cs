@@ -46,10 +46,12 @@ namespace MoroshkovieKochki
                 else
                 {
                     await _character.GoTo(item.CharacterInteractionPoint.position).AttachExternalCancellation(_cancellationToken.Token);
+                    _character.PlayThinking().Forget();
                     await _popupPresenter.ShowPopUp(item).AttachExternalCancellation(_cancellationToken.Token);
                     
                     await UniTask.WaitUntil(() => !_popupPresenter.IsPopupOpen);
-
+                    await _character.PlayFinishThinking();
+                    
                     if (item.IsCompleted && item.ShouldSayYes)
                     {
                         await _character.PlayGather().AttachExternalCancellation(_cancellationToken.Token);

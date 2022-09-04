@@ -1,4 +1,3 @@
-using System;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using Spine.Unity;
@@ -7,7 +6,7 @@ using UnityEngine;
 
 namespace MoroshkovieKochki
 {
-    public sealed partial class Character : MonoBehaviour
+    public sealed class Character : MonoBehaviour
     {
         [SerializeField] private float _minAnimationDistance = 0.1f;
         [SerializeField] private float _speed = 0.7f;
@@ -41,25 +40,36 @@ namespace MoroshkovieKochki
             }
         }
         
-        public void SetAnimationPreset(CharacterAnimationPreset preset)
-        {
+        public void SetAnimationPreset(CharacterAnimationPreset preset) => 
             _animationPreset = Animations.GetPreset(preset);
-        }
-        
-        public void SetPosition(Vector3 position)
-        {
-            transform.localPosition = position;
-        }
 
-        public void PlaySay() => SetAnimation(_animationPreset.Say).Forget();
-        public void PlayIdle() => SetAnimation(_animationPreset.Idle).Forget();
-        public async UniTask PlayHello() => await SetAnimation(_animationPreset.Hello, false);
+        public void SetPosition(Vector3 position) => 
+            transform.localPosition = position;
+
+        public void PlaySay() => 
+            SetAnimation(_animationPreset.Say).Forget();
+        
+        public void PlayIdle() => 
+            SetAnimation(_animationPreset.Idle).Forget();
+        
+        public async UniTask PlayHello() => 
+            await SetAnimation(_animationPreset.Hello, false);
+        
         public async UniTask PlayHit()
         {
             await SetAnimation(_animationPreset.Hit, false);
             PlayIdle();
         }
 
+        public async UniTask PlayThinking()
+        {
+            await SetAnimation(_animationPreset.ThinkStart, false);
+            await SetAnimation(_animationPreset.ThinkLoop, true);
+        }
+
+        public async UniTask PlayFinishThinking() =>
+            await SetAnimation(_animationPreset.ThinkFinish, false);
+        
         public async UniTask PlayGather() => 
             await SetAnimation(_animationPreset.Take, false);
 
@@ -92,6 +102,9 @@ namespace MoroshkovieKochki
 
         private async UniTask SetAnimation(string animationName, bool isLoop = true)
         {
+            if(string.IsNullOrEmpty(animationName))
+                return;
+            
             var track = _skeletonAnimation.state.SetAnimation(0, animationName, isLoop);
             await new WaitForSpineAnimationComplete(track);
         }
