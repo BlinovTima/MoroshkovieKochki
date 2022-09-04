@@ -1,6 +1,7 @@
 ﻿using System;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
+using MoroshkovieKochki;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,6 +14,7 @@ public sealed class HudPanel : MonoBehaviour
    [SerializeField] private float _fadeTime = 1f;
    [SerializeField] private Button _menuButton;
    [SerializeField] private Button _playAgainButton;
+   [SerializeField] private AudioClip _scoreAddingSound;
 
    public bool IsShown => gameObject.activeInHierarchy;
 
@@ -21,22 +23,28 @@ public sealed class HudPanel : MonoBehaviour
       _menuButton.onClick.AddListener(menuButtonClick.Invoke);
       _playAgainButton.onClick.AddListener(startNewGame.Invoke);
       
-      SetScoreValue(scoreValue);
+      SetScore(scoreValue);
       gameObject.SetActive(false);
    }
 
-   public void SetScoreValue(int value)
+   public void AnimatedSetScore(int value)
    {
-      _scoreLabel.text = value.ToString();
+      SetScore(value);
+      AudioManager.PlayEffect(_scoreAddingSound);
    }
-   
+
    public void SetActiveScore(bool isActive) => 
       gameObject.SetActive(isActive);
+
    public void SetActiveMenuButton(bool isActive) => 
       _menuButton.gameObject.SetActive(isActive);
+
    public void SetActiveNewGameButton(bool isActive) => 
       _playAgainButton.gameObject.SetActive(isActive);
-   
+
+   private void SetScore(int value) => 
+      _scoreLabel.text = value.ToString();
+
    public async UniTask Show()
    {
       _canvasGroup.alpha = 0f;
@@ -47,7 +55,7 @@ public sealed class HudPanel : MonoBehaviour
       
       await sequence.AsyncWaitForCompletion();
    }
-   
+
    public async UniTask Hide()
    {
       if (!gameObject.activeInHierarchy)

@@ -40,7 +40,7 @@ public class HudPresenter : IDisposable
 
     private void UpdateScore(int value)
     {
-        _hudPanel.SetScoreValue(value);
+        _hudPanel.AnimatedSetScore(value);
     }
 
     private async UniTask Show()
