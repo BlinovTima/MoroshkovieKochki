@@ -5,12 +5,13 @@ using MoroshkovieKochki;
 public class HudPresenter : IDisposable
 {
     private readonly HudPanel _hudPanel;
+    private bool _isAnimationInProcess;
 
     public HudPresenter(HudPanel hudPanel, Action onMenuButtonClick, Action startNewGame)
     {
         _hudPanel = hudPanel;
         _hudPanel.Init(0, onMenuButtonClick, startNewGame);
-        GameContext.OnScoreUpdated += UpdateScore;
+        GameContext.OnScoreUpdated += OnUpdateScore;
         GameContext.OnGameStateUpdated += UpdateVisuals;
     }
 
@@ -38,9 +39,14 @@ public class HudPresenter : IDisposable
         }
     }
 
-    private void UpdateScore(int value)
+    private void OnUpdateScore(int value) =>
+        UpdateScore(value).Forget();
+    
+    private async UniTask UpdateScore(int value)
     {
-        _hudPanel.AnimatedSetScore(value);
+        _isAnimationInProcess = true;
+        await _hudPanel.AnimatedSetScore(value);
+        _isAnimationInProcess = false;
     }
 
     private async UniTask Show()
@@ -50,12 +56,13 @@ public class HudPresenter : IDisposable
 
     private async UniTask Hide()
     {
+        await UniTask.WaitUntil(() => _isAnimationInProcess);
         await _hudPanel.Hide();
     }
 
     public void Dispose()
     {
-        GameContext.OnScoreUpdated -= UpdateScore;
+        GameContext.OnScoreUpdated -= OnUpdateScore;
         GameContext.OnGameStateUpdated -= UpdateVisuals;
     }
 }

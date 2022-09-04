@@ -43,7 +43,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7032030021909996567
 RectTransform:
   m_ObjectHideFlags: 0
@@ -90,10 +90,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _canvasGroup: {fileID: 134098626988617311}
-  _scoreLabel: {fileID: 9026103834388772885}
+  _scoreLabel: {fileID: 8554202722426209328}
   _fadeTime: 1
   _menuButton: {fileID: 4882792135830394450}
   _playAgainButton: {fileID: 1363681129070212029}
+  _scoreAddingSound: {fileID: 8300000, guid: 9087acf5e4935934e8713fa83cdb62b9, type: 3}
 --- !u!1001 &2853563781042098910
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -432,6 +433,31 @@ PrefabInstance:
       propertyPath: m_Name
       value: ScorePanel
       objectReference: {fileID: 0}
+    - target: {fileID: 4483460402501947757, guid: 4b417fdd6b6f7b84fb5ed0a3b20c393b,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4483460402700483294, guid: 4b417fdd6b6f7b84fb5ed0a3b20c393b,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4483460402700483294, guid: 4b417fdd6b6f7b84fb5ed0a3b20c393b,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4483460402700483294, guid: 4b417fdd6b6f7b84fb5ed0a3b20c393b,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4483460402700483294, guid: 4b417fdd6b6f7b84fb5ed0a3b20c393b,
+        type: 3}
+      propertyPath: m_textInfo.pageCount
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b417fdd6b6f7b84fb5ed0a3b20c393b, type: 3}
 --- !u!224 &9026103832675594169 stripped
@@ -440,9 +466,9 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 4862580167269499595}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &9026103834388772885 stripped
+--- !u!114 &8554202722426209328 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4483460402700483294, guid: 4b417fdd6b6f7b84fb5ed0a3b20c393b,
+  m_CorrespondingSourceObject: {fileID: 3877028546313553659, guid: 4b417fdd6b6f7b84fb5ed0a3b20c393b,
     type: 3}
   m_PrefabInstance: {fileID: 4862580167269499595}
   m_PrefabAsset: {fileID: 0}

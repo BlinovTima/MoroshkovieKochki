@@ -2,6 +2,7 @@
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using MoroshkovieKochki;
+using Spine.Unity;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,6 +16,9 @@ public sealed class HudPanel : MonoBehaviour
    [SerializeField] private Button _menuButton;
    [SerializeField] private Button _playAgainButton;
    [SerializeField] private AudioClip _scoreAddingSound;
+   [Header("Score animation settings")] 
+   [SerializeField] private float _scoreAnimationTime = 1f;
+   [SerializeField] private float _maxScale = 1.7f;
 
    public bool IsShown => gameObject.activeInHierarchy;
 
@@ -27,10 +31,26 @@ public sealed class HudPanel : MonoBehaviour
       gameObject.SetActive(false);
    }
 
-   public void AnimatedSetScore(int value)
+   public async UniTask AnimatedSetScore(int value)
    {
-      SetScore(value);
+      var isComplete = false;
+      var scoreTimeHalf = _scoreAnimationTime / 2;
       AudioManager.PlayEffect(_scoreAddingSound);
+
+      _scoreLabel.DOFade(0f, scoreTimeHalf);
+      _scoreLabel.transform.DOScale(_maxScale, scoreTimeHalf).OnComplete(
+         () =>
+         {
+            SetScore(value);
+            _scoreLabel.color = Color.green;
+            _scoreLabel.transform.localScale = Vector3.one * 0.5f;
+            _scoreLabel.DOColor(Color.white, scoreTimeHalf);
+            _scoreLabel.DOFade(1f, scoreTimeHalf);
+            _scoreLabel.transform.DOScale(1f, scoreTimeHalf).SetEase(Ease.OutElastic)
+               .OnComplete(() => isComplete = true);
+         });
+
+      await UniTask.WaitUntil(() => isComplete);
    }
 
    public void SetActiveScore(bool isActive) => 
