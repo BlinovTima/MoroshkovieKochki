@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace MoroshkovieKochki
 {
-    public abstract class InteractionItem : MonoBehaviour 
+    public abstract class InteractionItem : MonoBehaviour
     {
         [Header("Points")]
         [SerializeField] private Transform _popupPivotPoint;

@@ -15,6 +15,14 @@ namespace MoroshkovieKochki
         private void ProduceLeftMouseClick(RaycastHit2D raycast, Vector3 mousePosition)
         {
             SetAudioEffect(raycast);
+            CreateEffect(raycast, mousePosition);
+        }
+
+        private void CreateEffect(RaycastHit2D raycast, Vector3 mousePosition)
+        {
+            if (raycast.collider.GetComponent<InteractionItem>()
+                || raycast.collider.GetComponent<House>())
+                _cursorEffectsView.CreateEffect(raycast.point);
         }
 
         private void SetAudioEffect(RaycastHit2D raycast)
