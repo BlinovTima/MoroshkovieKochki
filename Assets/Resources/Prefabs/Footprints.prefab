@@ -153,7 +153,8 @@ MonoBehaviour:
     \u0436\u0438\u0440, \u0430 \u043D\u0430 \u0437\u0438\u043C\u0443 \u0437\u0430\u043B\u0435\u0433\u0430\u0435\u0442
     \u0432 \u0431\u0435\u0440\u043B\u043E\u0433\u0443 \u043D\u0430 \u0441\u043E\u043D."
   CustomQuestion: "\u0413\u0434\u0435 \u0441\u043B\u0435\u0434\u044B \u043C\u0435\u0434\u0432\u0435\u0434\u044F?"
-  _outlineAnimation: {fileID: 5473502617368227197}
+  SpeechAudio: {fileID: 0}
+  _outlineAnimation: {fileID: 4566822557333934179}
   _thisFootprints: 2
 --- !u!60 &1055722663301853351
 PolygonCollider2D:
@@ -262,7 +263,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2618413244629509454}
   - component: {fileID: 4489314978398708654}
-  - component: {fileID: 5473502617368227197}
+  - component: {fileID: 4566822557333934179}
   m_Layer: 0
   m_Name: Outline
   m_TagString: Untagged
@@ -302,7 +303,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4ef3246769b9a5245b2e4d596e33310c, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -323,7 +324,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: c5a5b7aeb3e73fd488f11c0f4784e941, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e7391e38167bc0143a1a3f0ab32951dd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -334,7 +335,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5473502617368227197
+--- !u!114 &4566822557333934179
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -343,12 +344,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 5542094223841929233}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c5cf3246d4b2be46a0316f2aeacd163, type: 3}
+  m_Script: {fileID: 11500000, guid: f67fc654a4d94bbc83f6f1aa2c6fe86b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _completeColor: {r: 0, g: 1, b: 0.05882353, a: 1}
-  _wrongColor: {r: 1, g: 0.18396229, b: 0.18396229, a: 1}
-  _outlineScale: {x: 1.07, y: 1.07, z: 1.07}
+  _wrongColor: {r: 1, g: 0.18431373, b: 0.18431373, a: 1}
   _showDuration: 1
   _hideDuration: 0.2
   _ease: 24

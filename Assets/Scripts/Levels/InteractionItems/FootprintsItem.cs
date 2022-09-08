@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace MoroshkovieKochki
 {
     public sealed class FootprintsItem : InteractionItem
     {
+        [FormerlySerializedAs("outlineShaderAnimation")]
         [Header("OnClick settings")]
         [SerializeField] private OutlineAnimation _outlineAnimation;
         [SerializeField] private Animals _thisFootprints;

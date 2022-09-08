@@ -121,8 +121,9 @@ MonoBehaviour:
     \u0438 \u043D\u0430 \u044E\u0433\u0435 \u0420\u043E\u0441\u0441\u0438\u0438,
     \u043D\u043E \u043D\u0430 \u0441\u0435\u0432\u0435\u0440\u0435 \u043D\u0435 \u0440\u0430\u0441\u0442\u0443\u0442."
   CustomQuestion: "\u0413\u0440\u0438\u0431 \u043C\u043E\u0436\u043D\u043E \u0435\u0441\u0442\u044C?"
+  SpeechAudio: {fileID: 0}
   ShouldSayYes: 1
-  _outlineAnimation: {fileID: 3409895703584612644}
+  _outlineAnimation: {fileID: 5751633471542047982}
   _switchOffTime: 1
   _spriteRenderer: {fileID: 6075063194167102181}
 --- !u!60 &4480634358761169826
@@ -194,7 +195,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6694634230817502390}
   - component: {fileID: 3092265955785242368}
-  - component: {fileID: 3409895703584612644}
+  - component: {fileID: 5751633471542047982}
   m_Layer: 0
   m_Name: Outline
   m_TagString: Untagged
@@ -234,7 +235,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4ef3246769b9a5245b2e4d596e33310c, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -266,7 +267,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3409895703584612644
+--- !u!114 &5751633471542047982
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -275,12 +276,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2091221804916719525}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c5cf3246d4b2be46a0316f2aeacd163, type: 3}
+  m_Script: {fileID: 11500000, guid: f67fc654a4d94bbc83f6f1aa2c6fe86b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _completeColor: {r: 0, g: 1, b: 0.05882353, a: 1}
-  _wrongColor: {r: 1, g: 0.18396229, b: 0.18396229, a: 1}
-  _outlineScale: {x: 1.07, y: 1.07, z: 1.07}
+  _wrongColor: {r: 1, g: 0.18431373, b: 0.18431373, a: 1}
   _showDuration: 1
   _hideDuration: 0.2
   _ease: 24

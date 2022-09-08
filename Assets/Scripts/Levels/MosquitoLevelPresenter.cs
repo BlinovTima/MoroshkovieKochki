@@ -66,7 +66,9 @@ namespace MoroshkovieKochki
             if (item && _activeMosquito)
             {
                 _activeMosquito.OnClick(new MosquitoClickResult(){MosquitoHouse = item.MosquitoHouse});
-
+               
+                item.FlickOutline(_activeMosquito.IsCompleted);
+                
                 if(_activeMosquito.IsCompleted)
                 {
                     _character.PlayHit().Forget();

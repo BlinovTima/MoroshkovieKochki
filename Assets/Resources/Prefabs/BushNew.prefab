@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7958670134714556029}
   - component: {fileID: 8388473846649428125}
-  - component: {fileID: 130974969442948686}
+  - component: {fileID: 1176822446343427764}
   m_Layer: 0
   m_Name: Outline
   m_TagString: Untagged
@@ -50,7 +50,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4ef3246769b9a5245b2e4d596e33310c, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -71,7 +71,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: 27f9c572ae11fce458305b6df459c97f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 18ce3809da9169241803155aa0f843eb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -82,7 +82,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &130974969442948686
+--- !u!114 &1176822446343427764
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -91,12 +91,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 490296416878301986}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c5cf3246d4b2be46a0316f2aeacd163, type: 3}
+  m_Script: {fileID: 11500000, guid: f67fc654a4d94bbc83f6f1aa2c6fe86b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _completeColor: {r: 0, g: 1, b: 0.05882353, a: 1}
-  _wrongColor: {r: 1, g: 0.18396229, b: 0.18396229, a: 1}
-  _outlineScale: {x: 1.07, y: 1.07, z: 1.07}
+  _wrongColor: {r: 1, g: 0.18431373, b: 0.18431373, a: 1}
   _showDuration: 1
   _hideDuration: 0.2
   _ease: 24
@@ -446,9 +445,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1536501913354947924}
   - component: {fileID: 2205459738260257071}
+  - component: {fileID: 9036862959109666081}
   - component: {fileID: 8198197088152397166}
   - component: {fileID: 6774467900834003441}
-  - component: {fileID: 9036862959109666081}
   m_Layer: 0
   m_Name: BushNew
   m_TagString: Untagged
@@ -482,6 +481,40 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6714581312427788333}
   m_CullTransparentMesh: 0
+--- !u!114 &9036862959109666081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6714581312427788333}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d03bc024a9964cfa96cdf31319cb5200, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _popupPivotPoint: {fileID: 2215897678633962794}
+  _characterInteractionPoint: {fileID: 508397927386403204}
+  Sprite: {fileID: 21300000, guid: f5cda899161134f4880a7c53244d3526, type: 3}
+  Desription: "\u0427\u0435\u0440\u043D\u0438\u043A\u0430. \u0420\u0430\u0441\u0442\u0435\u0442
+    \u043D\u0430 \u0441\u0435\u0432\u0435\u0440\u0435, \u043B\u044E\u0431\u0438\u0442
+    \u0441\u043E\u0441\u043D\u043E\u0432\u044B\u0435 \u0438 \u0441\u043C\u0435\u0448\u0430\u043D\u043D\u044B\u0435
+    \u043B\u0435\u0441\u0430. \u0410\u0440\u043E\u043C\u0430\u0442\u043D\u044B\u0435
+    \u0432\u043A\u0443\u0441\u043D\u044B\u0435 \u044F\u0433\u043E\u0434\u044B \u043F\u043E\u0441\u043F\u0435\u0432\u0430\u044E\u0442
+    \u0441 \u0441\u0435\u0440\u0435\u0434\u0438\u043D\u044B \u043B\u0435\u0442\u0430."
+  CustomQuestion: "\u0421\u043E\u0431\u0440\u0430\u0442\u044C?"
+  SpeechAudio: {fileID: 0}
+  ShouldGather: 0
+  _outlineAnimation: {fileID: 1176822446343427764}
+  _delayBetweenSwitchOff: 0.3
+  _switchOffTime: 1
+  _berries:
+  - {fileID: 2187336483205585204}
+  - {fileID: 4250889221522102110}
+  - {fileID: 1235319433450800722}
+  - {fileID: 8394742885300331916}
+  - {fileID: 2516256338385657135}
+  - {fileID: 2406477969723026149}
 --- !u!212 &8198197088152397166
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1079,39 +1112,6 @@ PolygonCollider2D:
       - {x: -2.44, y: 0.13499999}
       - {x: -2.45, y: 0.16499999}
       - {x: -2.49, y: 0.16499999}
---- !u!114 &9036862959109666081
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6714581312427788333}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d03bc024a9964cfa96cdf31319cb5200, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Sprite: {fileID: 21300000, guid: f5cda899161134f4880a7c53244d3526, type: 3}
-  Desription: "\u0427\u0435\u0440\u043D\u0438\u043A\u0430. \u0420\u0430\u0441\u0442\u0435\u0442
-    \u043D\u0430 \u0441\u0435\u0432\u0435\u0440\u0435, \u043B\u044E\u0431\u0438\u0442
-    \u0441\u043E\u0441\u043D\u043E\u0432\u044B\u0435 \u0438 \u0441\u043C\u0435\u0448\u0430\u043D\u043D\u044B\u0435
-    \u043B\u0435\u0441\u0430. \u0410\u0440\u043E\u043C\u0430\u0442\u043D\u044B\u0435
-    \u0432\u043A\u0443\u0441\u043D\u044B\u0435 \u044F\u0433\u043E\u0434\u044B \u043F\u043E\u0441\u043F\u0435\u0432\u0430\u044E\u0442
-    \u0441 \u0441\u0435\u0440\u0435\u0434\u0438\u043D\u044B \u043B\u0435\u0442\u0430."
-  CustomQuestion: "\u0421\u043E\u0431\u0440\u0430\u0442\u044C?"
-  ShouldSayYes: 1
-  _popupPivotPoint: {fileID: 2215897678633962794}
-  _characterInteractionPoint: {fileID: 508397927386403204}
-  _outlineAnimation: {fileID: 130974969442948686}
-  _delayBetweenSwitchOff: 0.3
-  _switchOffTime: 1
-  _berries:
-  - {fileID: 2187336483205585204}
-  - {fileID: 4250889221522102110}
-  - {fileID: 1235319433450800722}
-  - {fileID: 8394742885300331916}
-  - {fileID: 2516256338385657135}
-  - {fileID: 2406477969723026149}
 --- !u!1 &7820514970163460980
 GameObject:
   m_ObjectHideFlags: 0

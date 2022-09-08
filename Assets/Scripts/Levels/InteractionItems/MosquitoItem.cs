@@ -1,5 +1,4 @@
-﻿using System;
-using Cysharp.Threading.Tasks;
+﻿using Cysharp.Threading.Tasks;
 using PathCreation;
 using UnityEngine;
 
@@ -17,7 +16,6 @@ namespace MoroshkovieKochki
         [SerializeField] private PathCreator _loopPath;
         [SerializeField] private Transform _outroPathTransform;
         [SerializeField] private Transform _mosquitoContainer;
-        [SerializeField] private OutlineAnimation _outlineAnimation;
         [SerializeField] private SpriteRenderer _mosquitoSpriteRenderer;
         [SerializeField] private Animator _mosquitoAnimator;
         [SerializeField] private float _flySpeed;
