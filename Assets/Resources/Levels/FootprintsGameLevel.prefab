@@ -430,7 +430,9 @@ MonoBehaviour:
   _buttonLabel: "\u0412\u043F\u0435\u0440\u0435\u0434!"
   _characterParent: {fileID: 7039548383074467219}
   _initialPosition: {fileID: 3407024205660329598}
+  FinishLevelSpeech: {fileID: 0}
   _footstepSound: {fileID: 8300000, guid: 5ed8b3acaef3a27408cc9ea74e0530ef, type: 3}
+  _taskVoiceSpeech: {fileID: 8300000, guid: 86b01d73994c70e4b8388f01d1e0e2fe, type: 3}
   _introPosition: {fileID: 8501151870329986830}
   _outroPosition: {fileID: 255604928467609836}
   _footprintsItems:
@@ -713,6 +715,21 @@ PrefabInstance:
       propertyPath: _popupPivotPoint
       value: 
       objectReference: {fileID: 9094814024637521147}
+    - target: {fileID: 4547978537879355305, guid: 23282115e78d7af46a154f0d55e990e6,
+        type: 3}
+      propertyPath: CorrectChoiceAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: db14105e1c5f3b04abee2699a13b5477, type: 3}
+    - target: {fileID: 4547978537879355305, guid: 23282115e78d7af46a154f0d55e990e6,
+        type: 3}
+      propertyPath: IncorrectChoiceAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: 5517f32dfd2bf034984beff48fdc060a, type: 3}
+    - target: {fileID: 4547978537879355305, guid: 23282115e78d7af46a154f0d55e990e6,
+        type: 3}
+      propertyPath: SpeechAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: de5032487ea9abd459319cacfb7e2e0b, type: 3}
     - target: {fileID: 5560443141637761719, guid: 23282115e78d7af46a154f0d55e990e6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -843,6 +860,21 @@ PrefabInstance:
       propertyPath: _popupPivotPoint
       value: 
       objectReference: {fileID: 9094814024637521147}
+    - target: {fileID: 4547978537879355305, guid: 23282115e78d7af46a154f0d55e990e6,
+        type: 3}
+      propertyPath: CorrectChoiceAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: db14105e1c5f3b04abee2699a13b5477, type: 3}
+    - target: {fileID: 4547978537879355305, guid: 23282115e78d7af46a154f0d55e990e6,
+        type: 3}
+      propertyPath: IncorrectChoiceAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: 5517f32dfd2bf034984beff48fdc060a, type: 3}
+    - target: {fileID: 4547978537879355305, guid: 23282115e78d7af46a154f0d55e990e6,
+        type: 3}
+      propertyPath: SpeechAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: 07e0b01ef4a196d4cbff9a60a6a324cb, type: 3}
     - target: {fileID: 5560443141637761719, guid: 23282115e78d7af46a154f0d55e990e6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1003,6 +1035,21 @@ PrefabInstance:
       propertyPath: _popupPivotPoint
       value: 
       objectReference: {fileID: 9094814024637521147}
+    - target: {fileID: 4547978537879355305, guid: 23282115e78d7af46a154f0d55e990e6,
+        type: 3}
+      propertyPath: CorrectChoiceAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: db14105e1c5f3b04abee2699a13b5477, type: 3}
+    - target: {fileID: 4547978537879355305, guid: 23282115e78d7af46a154f0d55e990e6,
+        type: 3}
+      propertyPath: IncorrectChoiceAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: 5517f32dfd2bf034984beff48fdc060a, type: 3}
+    - target: {fileID: 4547978537879355305, guid: 23282115e78d7af46a154f0d55e990e6,
+        type: 3}
+      propertyPath: SpeechAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: 8b3950de9ef58ed4eae0cac48eedd8b4, type: 3}
     - target: {fileID: 5560443141637761719, guid: 23282115e78d7af46a154f0d55e990e6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1262,6 +1309,21 @@ PrefabInstance:
       propertyPath: _popupPivotPoint
       value: 
       objectReference: {fileID: 9094814024637521147}
+    - target: {fileID: 4547978537879355305, guid: 23282115e78d7af46a154f0d55e990e6,
+        type: 3}
+      propertyPath: CorrectChoiceAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: db14105e1c5f3b04abee2699a13b5477, type: 3}
+    - target: {fileID: 4547978537879355305, guid: 23282115e78d7af46a154f0d55e990e6,
+        type: 3}
+      propertyPath: IncorrectChoiceAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: 5517f32dfd2bf034984beff48fdc060a, type: 3}
+    - target: {fileID: 4547978537879355305, guid: 23282115e78d7af46a154f0d55e990e6,
+        type: 3}
+      propertyPath: SpeechAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: 26b2932781ba034459f3a6efc528ce3a, type: 3}
     - target: {fileID: 5560443141637761719, guid: 23282115e78d7af46a154f0d55e990e6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1434,6 +1496,21 @@ PrefabInstance:
       propertyPath: _popupPivotPoint
       value: 
       objectReference: {fileID: 9094814024637521147}
+    - target: {fileID: 4547978537879355305, guid: 23282115e78d7af46a154f0d55e990e6,
+        type: 3}
+      propertyPath: CorrectChoiceAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: db14105e1c5f3b04abee2699a13b5477, type: 3}
+    - target: {fileID: 4547978537879355305, guid: 23282115e78d7af46a154f0d55e990e6,
+        type: 3}
+      propertyPath: IncorrectChoiceAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: 5517f32dfd2bf034984beff48fdc060a, type: 3}
+    - target: {fileID: 4547978537879355305, guid: 23282115e78d7af46a154f0d55e990e6,
+        type: 3}
+      propertyPath: SpeechAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: 336a7a09ac20f0948adf0e39f4b6acab, type: 3}
     - target: {fileID: 5560443141637761719, guid: 23282115e78d7af46a154f0d55e990e6,
         type: 3}
       propertyPath: m_LocalPosition.x
