@@ -56,6 +56,7 @@ namespace MoroshkovieKochki
 
         public async UniTask CompleteLevel()
         {
+            AudioManager.StopSpeech();
             _levelTaskPopupPresenter.HidePopup().Forget();
             await _popupPresenter.CloseCurrentPopup();
             await AudioManager.PlaySpeechAsync(_gameLevel.FinishLevelSpeech);
