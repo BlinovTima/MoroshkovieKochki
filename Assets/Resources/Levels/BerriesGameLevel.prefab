@@ -4110,7 +4110,9 @@ MonoBehaviour:
   _buttonLabel: "\u042F \u0433\u043E\u0442\u043E\u0432!"
   _characterParent: {fileID: 4976389423507191786}
   _initialPosition: {fileID: 7344594665234378225}
+  FinishLevelSpeech: {fileID: 8300000, guid: f503a860eb588964289615b51cb670d5, type: 3}
   _footstepSound: {fileID: 8300000, guid: 1a74964b34a99b44bb8cbc0dd6642039, type: 3}
+  _taskVoiceSpeech: {fileID: 8300000, guid: f7a75d2ca2dfaa64c8af22d256e16ec5, type: 3}
   _introPosition: {fileID: 1347950030329721991}
   _outroPosition: {fileID: 2326661943418007272}
 --- !u!1 &5918719599374359356
@@ -6575,7 +6577,17 @@ PrefabInstance:
         type: 3}
       propertyPath: SpeechAudio
       value: 
-      objectReference: {fileID: 8300000, guid: babf594bb236d5a4d8a91f0ab76937e4, type: 3}
+      objectReference: {fileID: 8300000, guid: 7b97119c7067f074fa6878f551e149a9, type: 3}
+    - target: {fileID: 9036862959109666081, guid: 558d33629560349408da558923354aae,
+        type: 3}
+      propertyPath: CorrectChoiceAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: f503a860eb588964289615b51cb670d5, type: 3}
+    - target: {fileID: 9036862959109666081, guid: 558d33629560349408da558923354aae,
+        type: 3}
+      propertyPath: IncorrectChoiceAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: 165f605259a4dc840a9cca95ead39fd4, type: 3}
     - target: {fileID: 9128276527989069411, guid: 558d33629560349408da558923354aae,
         type: 3}
       propertyPath: m_LocalPosition.x

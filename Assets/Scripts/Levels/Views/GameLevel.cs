@@ -15,17 +15,23 @@ namespace MoroshkovieKochki
         [SerializeField] private string _description;
         [SerializeField] private string _buttonLabel;
         
+        
         [Header("Character")]
         [SerializeField] private Transform _characterParent;
         [SerializeField] protected Transform _initialPosition;
+
+        [Header("AudioClips")]
+        public AudioClip FinishLevelSpeech;
         [SerializeField] private AudioClip _footstepSound;
-        
+        [SerializeField] private AudioClip _taskVoiceSpeech;
+
         protected IGameLevelEventReceiver _eventReceiver;
         protected float _characterXBound;
         private InteractionItem[] _interactionItems = new FootprintsItem[] { };
         
         public string Description => _description;
         public string ButtonLabel => _buttonLabel;
+        public AudioClip TaskVoiceSpeech => _taskVoiceSpeech;
         public Transform CharacterParent => _characterParent;
         public Transform InitialPosition => _initialPosition;
         public AudioClip FootstepSound => _footstepSound;
@@ -40,7 +46,7 @@ namespace MoroshkovieKochki
                 return _interactionItems;
             }
         }
-        
+
         public virtual void Init(IGameLevelEventReceiver eventReceiver, 
             float characterXBound)
         {
@@ -71,7 +77,7 @@ namespace MoroshkovieKochki
         [Button("Complete Level")]
         public void CompleteLevel()
         {
-            _eventReceiver.CompleteLevel();
+            _eventReceiver.CompleteLevel().Forget();
         }
     }
 }

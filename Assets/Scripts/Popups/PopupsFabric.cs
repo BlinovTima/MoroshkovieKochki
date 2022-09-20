@@ -21,7 +21,7 @@ namespace MoroshkovieKochki
             if(!_oneButtonPopUpPopupCache)
                 _oneButtonPopUpPopupCache = CreatePopup<OneButtonPopUp>();
                 
-            _oneButtonPopUpPopupCache.Init(gameLevel.Description, gameLevel.ButtonLabel);
+            _oneButtonPopUpPopupCache.Init(gameLevel.Description, gameLevel.ButtonLabel, gameLevel.TaskVoiceSpeech);
             return _oneButtonPopUpPopupCache;
         }
         

@@ -7,6 +7,7 @@ namespace MoroshkovieKochki
 {
     public sealed class BerriesGameLevel : GameLevel
     {
+        [Header("Positions")]
         [SerializeField] private Transform _introPosition;
         [SerializeField] private Transform _outroPosition;
         

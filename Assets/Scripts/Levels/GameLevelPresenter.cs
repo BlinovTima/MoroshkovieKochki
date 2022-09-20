@@ -45,7 +45,7 @@ namespace MoroshkovieKochki
         {
             await UniTask.WaitUntil(() => interactionItems.All(x => x.IsCompleted));
             await UniTask.WaitUntil(() => !_isClickActionInProgress);
-            CompleteLevel();
+            await CompleteLevel();
         }
 
         public virtual void PrepareLevelForStart()
@@ -54,10 +54,11 @@ namespace MoroshkovieKochki
             InputListener.OnLeftMouseButtonClick += OnClickAction;
         }
 
-        public void CompleteLevel()
+        public async UniTask CompleteLevel()
         {
             _levelTaskPopupPresenter.HidePopup().Forget();
-            _popupPresenter.CloseCurrentPopup().Forget();
+            await _popupPresenter.CloseCurrentPopup();
+            await AudioManager.PlaySpeechAsync(_gameLevel.FinishLevelSpeech);
             _onLevelComplete.Invoke();
         }
 

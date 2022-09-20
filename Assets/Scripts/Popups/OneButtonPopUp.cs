@@ -18,17 +18,20 @@ namespace MoroshkovieKochki
         [SerializeField] private Ease _hideEase;
         
         private Sequence _sequence;
-        
+        private AudioClip _gameLevelTaskVoiceSpeech;
+
         public bool IsTaskConfirmed { get; private set; }
         
-        public void Init(string description, string buttonLabel)
+        public void Init(string description, string buttonLabel, AudioClip gameLevelTaskVoiceSpeech)
         {
+            _gameLevelTaskVoiceSpeech = gameLevelTaskVoiceSpeech;
             gameObject.SetActive(false);
             _desription.text = description;
             _buttonLabel.text = buttonLabel;
             
             _confirmButton.onClick.AddListener(() =>
             {
+                AudioManager.StopSpeech();
                 IsTaskConfirmed = true;
                 _confirmButton.onClick.RemoveAllListeners();
                 Hide().Forget();
@@ -45,10 +48,14 @@ namespace MoroshkovieKochki
             _sequence = DOTween.Sequence();
             _sequence.Append(DOTween.To(() => _canvasGroup.alpha, x => _canvasGroup.alpha = x, 1f, _switchTime)
                 .SetEase(_showEase));
+            _sequence.AppendCallback(PlayTaskSpeech);
             _sequence.SetAutoKill(true);
             
             await _sequence.AsyncWaitForKill();
         }
+
+        private void PlayTaskSpeech() => 
+            AudioManager.PlaySpeech(_gameLevelTaskVoiceSpeech);
 
         public async UniTask Hide()
         {

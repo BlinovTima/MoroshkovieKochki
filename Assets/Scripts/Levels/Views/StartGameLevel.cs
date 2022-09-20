@@ -13,7 +13,7 @@ namespace MoroshkovieKochki
         {
             base.Init(eventReceiver, characterXBound);
             
-            _startGameButton.onClick.AddListener(eventReceiver.CompleteLevel);
+            _startGameButton.onClick.AddListener(() => eventReceiver.CompleteLevel().Forget());
         }
 
         private void OnDestroy()

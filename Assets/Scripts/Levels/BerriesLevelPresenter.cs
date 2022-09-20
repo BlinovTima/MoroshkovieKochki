@@ -57,9 +57,15 @@ namespace MoroshkovieKochki
                     await UniTask.WaitUntil(() => !_popupPresenter.IsPopupOpen);
 
                     if (item.IsCompleted && item.ShouldGather)
+                    {
+                        AudioManager.PlaySpeech(item.CorrectChoiceAudio);
                         await _character.PlayGather().AttachExternalCancellation(_cancellationToken.Token);
+                    }
                     else if (!item.IsCompleted && item.ShouldGather)
+                    {
+                        AudioManager.PlaySpeech(item.IncorrectChoiceAudio);
                         await _character.PlayNo().AttachExternalCancellation(_cancellationToken.Token);
+                    }
                     
                     _character.PlayIdle();
                 }

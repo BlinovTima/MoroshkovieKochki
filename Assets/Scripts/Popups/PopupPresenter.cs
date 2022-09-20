@@ -55,7 +55,7 @@ namespace MoroshkovieKochki
                 return;
 
             _currentPopupDataName = null;
-            
+
             if (force)
                 _currentPopup.SetActive(false);
             else
@@ -72,18 +72,25 @@ namespace MoroshkovieKochki
 
             _currentPopupDataName = interactionItem.gameObject.name;
             
-            if (_currentPopup && _currentPopup.ActiveInHierarchy)
+            if (_currentPopup && _currentPopup.ActiveInHierarchy) 
                 await _currentPopup.Hide();
 
             _currentPopup = _popupsFabric.GetPopup(interactionItem);
 
             var screenPoint = Camera.main.WorldToScreenPoint(interactionItem.PopupPivotPoint.position);
             await _currentPopup.Show(screenPoint);
+            PlaySpeech(interactionItem.SpeechAudio);
             
             if(_currentPopup.HasButtons)
                 GameContext.AddGameState(GameState.OpenPopup);
         }
 
+        private void PlaySpeech(AudioClip audioClip) => 
+            AudioManager.PlaySpeech(audioClip);
+
+        private void StopSpeech() => 
+            AudioManager.StopSpeech();
+        
         public void Dispose()
         {
             if (_currentPopup)
@@ -92,5 +99,7 @@ namespace MoroshkovieKochki
             _popupsFabric.Dispose();
             _currentPopupDataName = null;
         }
+        
+        
     }
 }

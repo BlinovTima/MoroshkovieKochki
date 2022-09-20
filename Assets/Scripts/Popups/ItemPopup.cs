@@ -35,22 +35,13 @@ namespace MoroshkovieKochki
             _sequence?.Kill();
             _sequence = DOTween.Sequence();
             _sequence.Append(DOTween.To(() => _canvasGroup.alpha, x => _canvasGroup.alpha = x, 1f, _switchTime));
-            _sequence.AppendCallback(PlaySpeech);
             _sequence.SetAutoKill(true);
 
             await _sequence.AsyncWaitForKill();
         }
 
-        private void PlaySpeech()
-        {
-            if (_interactionItem.SpeechAudio != null)
-                AudioManager.PlaySpeech(_interactionItem.SpeechAudio);
-        }
-        
         public async UniTask Hide()
         {
-            StopSpeech(_switchTime);
-            
             _sequence?.Kill();
             _sequence = DOTween.Sequence();
             
@@ -59,12 +50,6 @@ namespace MoroshkovieKochki
             _sequence.AppendCallback(() => SetActive(false));
 
             await _sequence.AsyncWaitForKill();
-        }
-
-        private void StopSpeech(float fadeTime)
-        {
-            if (_interactionItem.SpeechAudio != null)
-                AudioManager.StopSpeech();
         }
     }
 }

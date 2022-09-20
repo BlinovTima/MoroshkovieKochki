@@ -502,7 +502,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemMouseClick: {fileID: 8300000, guid: 57d90dec860e24742a07cd840a727bfc, type: 3}
   EmptyMouseClick: {fileID: 8300000, guid: 3182d0e76a7fc3644af64ecb4015b775, type: 3}
-  CkickEffect: {fileID: 0}
+  CkickEffect: {fileID: 6092109750612629672, guid: bf067fdd9630a3a448044a6c012c5222,
+    type: 3}
   _zEffectDepth: -6
 --- !u!4 &1155196518
 Transform:

@@ -62,17 +62,44 @@ namespace MoroshkovieKochki
         public static void PlayEffect(AudioClip audioClip) => 
             Instance._effectsAudioSource.PlayOneShot(audioClip);
 
-        public static void PlaySpeech(AudioClip audioClip) => 
+        public static void PlaySpeech(AudioClip audioClip)
+        {
+            if (!audioClip)
+            {
+                Debug.LogError("AudioClip is NULL");
+                return;
+            }
+
+            StopSpeech();
             Instance._speechAudioSource.PlayOneShot(audioClip);
+        }
+        
+        public static async UniTask PlaySpeechAsync(AudioClip audioClip)
+        {
+            if (!audioClip)
+            {
+                Debug.LogError("AudioClip is NULL");
+                return;
+            }
+
+            StopSpeech();
+            Instance._speechAudioSource.PlayOneShot(audioClip);
+
+            await UniTask.WaitUntil(() => !Instance._speechAudioSource.isPlaying);
+        }
+
+        
+        public static void StopSpeech()
+        {
+            if (Instance._speechAudioSource.isPlaying) 
+                Instance._speechAudioSource.Stop();
+        }
 
         public static void ResumeSpeech() => 
             Instance._speechAudioSource.UnPause();
 
         public static void PauseSpeech() => 
             Instance._speechAudioSource.Pause();
-        
-        public static void StopSpeech() => 
-            Instance._speechAudioSource.Stop();
 
         private static float ConvertLerp(float value)
         {
