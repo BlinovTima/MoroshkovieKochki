@@ -92,9 +92,11 @@ namespace MoroshkovieKochki
         
         public static void StopSpeech()
         {
-            if (Instance._speechAudioSource.isPlaying) 
+            if (IsSpeechPlaying) 
                 Instance._speechAudioSource.Stop();
         }
+
+        public static bool IsSpeechPlaying => Instance._speechAudioSource.isPlaying;
 
         public static void ResumeSpeech() => 
             Instance._speechAudioSource.UnPause();

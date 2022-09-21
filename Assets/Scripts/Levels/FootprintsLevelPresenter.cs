@@ -39,7 +39,7 @@ namespace MoroshkovieKochki
                 await _popupPresenter.ShowPopUp(footprintsItem)
                     .AttachExternalCancellation(_cancellationToken.Token);
 
-                await UniTask.WaitUntil(() => completedItems.Any(x =>
+                await UniTask.WaitUntil(() => !AudioManager.IsSpeechPlaying && completedItems.Any(x =>
                 {
                     var completed = x.IsCompleted;
                     if (completed)
@@ -70,17 +70,16 @@ namespace MoroshkovieKochki
                 else
                 {
                     var popup = (InfoPopup) _popupPresenter.CurrentPopup;
-                    
+                  
                     if (item.ThisFootprints == popup.RightAnswer)
-                    {
-                        await AudioManager.PlaySpeechAsync(item.CorrectChoiceAudio);
-                        item.OnClick(new FootprintClickResult(){FootprintAnimal = popup.RightAnswer});
-                    }
+                        AudioManager.PlaySpeechAsync(item.CorrectChoiceAudio);
                     else
-                    {
                         AudioManager.PlaySpeech(item.IncorrectChoiceAudio);
+
+                    item.OnClick(new FootprintClickResult(){FootprintAnimal = popup.RightAnswer});
+
+                    if (item.ThisFootprints != popup.RightAnswer)
                         await _character.PlayNo().AttachExternalCancellation(_cancellationToken.Token);
-                    }
                     
                     _character.PlayIdle();
                 }
