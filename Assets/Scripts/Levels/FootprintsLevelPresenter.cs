@@ -56,6 +56,10 @@ namespace MoroshkovieKochki
             if (isMouseInsidePopup)
                 return;
             
+            var road = raycastHit2D.collider.GetComponent<Road>();
+            if (road)
+                AudioManager.StopSpeech();
+            
             var item = raycastHit2D.collider.GetComponent<FootprintsItem>();
             if (item)
             {
@@ -66,15 +70,22 @@ namespace MoroshkovieKochki
                 else
                 {
                     var popup = (InfoPopup) _popupPresenter.CurrentPopup;
-                    item.OnClick(new FootprintClickResult(){FootprintAnimal = popup.RightAnswer});
                     
-                    if (item.ThisFootprints !=  popup.RightAnswer)
+                    if (item.ThisFootprints == popup.RightAnswer)
+                    {
+                        await AudioManager.PlaySpeechAsync(item.CorrectChoiceAudio);
+                        item.OnClick(new FootprintClickResult(){FootprintAnimal = popup.RightAnswer});
+                    }
+                    else
+                    {
+                        AudioManager.PlaySpeech(item.IncorrectChoiceAudio);
                         await _character.PlayNo().AttachExternalCancellation(_cancellationToken.Token);
+                    }
                     
                     _character.PlayIdle();
                 }
             }
-            
+
             if(_cancellationToken.IsCancellationRequested)
                 _character.PlayIdle();
         }

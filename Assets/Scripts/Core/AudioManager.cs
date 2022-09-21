@@ -64,13 +64,14 @@ namespace MoroshkovieKochki
 
         public static void PlaySpeech(AudioClip audioClip)
         {
+            StopSpeech();
+            
             if (!audioClip)
             {
                 Debug.LogError("AudioClip is NULL");
                 return;
             }
-
-            StopSpeech();
+            
             Instance._speechAudioSource.PlayOneShot(audioClip);
         }
         

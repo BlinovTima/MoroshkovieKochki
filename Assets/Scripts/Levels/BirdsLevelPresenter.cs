@@ -30,7 +30,10 @@ namespace MoroshkovieKochki
             var item = raycastHit2D.collider.GetComponent<GatherItem>();
 
             if (!item || _popupPresenter.NeedCloseCurrentPopup(item))
+            {
+                AudioManager.StopSpeech();
                 _popupPresenter.CloseCurrentPopup().Forget();
+            }
 
             if (item)
             {
@@ -44,6 +47,11 @@ namespace MoroshkovieKochki
                         .AttachExternalCancellation(_cancellationToken.Token);
                     
                     await UniTask.WaitUntil(() => !_popupPresenter.IsPopupOpen);
+
+                    if (item.IsCompleted)
+                        AudioManager.PlaySpeech(item.CorrectChoiceAudio);
+                    else
+                        AudioManager.PlaySpeech(item.IncorrectChoiceAudio);
 
                     if (item.IsCompleted && item.ShouldSayYes)
                         await _character.PlayHello().AttachExternalCancellation(_cancellationToken.Token);

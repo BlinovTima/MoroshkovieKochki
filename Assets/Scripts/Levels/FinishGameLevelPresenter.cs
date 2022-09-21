@@ -14,6 +14,7 @@ public sealed class FinishGameLevelPresenter : GameLevelPresenter
     {
         _character.SetAnimationPreset(CharacterAnimationPreset.Default);
         base.PrepareLevelForStart();
+        AudioManager.PlaySpeech(_gameLevel.TaskVoiceSpeech);
     }
 
     public override UniTask PlayIntro()

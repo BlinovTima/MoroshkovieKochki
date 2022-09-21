@@ -61,8 +61,11 @@ namespace MoroshkovieKochki
             
             _isClickActionInProgress = true; 
             
-            var item = raycastHit2D.collider.GetComponentInParent<House>();
+            var road = raycastHit2D.collider.GetComponentInParent<Road>();
+            if (road)
+                AudioManager.StopSpeech();
             
+            var item = raycastHit2D.collider.GetComponentInParent<House>();
             if (item && _activeMosquito)
             {
                 _activeMosquito.OnClick(new MosquitoClickResult(){MosquitoHouse = item.MosquitoHouse});
@@ -71,6 +74,7 @@ namespace MoroshkovieKochki
                 
                 if(_activeMosquito.IsCompleted)
                 {
+                    AudioManager.PlaySpeech(_activeMosquito.CorrectChoiceAudio);
                     _character.PlayHit().Forget();
                     
                     await _activeMosquito.FlyOutro(item.transform.position);
@@ -79,12 +83,13 @@ namespace MoroshkovieKochki
                 }
                 else
                 {
+                    AudioManager.PlaySpeech(_activeMosquito.IncorrectChoiceAudio);
                    await _character.PlayNo().AttachExternalCancellation(_cancellationToken.Token);
                 }
                 
                 _character.PlayIdle();
             }
-            
+
             if(_cancellationToken.IsCancellationRequested)
                 _character.PlayIdle();
             

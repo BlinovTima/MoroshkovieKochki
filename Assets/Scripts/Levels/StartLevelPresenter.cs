@@ -18,6 +18,7 @@ public sealed class StartLevelPresenter : GameLevelPresenter
         _character.SetScale(ScaleType.Title);
         _character.SetOrientationRight();
         _character.PlaySay();
+        AudioManager.PlaySpeech(_gameLevel.TaskVoiceSpeech);
     }
 
     public override UniTask PlayIntro()

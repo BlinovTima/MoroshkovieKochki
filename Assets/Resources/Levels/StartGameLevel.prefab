@@ -120,7 +120,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4070557701750472155
 Transform:
   m_ObjectHideFlags: 0
@@ -142,7 +142,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 570534534518220898}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -7756201301265247807, guid: 48d269b25f4d3df44af39712298bfe8c,
     type: 2}
@@ -5709,7 +5709,7 @@ MonoBehaviour:
   _initialPosition: {fileID: 4351718739541353241}
   FinishLevelSpeech: {fileID: 0}
   _footstepSound: {fileID: 0}
-  _taskVoiceSpeech: {fileID: 0}
+  _taskVoiceSpeech: {fileID: 8300000, guid: 7e0fb5d95c674bc4da3cccb55e15657f, type: 3}
   _startGameButton: {fileID: 2194053791972059561}
 --- !u!1 &6220880510649709442
 GameObject:

@@ -30,10 +30,14 @@ namespace MoroshkovieKochki
             var road = raycastHit2D.collider.GetComponent<Road>();
 
             if (!item || _popupPresenter.NeedCloseCurrentPopup(item))
+            {
+                AudioManager.StopSpeech();
                 _popupPresenter.CloseCurrentPopup().Forget();
+            }
 
             if (road)
             {
+                AudioManager.StopSpeech();
                 await _character.GoTo(raycastHit2D.point)
                     .AttachExternalCancellation(_cancellationToken.Token);
             }
@@ -61,7 +65,7 @@ namespace MoroshkovieKochki
                         AudioManager.PlaySpeech(item.CorrectChoiceAudio);
                         await _character.PlayGather().AttachExternalCancellation(_cancellationToken.Token);
                     }
-                    else if (!item.IsCompleted && item.ShouldGather)
+                    else// if (!item.IsCompleted && item.ShouldGather)
                     {
                         AudioManager.PlaySpeech(item.IncorrectChoiceAudio);
                         await _character.PlayNo().AttachExternalCancellation(_cancellationToken.Token);

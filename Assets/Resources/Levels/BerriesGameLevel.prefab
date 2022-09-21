@@ -5724,7 +5724,7 @@ PrefabInstance:
         type: 3}
       propertyPath: CorrectChoiceAudio
       value: 
-      objectReference: {fileID: 8300000, guid: f503a860eb588964289615b51cb670d5, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 9036862959109666081, guid: 558d33629560349408da558923354aae,
         type: 3}
       propertyPath: IncorrectChoiceAudio
@@ -6024,7 +6024,7 @@ PrefabInstance:
         type: 3}
       propertyPath: CorrectChoiceAudio
       value: 
-      objectReference: {fileID: 8300000, guid: f503a860eb588964289615b51cb670d5, type: 3}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 558d33629560349408da558923354aae, type: 3}
 --- !u!4 &3212995609533025001 stripped
@@ -6602,7 +6602,7 @@ PrefabInstance:
         type: 3}
       propertyPath: CorrectChoiceAudio
       value: 
-      objectReference: {fileID: 8300000, guid: f503a860eb588964289615b51cb670d5, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 9036862959109666081, guid: 558d33629560349408da558923354aae,
         type: 3}
       propertyPath: IncorrectChoiceAudio
@@ -7000,7 +7000,7 @@ PrefabInstance:
         type: 3}
       propertyPath: CorrectChoiceAudio
       value: 
-      objectReference: {fileID: 8300000, guid: f503a860eb588964289615b51cb670d5, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 9036862959109666081, guid: 558d33629560349408da558923354aae,
         type: 3}
       propertyPath: IncorrectChoiceAudio
@@ -7383,7 +7383,7 @@ PrefabInstance:
         type: 3}
       propertyPath: CorrectChoiceAudio
       value: 
-      objectReference: {fileID: 8300000, guid: f503a860eb588964289615b51cb670d5, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 9036862959109666081, guid: 558d33629560349408da558923354aae,
         type: 3}
       propertyPath: IncorrectChoiceAudio
@@ -7746,7 +7746,7 @@ PrefabInstance:
         type: 3}
       propertyPath: CorrectChoiceAudio
       value: 
-      objectReference: {fileID: 8300000, guid: f503a860eb588964289615b51cb670d5, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 9036862959109666081, guid: 558d33629560349408da558923354aae,
         type: 3}
       propertyPath: IncorrectChoiceAudio
@@ -8232,12 +8232,12 @@ PrefabInstance:
         type: 3}
       propertyPath: CorrectChoiceAudio
       value: 
-      objectReference: {fileID: 8300000, guid: 165f605259a4dc840a9cca95ead39fd4, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 9036862959109666081, guid: 558d33629560349408da558923354aae,
         type: 3}
       propertyPath: IncorrectChoiceAudio
       value: 
-      objectReference: {fileID: 8300000, guid: f503a860eb588964289615b51cb670d5, type: 3}
+      objectReference: {fileID: 8300000, guid: 165f605259a4dc840a9cca95ead39fd4, type: 3}
     - target: {fileID: 9128276527989069411, guid: 558d33629560349408da558923354aae,
         type: 3}
       propertyPath: m_LocalRotation.z
@@ -8800,12 +8800,12 @@ PrefabInstance:
         type: 3}
       propertyPath: CorrectChoiceAudio
       value: 
-      objectReference: {fileID: 8300000, guid: 165f605259a4dc840a9cca95ead39fd4, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 9036862959109666081, guid: 558d33629560349408da558923354aae,
         type: 3}
       propertyPath: IncorrectChoiceAudio
       value: 
-      objectReference: {fileID: 8300000, guid: f503a860eb588964289615b51cb670d5, type: 3}
+      objectReference: {fileID: 8300000, guid: 165f605259a4dc840a9cca95ead39fd4, type: 3}
     - target: {fileID: 9128276527989069411, guid: 558d33629560349408da558923354aae,
         type: 3}
       propertyPath: m_LocalRotation.z
@@ -9206,7 +9206,7 @@ PrefabInstance:
         type: 3}
       propertyPath: CorrectChoiceAudio
       value: 
-      objectReference: {fileID: 8300000, guid: f503a860eb588964289615b51cb670d5, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 9036862959109666081, guid: 558d33629560349408da558923354aae,
         type: 3}
       propertyPath: IncorrectChoiceAudio

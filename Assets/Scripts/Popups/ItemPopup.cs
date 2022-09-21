@@ -46,8 +46,8 @@ namespace MoroshkovieKochki
             _sequence = DOTween.Sequence();
             
             _sequence.Append(DOTween.To(() => _canvasGroup.alpha, x => _canvasGroup.alpha = x, 0f, _switchTime));
-            _sequence.SetAutoKill(true);
             _sequence.AppendCallback(() => SetActive(false));
+            _sequence.SetAutoKill(true);
 
             await _sequence.AsyncWaitForKill();
         }
