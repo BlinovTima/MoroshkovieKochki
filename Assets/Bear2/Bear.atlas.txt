@@ -1,131 +1,138 @@
 
 Bear.png
-size: 1912,1405
+size: 2012,1529
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
 basket
-  rotate: false
-  xy: 894, 404
+  rotate: true
+  xy: 1027, 392
   size: 476, 454
   orig: 476, 454
   offset: 0, 0
   index: -1
 basket_back
-  rotate: true
-  xy: 1402, 27
+  rotate: false
+  xy: 731, 46
   size: 373, 110
   orig: 373, 110
   offset: 0, 0
   index: -1
 body
-  rotate: false
-  xy: 4, 113
+  rotate: true
+  xy: 4, 44
   size: 644, 723
   orig: 644, 723
   offset: 0, 0
   index: -1
 box
   rotate: false
-  xy: 1498, 919
+  xy: 1112, 1043
   size: 398, 482
   orig: 398, 482
   offset: 0, 0
   index: -1
 box_back
   rotate: false
-  xy: 4, 4
+  xy: 1112, 934
   size: 306, 105
   orig: 306, 105
   offset: 0, 0
   index: -1
 eye
   rotate: false
-  xy: 314, 20
+  xy: 1598, 967
   size: 247, 89
   orig: 247, 89
   offset: 0, 0
   index: -1
 head
-  rotate: false
-  xy: 841, 862
+  rotate: true
+  xy: 569, 872
   size: 653, 539
   orig: 653, 539
   offset: 0, 0
   index: -1
 l_arm
   rotate: false
-  xy: 1511, 460
+  xy: 1485, 436
   size: 394, 455
   orig: 394, 455
   offset: 0, 0
   index: -1
 l_arm_hello
   rotate: false
-  xy: 1516, 28
+  xy: 1616, 4
   size: 392, 428
   orig: 392, 428
   offset: 0, 0
   index: -1
-l_eyebrow
+l_arm_open
   rotate: false
-  xy: 809, 44
+  xy: 1514, 1060
+  size: 405, 465
+  orig: 405, 465
+  offset: 0, 0
+  index: -1
+l_eyebrow
+  rotate: true
+  xy: 1039, 160
   size: 71, 58
   orig: 71, 58
   offset: 0, 0
   index: -1
 l_hand
   rotate: false
-  xy: 652, 117
+  xy: 1422, 895
   size: 172, 144
   orig: 172, 144
   offset: 0, 0
   index: -1
 l_leg
   rotate: false
-  xy: 652, 265
+  xy: 731, 160
   size: 238, 571
   orig: 238, 571
   offset: 0, 0
   index: -1
 mouth
   rotate: true
-  xy: 828, 106
+  xy: 1849, 901
   size: 155, 61
   orig: 155, 61
   offset: 0, 0
   index: -1
 mouth_open
-  rotate: false
-  xy: 652, 44
+  rotate: true
+  xy: 973, 235
   size: 153, 69
   orig: 153, 69
   offset: 0, 0
   index: -1
 newspaper
-  rotate: true
-  xy: 1374, 404
+  rotate: false
+  xy: 569, 735
   size: 454, 133
   orig: 454, 133
   offset: 0, 0
   index: -1
 r_arm
   rotate: true
-  xy: 894, 34
+  xy: 1108, 22
   size: 366, 504
   orig: 366, 504
   offset: 0, 0
   index: -1
 r_eyebrow
-  rotate: false
-  xy: 565, 47
+  rotate: true
+  xy: 973, 163
   size: 68, 62
   orig: 68, 62
   offset: 0, 0
   index: -1
 r_leg
-  rotate: false
-  xy: 4, 840
+  rotate: true
+  xy: 4, 692
   size: 833, 561
   orig: 833, 561
   offset: 0, 0
