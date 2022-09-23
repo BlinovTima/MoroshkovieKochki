@@ -6989,7 +6989,7 @@ PrefabInstance:
     - target: {fileID: 9036862959109666081, guid: 558d33629560349408da558923354aae,
         type: 3}
       propertyPath: ShouldGather
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9036862959109666081, guid: 558d33629560349408da558923354aae,
         type: 3}
