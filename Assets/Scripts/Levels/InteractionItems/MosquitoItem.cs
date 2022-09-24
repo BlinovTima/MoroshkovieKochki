@@ -19,6 +19,7 @@ namespace MoroshkovieKochki
         [SerializeField] private SpriteRenderer _mosquitoSpriteRenderer;
         [SerializeField] private Animator _mosquitoAnimator;
         [SerializeField] private float _flySpeed;
+        [SerializeField] private AudioSource _audioSource;
 
         private bool _isGoingLeftCahce;
         private Character _character;
@@ -57,6 +58,7 @@ namespace MoroshkovieKochki
             var path = new VertexPath(bezierPath, _outroPathTransform);
             
             await FlyToPoint(path);
+            _audioSource.Pause();
             _mosquitoAnimator.SetBool(IsIdle, true);
         }
 
@@ -65,6 +67,7 @@ namespace MoroshkovieKochki
             var path = _introPath.path;
             var startPosition = path.GetClosestPointOnPath(_mosquitoContainer.position);
             _mosquitoContainer.position = startPosition;
+            _audioSource.Play();
             
             await FlyToPoint(path);
         }
