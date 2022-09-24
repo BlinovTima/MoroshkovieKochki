@@ -25,6 +25,7 @@ namespace MoroshkovieKochki
         public static event Action<int> OnScoreUpdated = x => { };
         public static event Action<GameState> OnGameStateUpdated = x => { };
         public static void AddLevelPassed() => Instance._passedLevels += 1;
+
         
         
         public static void AddScoreValue(int value)
@@ -42,6 +43,7 @@ namespace MoroshkovieKochki
 
         public static void Reset()
         {
+            ResetScoreValue();
             _instance = new GameContext();
         }
         
@@ -69,6 +71,12 @@ namespace MoroshkovieKochki
             _gameState = GameState.None;
         }
 
+        private static void ResetScoreValue()
+        {
+            Instance._score = 0;
+            OnScoreUpdated.Invoke(Instance._score);
+        } 
+        
         #endregion
     }
 }

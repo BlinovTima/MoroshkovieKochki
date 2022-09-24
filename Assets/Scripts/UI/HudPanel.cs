@@ -35,7 +35,9 @@ public sealed class HudPanel : MonoBehaviour
    {
       var isComplete = false;
       var scoreTimeHalf = _scoreAnimationTime / 2;
-      AudioManager.PlayEffect(_scoreAddingSound);
+      
+      if (IsShown)
+         AudioManager.PlayEffect(_scoreAddingSound);
 
       _scoreLabel.DOFade(0f, scoreTimeHalf);
       _scoreLabel.transform.DOScale(_maxScale, scoreTimeHalf).OnComplete(
