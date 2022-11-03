@@ -12,9 +12,9 @@ namespace MoroshkovieKochki
 
         [Header("Data")]
         [SerializeField] public Sprite Sprite;
-        [ResizableTextArea]
+        [Multiline]
         [SerializeField] public string Desription;
-        [ResizableTextArea]
+        [Multiline]
         [SerializeField] public string CustomQuestion;
         [SerializeField] public AudioClip SpeechAudio;
         public AudioClip IncorrectChoiceAudio;
