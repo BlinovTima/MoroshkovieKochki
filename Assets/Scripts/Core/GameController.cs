@@ -20,6 +20,9 @@ namespace MoroshkovieKochki
         [Header("Levels settings")] 
         [SerializeField] private Transform _levelParent;
 
+        [Header("Cursor settings")] 
+        [SerializeField] private Texture2D _cursorTexture;
+        
         private GameMenuPresenter _gameMenuPresenter;
         private int? _levelIndex;
         private GameLevelPresenter _gameLevelPresenter;
@@ -28,12 +31,19 @@ namespace MoroshkovieKochki
         private LevelsFabric _levelsFabric;
         private Character _character;
         private CursorEffectsPresenter _cursorEffectsPresenter;
+      
 
 
         private bool HasCurrentLevel => _gameLevelPresenter != null && _gameLevelPresenter.HasLevelInited;
 
         private void Awake()
         {
+#if UNITY_WEBGL
+            Cursor.SetCursor(_cursorTexture, Vector2.zero, CursorMode.ForceSoftware);
+#else
+            Cursor.SetCursor(_cursorTexture, Vector2.zero, CursorMode.Auto);
+#endif
+
             _windowSwitcher.PlayGameIntro(() =>
             {
                 DontDestroyOnLoad(gameObject);
