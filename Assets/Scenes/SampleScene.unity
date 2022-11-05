@@ -185,6 +185,7 @@ MonoBehaviour:
   _windowSwitcher: {fileID: 2019991964}
   _cursorEffectsView: {fileID: 1155196517}
   _levelParent: {fileID: 1760534055}
+  _cursorTexture: {fileID: 2800000, guid: 5c6c65af43064944f91454ffd13677be, type: 3}
 --- !u!224 &226194438 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7032030021909996567, guid: 3aeb0800a91205c44b8fcd40d1b1712c,

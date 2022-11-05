@@ -79,7 +79,7 @@ namespace MoroshkovieKochki
         {
             if (!audioClip)
             {
-                Debug.LogError("AudioClip is NULL");
+                Debug.LogWarning("AudioClip is NULL");
                 return;
             }
 
